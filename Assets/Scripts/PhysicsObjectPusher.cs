@@ -1,0 +1,55 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PhysicsObjectPusher : MonoBehaviour
+{
+    public Transform pointer = null;
+    public float force = 100;
+    private float _force = 100;
+    private bool push;
+    public LineRenderer lRend = null;
+
+    private void Start()
+    {
+        if (!lRend)
+            lRend = gameObject.AddComponent<LineRenderer>();
+    }
+
+    void Update()
+    {
+        if (!pointer)
+        {
+            Debug.LogError("Pointer transform not set");
+            return;
+        }
+
+        Ray ray = new Ray(pointer.position, pointer.forward);
+
+        if (lRend)
+        {
+            lRend.SetPosition(0, ray.origin);
+        }
+
+        if (Input.GetKey(KeyCode.Joystick1Button15) && Physics.Raycast(ray, out RaycastHit hit))
+        {
+            Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
+            //SHUT UNITY, JUST USE NULL PROPAGATION
+            if (rb)
+                rb.AddForce(_force * ray.direction);
+
+            if (lRend)
+                lRend.SetPosition(1, hit.point);
+        }
+        //If the raycast misses, set the end point to be far away
+        else
+            lRend.SetPosition(1, ray.origin + 100 * ray.direction);
+    }
+
+    public void TogglePushDirection()
+    {
+        push = !push;
+
+        _force = push ? force : -force;
+    }
+}
