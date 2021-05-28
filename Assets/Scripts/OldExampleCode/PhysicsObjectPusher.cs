@@ -7,13 +7,14 @@ public class PhysicsObjectPusher : MonoBehaviour
     public Transform pointer = null;
     public float force = 100;
     private float _force = 100;
-    private bool push;
+    private bool push = true;
     public LineRenderer lRend = null;
 
     private void Start()
     {
         if (!lRend)
-            lRend = gameObject.AddComponent<LineRenderer>();
+            lRend = gameObject.AddComponent<LineRenderer>(); 
+        push = true;
     }
 
     void Update()
