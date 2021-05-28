@@ -59,7 +59,8 @@ public class OGInput
         prevInput = curInput;
 
 #if UNITY_EDITOR
-        curInput = Input.GetKeyDown(_editorInput) ? 1 : 0;
+        curInput = Input.GetKey(_editorInput) ? 1 : 0;
+#else
         //Get the input from the correct button
         switch(_oculusInput)
         {
