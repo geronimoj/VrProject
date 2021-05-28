@@ -9,12 +9,20 @@ using Helpers;
 [DefaultExecutionOrder(-1)]
 public class OGInputGetter : MonoBehaviour
 {
+    /// <summary>
+    /// An instance of the OGInputGetter used by the other static functions for detecting inputs
+    /// </summary>
     private static OGInputGetter s_instance = null;
+    /// <summary>
+    /// Assign the instance of the OGInputGetter
+    /// </summary>
     private void Awake()
     {
         s_instance = this;
     }
-
+    /// <summary>
+    /// Updates the Inputs
+    /// </summary>
     void Update()
     {   //Get the OGInputs on this
         var fields = TypeHelper.GetFieldsOfType<OGInput>(GetType());
