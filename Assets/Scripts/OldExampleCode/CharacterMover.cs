@@ -14,7 +14,7 @@ public class CharacterMover : MonoBehaviour
         forward.y = 0;
         forward.Normalize();
 
-        Vector2 touchDir = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
+        Vector2 touchDir = OGInputGetter.GetTouchPad();
         touchDir.Normalize();
         //Rotate the direction of forward by touchDir
         float x, y;

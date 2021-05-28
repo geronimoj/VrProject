@@ -101,8 +101,14 @@ public class OGInputGetter : MonoBehaviour
     /// </summary>
     /// <returns>Returns Vector2.zero if no input is present</returns>
     public static Vector2 GetTouchPad()
-    {   //Use OVRInput to get the touchpad
+    {
+#if !UNITY_EDITOR
+        //Use OVRInput to get the touchpad
         return OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad);
+#else
+        //Use the Horizotal and Vertical axis as replacements when in Editor
+        return new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+#endif
     }
     /// <summary>
     /// Returns the value of the input being pressed in range 0 or 1
