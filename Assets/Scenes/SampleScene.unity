@@ -785,7 +785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pointer: {fileID: 1605681843}
-  _rotateSpeed: 10
+  _rotateSpeed: 50
   _startRotate: 0.05
 --- !u!4 &920937750 stripped
 Transform:
@@ -1744,6 +1744,7 @@ GameObject:
   - component: {fileID: 1489413972}
   - component: {fileID: 1489413975}
   - component: {fileID: 1489413976}
+  - component: {fileID: 1489413977}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1851,6 +1852,21 @@ MonoBehaviour:
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
+--- !u!114 &1489413977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489413971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6829c0ade9396c94cbfd5af484bd3445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI:
+  - {fileID: 1717163972}
+  eventSystem: {fileID: 1489413971}
 --- !u!1 &1513132756
 GameObject:
   m_ObjectHideFlags: 0
