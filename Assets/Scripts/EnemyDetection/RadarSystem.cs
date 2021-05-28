@@ -69,6 +69,9 @@ public class RadarSystem : MonoBehaviour
     /// Stores all the blips that are not currently being used
     /// </summary>
     private List<Transform> _inactiveBlips = new List<Transform>();
+
+    [SerializeField]
+    private List<Transform> _enemiesToTrack = new List<Transform>();
     /// <summary>
     /// Set the scale of the radar object
     /// </summary>
@@ -124,6 +127,21 @@ public class RadarSystem : MonoBehaviour
             if (Vector3.Distance(t.position, m_worldReferencePoint.position) > m_radarRange)
                 //If so, remove them
                 LeaveRadar(t);
+        //Loop over the enemies to track
+        for (int i = 0; i < _enemiesToTrack.Count; i++)
+            //If they are null or destroyed, remove them
+            if (!_enemiesToTrack[i])
+            {   //Remove them
+                _enemiesToTrack.RemoveAt(i);
+                //Reduce the indexer so we don't skip an enemy
+                i--;
+            }
+        //Loop over the eneies we are tracking
+        foreach (Transform t in _enemiesToTrack)
+            //Check if the enemy is close enough
+            if (Vector3.Distance(t.position, m_worldReferencePoint.position) <= m_radarRange)
+                //If they are, add them to the radar
+                EnterRadar(t);
     }
     /// <summary>
     /// Updates the scale of each individual blip
@@ -176,5 +194,16 @@ public class RadarSystem : MonoBehaviour
             //Store the blip
             _enemyBlips.Add(enemy, obj.transform);
         }
+
+        if (_enemiesToTrack.Contains(enemy))
+            _enemiesToTrack.Remove(enemy);
+    }
+    /// <summary>
+    /// Adds an enemy to track. Once they leave the radar, they are gone for good
+    /// </summary>
+    /// <param name="enemy"></param>
+    public void TrackEnemy(Transform enemy)
+    {
+        _enemiesToTrack.Add(enemy);
     }
 }
