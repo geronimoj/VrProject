@@ -13,6 +13,12 @@ public class OGInputGetter : MonoBehaviour
     /// An instance of the OGInputGetter used by the other static functions for detecting inputs
     /// </summary>
     private static OGInputGetter s_instance = null;
+
+    public OGInput m_trigger = new OGInput();
+
+    public OGInput m_touchPadPress = new OGInput();
+
+    public OGInput m_touchPadTouch = new OGInput();
     /// <summary>
     /// Assign the instance of the OGInputGetter
     /// </summary>
