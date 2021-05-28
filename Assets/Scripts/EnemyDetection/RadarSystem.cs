@@ -165,6 +165,8 @@ public class RadarSystem : MonoBehaviour
         _enemyBlips[enemy].gameObject.SetActive(false);
         //Remove this enemy from the enemy blips
         _enemyBlips.Remove(enemy);
+        //Keep tracking the enemy even after they leave
+        _enemiesToTrack.Add(enemy);
     }
     /// <summary>
     /// Creates a blip on the radar
@@ -194,7 +196,7 @@ public class RadarSystem : MonoBehaviour
             //Store the blip
             _enemyBlips.Add(enemy, obj.transform);
         }
-
+        //Remove the enemy from being tracked
         if (_enemiesToTrack.Contains(enemy))
             _enemiesToTrack.Remove(enemy);
     }
