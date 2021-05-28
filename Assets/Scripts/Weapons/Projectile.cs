@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,15 +9,23 @@ public class Projectile : MonoBehaviour
     public float projectileSpeed;
     public float damage;
 
+    public float lifetime;
+
     void Start()
     {
-        
+        StartCoroutine(DestroyAfter());
+    }
+
+    private IEnumerator DestroyAfter()
+    {
+        yield return new WaitForSecondsRealtime(lifetime);
+        Destroy(gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.forward * projectileSpeed * Time.deltaTime;
+        transform.position += transform.forward * projectileSpeed * Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision col)
