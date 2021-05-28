@@ -31,7 +31,7 @@ public class PhysicsObjectPusher : MonoBehaviour
             lRend.SetPosition(0, ray.origin);
         }
 
-        if (Input.GetKey(KeyCode.Joystick1Button15) && Physics.Raycast(ray, out RaycastHit hit))
+        if (OGInputGetter.Get(OGInputGetter.OculusInputs.BackTrigger) && Physics.Raycast(ray, out RaycastHit hit))
         {
             Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
             //SHUT UNITY, JUST USE NULL PROPAGATION
