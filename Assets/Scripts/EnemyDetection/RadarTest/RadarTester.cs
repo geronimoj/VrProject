@@ -16,9 +16,4 @@ public class RadarTester : MonoBehaviour
         foreach (Transform t in enemies)
             radar.TrackEnemy(t);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
 }

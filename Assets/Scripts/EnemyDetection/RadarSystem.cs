@@ -64,16 +64,16 @@ public class RadarSystem : MonoBehaviour
     /// <summary>
     /// Stores the enemy ships transform as a key to a blip gameObject
     /// </summary>
-    private Dictionary<Transform, Transform> _enemyBlips = new Dictionary<Transform, Transform>();
+    private readonly Dictionary<Transform, Transform> _enemyBlips = new Dictionary<Transform, Transform>();
     /// <summary>
     /// Stores all the blips that are not currently being used
     /// </summary>
-    private List<Transform> _inactiveBlips = new List<Transform>();
+    private readonly List<Transform> _inactiveBlips = new List<Transform>();
 
     [SerializeField]
     private List<Transform> _enemiesToTrack = new List<Transform>();
 
-    private List<Transform> _enemiesToRemove = new List<Transform>();
+    private readonly List<Transform> _enemiesToRemove = new List<Transform>();
     /// <summary>
     /// Set the scale of the radar object
     /// </summary>
