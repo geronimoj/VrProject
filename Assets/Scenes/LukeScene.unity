@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &792718340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reticleOrigin: {fileID: 1831505637}
-  _shape: 1
+  _shape: 0
   _radius: 2.5
   _billboardReticles: 0
   _reticlePrefab: {fileID: 2403415062403598523, guid: 2ef1772ac45b8aa4e9ce329daff82257,

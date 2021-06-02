@@ -73,5 +73,8 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
+    - _BackgroundColor: {r: 0.225, g: 0.225, b: 0.225, a: 1}
     - _Color: {r: 0, g: 0.5078261, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0.66479015, b: 1, a: 1}
+    - _SrcRectLeft: {r: 0, g: 0, b: 1, a: 1}
+    - _SrcRectRight: {r: 0, g: 0, b: 1, a: 1}
