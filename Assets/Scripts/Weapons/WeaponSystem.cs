@@ -22,6 +22,8 @@ public class WeaponSystem : MonoBehaviour
         {
             weapon = weapons[0];
         }
+        //Subscribe to the weapon change event
+        WeaponSelector.OnChangeWeapon.AddListener(ChangeWeapon);
     }
 
     // Update is called once per frame
@@ -85,6 +87,21 @@ public class WeaponSystem : MonoBehaviour
     {
         weapon = weapons[weaponIndex];
 
+    }
+    /// <summary>
+    /// Swaps the current usable weapon
+    /// </summary>
+    /// <param name="newWeapon">The new weapon to use</param>
+    public void ChangeWeapon(Weapon newWeapon)
+    {   //Is the weapon registered as a usable weapon
+        if (!weapons.Contains(newWeapon))
+            return;
+        //Unequip the weapon
+        weapon.OnUnEquip();
+        //Swap weapons
+        weapon = newWeapon;
+        //Equip the new weapon
+        weapon.OnEquip();
     }
 
 }

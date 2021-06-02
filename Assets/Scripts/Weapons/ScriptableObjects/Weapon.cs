@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum WeaponType
 {
@@ -36,6 +37,10 @@ public enum ProjectileType
 
 public class Weapon : ScriptableObject
 {
+    /// <summary>
+    /// The icon for the weapon.
+    /// </summary>
+    public Image weaponIcon = null;
     // The type of weapon, for the purposes of enemy types and resistances.
     public WeaponType weaponType;
 
@@ -70,5 +75,13 @@ public class Weapon : ScriptableObject
     {
         currentRefire -= Time.deltaTime;
     }
+    /// <summary>
+    /// Called when the weapon is equipped
+    /// </summary>
+    public virtual void OnEquip() { }
+    /// <summary>
+    /// Called when the weapon is unequipped
+    /// </summary>
+    public virtual void OnUnEquip() { }
 
 }
