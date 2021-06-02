@@ -1,27 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     // Start is called before the first frame update
     public float health;
-    private float currentHealth;
+    protected float currentHealth;
+    /// <summary>
+    /// Returns true when the charcater is dead
+    /// </summary>
+    public bool IsDead => currentHealth <= 0;
+    /// <summary>
+    /// Should the gameObject be destroyed on death
+    /// </summary>
+    public bool destroyOnDeath = true;
+
+    public UnityEvent OnDeath;
 
     void Start()
     {
         currentHealth = health;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (currentHealth <= 0)
-            Destroy(gameObject);
-    }
+    //Put the death check in DoDamage to reduce calls
 
     public void DoDamage(float damage)
-    {
+    {   //Don't deal damage to a dead character
+        if (currentHealth < 0)
+            return;
+
         currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            OnDeath.Invoke();
+
+            if (destroyOnDeath)
+                Destroy(gameObject);
+        }
     }
 }
