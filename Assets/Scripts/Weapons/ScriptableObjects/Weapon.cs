@@ -67,12 +67,12 @@ public class Weapon : ScriptableObject
     public float currentRefire = 0;
 
     public virtual void Fire(List<Transform> guns)
-    {
+    {   //Set the guns cooldown between shots
         currentRefire = refireSpeed;
     }
 
     public virtual void WeaponUpdate()
-    {
+    {   //Reduce the cooldown between shots
         currentRefire -= Time.deltaTime;
     }
     /// <summary>
