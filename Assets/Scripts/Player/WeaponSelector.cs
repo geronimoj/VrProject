@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class WeaponSelector : MonoBehaviour
 {
-    public class SelectorEvent : UnityEvent<GameObject> { }
+    public class SelectorEvent : UnityEvent<Weapon> { }
     /// <summary>
     /// Called every time the weapon changes via the WeaponSelector
     /// </summary>
@@ -45,7 +45,7 @@ public class WeaponSelector : MonoBehaviour
     /// THESE ARE NOT MEANT TO BE GAMEOBJECTS. THIS WAS DONE SO I CAN PROGRAM THE REST OF IT.
     /// </summary>
     [HideInInspector]
-    public GameObject[] m_weapons = new GameObject[0];
+    public Weapon[] m_weapons = new Weapon[0];
     /// <summary>
     /// Stores the scale of the UI
     /// </summary>
