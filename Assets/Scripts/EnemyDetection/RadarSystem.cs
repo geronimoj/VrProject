@@ -155,7 +155,7 @@ public class RadarSystem : MonoBehaviour
             blip.localPosition *= m_radarRadius;
         }
         //Because we can't remove the enemies from _enemyBlips in the foreach loop, we need to remove them now
-        for (int i = 0; i < _enemiesToRemove.Count; i++)
+        while (_enemiesToRemove.Count > 0)
         {   //Now we remove the enemy from the blips
             _enemyBlips.Remove(_enemiesToRemove[0]);
             //And remove the enemy from the enemies we need to remove

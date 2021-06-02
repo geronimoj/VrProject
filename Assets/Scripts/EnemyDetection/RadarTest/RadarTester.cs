@@ -6,6 +6,8 @@ public class RadarTester : MonoBehaviour
 {
     public RadarSystem radar = null;
 
+    public EnemyReticleSystem reticle = null;
+
     public Transform[] enemies = null;
 
     void Start()
@@ -14,6 +16,10 @@ public class RadarTester : MonoBehaviour
         Debug.LogError("This script should not be running");
 #endif
         foreach (Transform t in enemies)
+        {
             radar.TrackEnemy(t);
+
+            reticle.TrackEnemy(t);
+        }
     }
 }
