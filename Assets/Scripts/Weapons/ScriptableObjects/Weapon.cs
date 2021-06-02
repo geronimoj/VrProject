@@ -61,9 +61,6 @@ public class Weapon : ScriptableObject
     [HideInInspector]
     public float currentRefire = 0;
 
-    // The transforms from which the projectile or beam will originate from. Must have at least one point.
-    public List<Transform> weaponPoints;
-    //Transform[], enum Left Gun, Middle Gun, Right Gun
     public virtual void Fire(List<Transform> guns)
     {
         currentRefire = refireSpeed;

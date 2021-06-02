@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponSystem : MonoBehaviour
 {
     //public WeaponManager wm;
-    private Weapon weapon;
+    public Weapon weapon;
 
     public List<Weapon> weapons;
     /// <summary>
