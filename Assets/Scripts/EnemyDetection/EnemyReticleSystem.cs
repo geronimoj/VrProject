@@ -28,6 +28,8 @@ public class EnemyReticleSystem : MonoBehaviour
     [Tooltip("The shape of the reticle system. Only draws reticles within the shape")]
     [SerializeField]
     protected ReticleShape _shape = ReticleShape.Quad;
+
+    public ReticleShape Shape => _shape;
     /// <summary>
     /// The radius of the reticle system when the shape is circle
     /// </summary>
