@@ -7,12 +7,12 @@ using UnityEditor;
 [CanEditMultipleObjects]
 public class ReticleEditor : Editor
 {
-    SerializedProperty origin;
-    SerializedProperty shape;
-    SerializedProperty radius;
-    SerializedProperty billboard;
-    SerializedProperty prefab;
-    SerializedProperty scale;
+    private SerializedProperty origin = null;
+    private SerializedProperty shape = null;
+    private SerializedProperty radius = null;
+    private SerializedProperty billboard = null;
+    private SerializedProperty prefab = null;
+    private SerializedProperty scale = null;
     private void OnEnable()
     {
         origin = serializedObject.FindProperty("_reticleOrigin");
