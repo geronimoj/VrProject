@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// The system that controls how the reticles that surround enemies appear
+/// </summary>
 public class EnemyReticleSystem : MonoBehaviour
 {
+    /// <summary>
+    /// The shape of the reticle
+    /// </summary>
     [System.Serializable]
     public enum ReticleShape
     {
@@ -89,7 +94,9 @@ public class EnemyReticleSystem : MonoBehaviour
     /// The enemies that need to be removed from _assignedReticles
     /// </summary>
     private readonly List<Transform> _enemiesToRemove = new List<Transform>();
-
+    /// <summary>
+    /// Updates the reticles and debugging information
+    /// </summary>
     private void Update()
     {
 #if UNITY_EDITOR
