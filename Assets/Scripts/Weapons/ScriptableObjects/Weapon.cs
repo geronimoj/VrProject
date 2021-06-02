@@ -40,7 +40,7 @@ public class Weapon : ScriptableObject
     /// <summary>
     /// The icon for the weapon.
     /// </summary>
-    public Image weaponIcon = null;
+    public Sprite weaponIcon = null;
     // The type of weapon, for the purposes of enemy types and resistances.
     public WeaponType weaponType;
 
