@@ -42,15 +42,50 @@ public class WeaponSelector : MonoBehaviour
     /// </summary>
     private int _selectedWeaponIndex = 0;
     /// <summary>
-    /// THESE ARE NOT MEANT TO BE GAMEOBJECTS. THIS WAS DONE SO I CAN PROGRAM THE REST OF IT.
+    /// The weapons that can be chosen from using the choose wheel
     /// </summary>
-    [HideInInspector]
     public Weapon[] m_weapons = new Weapon[0];
+    /// <summary>
+    /// The radius of the imaginary circle of which the icons are laid on
+    /// </summary>
+    [Tooltip("The distance from the center each icon is positioned")]
+    [SerializeField]
+    protected float _iconRadius = 1;
+    /// <summary>
+    /// Is the selector currently open
+    /// </summary>
+    private bool _isOpen = false;
+    /// <summary>
+    /// The images for each weapon
+    /// </summary>
+    private readonly List<GameObject> _weaponImageUI = new List<GameObject>();
+    /// <summary>
+    /// The prefab the weapons image is put on
+    /// </summary>
+    [Tooltip("The prefab the weapons image is put on")]
+    [SerializeField]
+    private GameObject _weaponImagePrefab = null;
+    /// <summary>
+    /// The canvas the weapon images are put on
+    /// </summary>
+    [Tooltip("The canvas the weapon images are put on")]
+    [SerializeField]
+    public Transform _canvas = null;
     /// <summary>
     /// Stores the scale of the UI
     /// </summary>
     private void Start()
     {
+        if (!_weaponImagePrefab)
+        {
+            Debug.LogError("Weapon Image prefab not set on WeaponSelector.");
+            Debug.Break();
+        }
+        if (!_canvas)
+        {
+            Debug.LogError("Canvas not set on WeaponSelector.");
+            Debug.Break();
+        }
         _openScale = transform.localScale;
         //The first update cycle will set the scale to 0
     }
@@ -73,6 +108,36 @@ public class WeaponSelector : MonoBehaviour
     /// </summary>
     public void OpenSelector()
     {
+        if (!_isOpen)
+        {
+            float weapAng = 360 / m_weapons.Length;
+            float curAngle = 90;
+            //Loop over the weapons and create their UI
+            for (int i = 0; i < m_weapons.Length; i++)
+            {
+                GameObject ui = Instantiate(_weaponImagePrefab, _canvas);
+                Image image = ui.GetComponent<Image>();
+                //Set the sprite of the weapon
+                if (image)
+                    image.sprite = m_weapons[i].weaponIcon;
+                else
+                    Debug.LogError("Weapon Image Prefab on Weapon Selector does not contain an Image");
+                //Get the rect transform for position manipulation
+                RectTransform rt = image.rectTransform;
+                //Set the image to be anchored in the center of the canvas
+                rt.anchorMin = new Vector2(0.5f, 0.5f);
+                rt.anchorMax = new Vector2(0.5f, 0.5f);
+                //Set the position of the UI
+                Vector2 pos = new Vector2(Mathf.Cos(curAngle * Mathf.Deg2Rad), Mathf.Sin(curAngle * Mathf.Deg2Rad));
+                rt.anchoredPosition = pos.normalized * _iconRadius;
+                //Store the weapon image
+                _weaponImageUI.Add(ui);
+
+                curAngle += weapAng;
+            }
+            //Spawn the weapon UI
+            _isOpen = true;
+        }
         //Increment the scale timer
         t_openTimer += Time.deltaTime;
         //Clamp the time to never exceed openTime
@@ -85,7 +150,18 @@ public class WeaponSelector : MonoBehaviour
     /// Called when the selector is closed
     /// </summary>
     public void CloseSelector()
-    {   //If the UI is open and the selected weapon is valid
+    {   //Once the UI has finished dissapearing
+        if (t_openTimer == 0)
+        {
+            //Destroy the weapon UI
+            while (_weaponImageUI.Count > 0)
+            {
+                Destroy(_weaponImageUI[0]);
+                _weaponImageUI.RemoveAt(0);
+            }
+            _isOpen = false;
+        }
+        //If the UI is open and the selected weapon is valid
         //This will only be able to be called the first time CloseSelector is called after the Selector fully opens
         if (IsOpen && _selectedWeaponIndex < m_weapons.Length)
             //Call the OnChangeWeapon event
@@ -115,12 +191,16 @@ public class WeaponSelector : MonoBehaviour
         float weapAng = 360 / m_weapons.Length;
         //We also rotate everything such that up on the touchpad is 0 degrees
         float touchAng = Mathf.Atan2(touch.x, touch.y) * Mathf.Rad2Deg;
+        //Its currently in range of -180 to 180. Its nicer for it to be in 0 - 360
+        if (touchAng < 0)
+            touchAng += 360;
         //Then calculate which weapon the angle fits within.
         float start = -weapAng / 2;
         //Check if the touchAngle is within the range of the first weapon
         if (touchAng > 360 + start || touchAng < -start)
         {
             _selectedWeaponIndex = 0;
+            Debug.Log("First Weapon");
             return;
         }
         //Increment the angle

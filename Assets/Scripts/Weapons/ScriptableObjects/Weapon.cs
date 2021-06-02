@@ -40,7 +40,7 @@ public class Weapon : ScriptableObject
     /// <summary>
     /// The icon for the weapon.
     /// </summary>
-    public Image weaponIcon = null;
+    public Sprite weaponIcon = null;
     // The type of weapon, for the purposes of enemy types and resistances.
     public WeaponType weaponType;
 
@@ -67,12 +67,12 @@ public class Weapon : ScriptableObject
     public float currentRefire = 0;
 
     public virtual void Fire(List<Transform> guns)
-    {
+    {   //Set the guns cooldown between shots
         currentRefire = refireSpeed;
     }
 
     public virtual void WeaponUpdate()
-    {
+    {   //Reduce the cooldown between shots
         currentRefire -= Time.deltaTime;
     }
     /// <summary>
