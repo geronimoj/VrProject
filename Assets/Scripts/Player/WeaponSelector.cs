@@ -44,7 +44,6 @@ public class WeaponSelector : MonoBehaviour
     /// <summary>
     /// The weapons that can be chosen from using the choose wheel
     /// </summary>
-    [HideInInspector]
     public Weapon[] m_weapons = new Weapon[0];
     /// <summary>
     /// The radius of the imaginary circle of which the icons are laid on
@@ -112,7 +111,7 @@ public class WeaponSelector : MonoBehaviour
         if (!_isOpen)
         {
             float weapAng = 360 / m_weapons.Length;
-            float curAngle = 0;
+            float curAngle = 90;
             //Loop over the weapons and create their UI
             for (int i = 0; i < m_weapons.Length; i++)
             {
@@ -130,7 +129,7 @@ public class WeaponSelector : MonoBehaviour
                 rt.anchorMax = new Vector2(0.5f, 0.5f);
                 //Set the position of the UI
                 Vector2 pos = new Vector2(Mathf.Cos(curAngle * Mathf.Deg2Rad), Mathf.Sin(curAngle * Mathf.Deg2Rad));
-                rt.position = pos.normalized * _iconRadius;
+                rt.anchoredPosition = pos.normalized * _iconRadius;
                 //Store the weapon image
                 _weaponImageUI.Add(ui);
 
@@ -156,7 +155,10 @@ public class WeaponSelector : MonoBehaviour
         {
             //Destroy the weapon UI
             while (_weaponImageUI.Count > 0)
+            {
                 Destroy(_weaponImageUI[0]);
+                _weaponImageUI.RemoveAt(0);
+            }
             _isOpen = false;
         }
         //If the UI is open and the selected weapon is valid
@@ -189,12 +191,16 @@ public class WeaponSelector : MonoBehaviour
         float weapAng = 360 / m_weapons.Length;
         //We also rotate everything such that up on the touchpad is 0 degrees
         float touchAng = Mathf.Atan2(touch.x, touch.y) * Mathf.Rad2Deg;
+        //Its currently in range of -180 to 180. Its nicer for it to be in 0 - 360
+        if (touchAng < 0)
+            touchAng += 360;
         //Then calculate which weapon the angle fits within.
         float start = -weapAng / 2;
         //Check if the touchAngle is within the range of the first weapon
         if (touchAng > 360 + start || touchAng < -start)
         {
             _selectedWeaponIndex = 0;
+            Debug.Log("First Weapon");
             return;
         }
         //Increment the angle
