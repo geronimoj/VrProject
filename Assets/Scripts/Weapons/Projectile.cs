@@ -30,6 +30,7 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
+        Debug.Log("Hit Detected! Tag: " + col.gameObject.tag);
         if (col.gameObject.CompareTag("Enemy"))
         {
             col.gameObject.GetComponent<Health>().DoDamage(damage);
