@@ -4,7 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
-{
+{   /// <summary>
+/// Determines if it damages enemies or player
+/// </summary>
+    public enum Target
+    {
+        Enemy,
+        Player
+    }
     // Start is called before the first frame update
     public float projectileSpeed;
     public float damage;
@@ -17,6 +24,11 @@ public class Projectile : MonoBehaviour
     public GameObject explosion;
 
     private bool flaggedForDestruction = false;
+    /// <summary>
+    /// The team who takes damage.
+    /// </summary>
+    [Tooltip("The team that takes the damage")]
+    public Target target;
 
     void Start()
     {
@@ -39,9 +51,10 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        if(!flaggedForDestruction)
-        Debug.Log("Hit Detected! Tag: " + col.gameObject.tag);
-        if (col.gameObject.CompareTag("Enemy"))
+        if (!flaggedForDestruction)
+            Debug.Log("Hit Detected! Tag: " + col.gameObject.tag);
+
+        if (target == Target.Enemy && col.gameObject.CompareTag("Enemy"))
         {
             if (explode)
             {
@@ -55,7 +68,7 @@ public class Projectile : MonoBehaviour
                             hits[i].collider.gameObject.GetComponent<Health>().DoDamage(damage);
                         }
                     }
-                }    
+                }
                 GameObject g = Instantiate(explosion, transform.position, Quaternion.identity);
                 StartCoroutine(DestroyAfter(g));
                 Destroy(gameObject);
