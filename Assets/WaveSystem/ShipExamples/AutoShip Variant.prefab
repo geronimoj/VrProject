@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2297811747485357435}
   - component: {fileID: 760549214157881861}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 773aeb0834b3f37e3eaac542f913c65a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2639359081626378622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.94, z: -2.46}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 8915306803616694596}
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c1798bba9385e342b25f6d710b43a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 20
   destroyOnDeath: 1
   OnDeath:
     m_PersistentCalls:
@@ -116,12 +116,12 @@ PrefabInstance:
     - target: {fileID: 737312963890149381, guid: c0c0c2ab5993eb3498d65db639739f74,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.94
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 737312963890149381, guid: c0c0c2ab5993eb3498d65db639739f74,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.46
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 737312963890149381, guid: c0c0c2ab5993eb3498d65db639739f74,
         type: 3}
@@ -166,22 +166,32 @@ PrefabInstance:
     - target: {fileID: 737312963890149381, guid: c0c0c2ab5993eb3498d65db639739f74,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737312963890149381, guid: c0c0c2ab5993eb3498d65db639739f74,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 737312963890149381, guid: c0c0c2ab5993eb3498d65db639739f74,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3426654489065168838, guid: c0c0c2ab5993eb3498d65db639739f74,
         type: 3}
       propertyPath: m_Name
       value: AutoShip Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3426654489065168838, guid: c0c0c2ab5993eb3498d65db639739f74,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3426654489065168838, guid: c0c0c2ab5993eb3498d65db639739f74,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8165283801893798436, guid: c0c0c2ab5993eb3498d65db639739f74,
         type: 3}
