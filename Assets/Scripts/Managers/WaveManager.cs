@@ -15,11 +15,12 @@ public class WaveManager : MonoBehaviour
         /// <summary>
         /// The prefab for the wave
         /// </summary>
+        [Tooltip("The prefab for the wave")]
         public GameObject wavePrefab;
         /// <summary>
         /// The time at which the wave should spawn
         /// </summary>
-        [Tooltip("The time at which the wave should spawn")]
+        [Tooltip("The time at which the wave should spawn. This is in seconds")]
         public float spawnTime;
         /// <summary>
         /// The event called when the wave starts
@@ -38,8 +39,16 @@ public class WaveManager : MonoBehaviour
     /// <summary>
     /// The waves that should be spawned
     /// </summary>
+    [Tooltip("The waves that should be spawned")]
     [SerializeField]
     private WaveManager.Wave[] waves = new Wave[0];
+    /// <summary>
+    /// Logs that waves are starting to be spawned
+    /// </summary>
+    private void Start()
+    {
+        Debug.Log("Starting to spawn waves");
+    }
     /// <summary>
     /// Spawns the waves when their spawn time is met
     /// </summary>
@@ -56,6 +65,8 @@ public class WaveManager : MonoBehaviour
                 waves[i].OnWaveStart.Invoke();
                 //Set the wave to have spawned
                 waves[i].spawed = true;
+
+                Debug.Log("Spawned Wave");
             }
     }
 }
