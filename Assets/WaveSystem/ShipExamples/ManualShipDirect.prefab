@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 313135259}
   - component: {fileID: 313135260}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Oh_hi_mark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,9 +97,9 @@ GameObject:
   - component: {fileID: 360816403649281183}
   - component: {fileID: 6152916958335922280}
   - component: {fileID: 5154932329177691526}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ManualShipDirect
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
