@@ -11,6 +11,10 @@
         _HozLines("Number of Horizontal Lines", Int) = 1
         _Width("Hoz Width", Range(0, 0.5)) = 0.1
         _WidthVert("Vert Width", Int) = 0.1
+            _A("A", Float) = 0
+            _B("B", Float) = 0
+            _C("C", Float) = 0
+            _D("D", Float) = 0
     }
     SubShader
     {
@@ -41,6 +45,10 @@
         float _HozLines;
         float _Width;
         float _WidthVert;
+        float _A;
+        float _B;
+        float _C;
+        float _D;
 
         void vert(inout appdata_full v, out Input o)
         {
@@ -73,6 +81,8 @@
             kill += step(spacing - _Width / 2, yPos);
 
             float2 vec = float2(IN.vertexPos.x, IN.vertexPos.z);
+            float mag = 0.5 - length(vec);
+            float scale = pow(_A, _B * (mag + _C)) + _D;
             vec = normalize(vec);
             //We do a similar thing for the vertical lines but instead using angles
             //Increment the angle by 180 to put it in 0 - 360 range
@@ -81,9 +91,9 @@
             //Put the angle into steps
             angle %= spacing;
             //If angle is between 0 & width / 2 don't kill it
-            kill += step(angle, _WidthVert / 2);
+            kill += step(angle, _WidthVert / 2 + scale);
             //If the angle is between spacing & spacing - width / 2
-            kill += step(spacing - _WidthVert / 2, angle);
+            kill += step(spacing - _WidthVert / 2 - scale, angle);
 
             clip(kill - 1);
             // Albedo comes from a texture tinted by color
