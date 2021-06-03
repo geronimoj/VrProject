@@ -12,15 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47f688fd66dc1024d872c17f7e26ba65, type: 3}
   m_Name: EnemyMiniGun
   m_EditorClassIdentifier: 
-  gunParts: 0
+  gunParts: 4
   weaponIcon: {fileID: 0}
   weaponType: 0
-  fireType: 0
-  projectileType: 0
-  spawnable: {fileID: 0}
-  projectileSpeed: 0
-  damage: 0
-  refireSpeed: 0
+  spawnable: {fileID: 7655535449077665971, guid: f6c6ae5204c286f488a680ef675430f5,
+    type: 3}
+  projectileSpeed: 25
+  damage: 5
+  refireSpeed: 0.5
   uniqueWeapon: 0
   currentRefire: 0
   explosionRadius: 0
