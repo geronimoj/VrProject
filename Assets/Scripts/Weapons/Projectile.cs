@@ -11,15 +11,24 @@ public class Projectile : MonoBehaviour
 
     public float lifetime;
 
+    // Weapon will tell the projectile if it should explode, explosion prefab to be set in editor
+    public bool explode;
+    public float explosionRadius;
+    public GameObject explosion;
+
+    private bool flaggedForDestruction = false;
+
     void Start()
     {
-        StartCoroutine(DestroyAfter());
+        StartCoroutine(DestroyAfter(gameObject));
     }
 
-    private IEnumerator DestroyAfter()
+    private IEnumerator DestroyAfter(GameObject o)
     {
+        if (o == gameObject)
+            flaggedForDestruction = true;
         yield return new WaitForSecondsRealtime(lifetime);
-        Destroy(gameObject);
+        Destroy(o);
     }
 
     // Update is called once per frame
@@ -30,11 +39,33 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
+        if(!flaggedForDestruction)
         Debug.Log("Hit Detected! Tag: " + col.gameObject.tag);
         if (col.gameObject.CompareTag("Enemy"))
         {
-            col.gameObject.GetComponent<Health>().DoDamage(damage);
-            Destroy(gameObject);
+            if (explode)
+            {
+                RaycastHit[] hits = Physics.SphereCastAll(transform.position, explosionRadius, Vector3.forward);
+                if (hits.Length > 0)
+                {
+                    for (int i = 0; i < hits.Length; i++)
+                    {
+                        if (hits[i].collider.gameObject.CompareTag("Enemy"))
+                        {
+                            hits[i].collider.gameObject.GetComponent<Health>().DoDamage(damage);
+                        }
+                    }
+                }    
+                GameObject g = Instantiate(explosion, transform.position, Quaternion.identity);
+                StartCoroutine(DestroyAfter(g));
+                Destroy(gameObject);
+            }
+            else
+            {
+                col.gameObject.GetComponent<Health>().DoDamage(damage);
+                Destroy(gameObject);
+            }
+
         }
     }
 }

@@ -79,6 +79,8 @@ public class Weapon : ScriptableObject
     [HideInInspector]
     public float currentRefire = 0;
 
+    public float explosionRadius;
+
     public virtual void Fire(Transform gun) { 
     }
 

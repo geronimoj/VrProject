@@ -2586,8 +2586,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
   weapons:
-  - {fileID: 11400000, guid: 8b654b57a70a2b94b92242b18d3c23c3, type: 2}
+  - {fileID: 11400000, guid: fa88622e2eeba5d4bbf24b6c7bf2fa2c, type: 2}
   - {fileID: 11400000, guid: a710ae2d41141e640a7f1c0e61a7bb2b, type: 2}
+  - {fileID: 11400000, guid: 8b654b57a70a2b94b92242b18d3c23c3, type: 2}
   anchor: {fileID: 811917785}
   guns:
   - {fileID: 1545330160}
@@ -2859,8 +2860,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 4.09, y: -3.8, z: 4.26}
+  - {x: 4.09, y: -3.8, z: 4.26}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 5
@@ -3199,8 +3200,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: -8.45, y: -3.8, z: 4.26}
+  - {x: -8.45, y: -3.8, z: 4.26}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 5
@@ -3485,8 +3486,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 8.68, y: -3.8, z: 4.26}
+  - {x: 8.68, y: -3.8, z: 4.26}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 5
@@ -3908,8 +3909,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: -4.45, y: -3.8, z: 4.26}
+  - {x: -4.45, y: -3.8, z: 4.26}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 5
@@ -4589,8 +4590,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: -0.019, y: -3.8, z: 6.391}
+  - {x: -0.019, y: -3.8, z: 6.391}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 5

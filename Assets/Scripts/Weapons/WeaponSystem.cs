@@ -27,6 +27,8 @@ public class WeaponSystem : MonoBehaviour
             Debug.LogError("Could not assign current weapon to weapons[0]. Weapons is either null or has a length of 0");
         //Subscribe to the weapon change event
         WeaponSelector.OnChangeWeapon.AddListener(ChangeWeapon);
+
+        weapon.OnEquip();
     }
 
     // Update is called once per frame

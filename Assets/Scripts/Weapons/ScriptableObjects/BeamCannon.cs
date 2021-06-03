@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BeamCannon", menuName = "Weapon/Energy/Beam Cannon", order = 1)]
 public class BeamCannon : Weapon
 {
-    public List<LineRenderer> lines;
+    public List<LineRenderer> lines = new List<LineRenderer>(0);
     public Health health;
     private int layerMask = 0;
     private int numGuns = 0;
@@ -42,7 +42,6 @@ public class BeamCannon : Weapon
         {
             for (int i = 0; i < lines.Count; i++)
             {
-                lines[i].SetPosition(0, lines[i].gameObject.transform.position);
                 lines[i].SetPosition(1, hit.point);
             }
 
@@ -57,5 +56,23 @@ public class BeamCannon : Weapon
 
 
         base.Fire(gun);
+    }
+
+    public override void WeaponUpdate()
+    {
+        if(currentRefire <= 0)
+        {
+            for (int i = 0; i < lines.Count; i++)
+            {
+                lines[i].SetPosition(1, lines[i].GetPosition(0));
+            }
+        }
+        base.WeaponUpdate();
+    }
+
+    public override void OnEquip()
+    {
+        numGuns = 0;
+        lines.Clear();
     }
 }
