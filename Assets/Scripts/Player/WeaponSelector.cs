@@ -138,7 +138,7 @@ public class WeaponSelector : MonoBehaviour
                 //Store the weapon image
                 _weaponImageUI.Add(ui);
 
-                curAngle += weapAng;
+                curAngle -= weapAng;
             }
             //Spawn the weapon UI
             _isOpen = true;

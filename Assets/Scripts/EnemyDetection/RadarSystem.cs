@@ -6,6 +6,7 @@ using UnityEngine;
 /// </summary>
 public class RadarSystem : MonoBehaviour
 {
+    public static RadarSystem s_instance = null;
     /// <summary>
     /// The size of the radar
     /// </summary>
@@ -98,6 +99,8 @@ public class RadarSystem : MonoBehaviour
             Debug.LogError("The world reference point for the radar is not assigned");
             Debug.Break();
         }
+
+        s_instance = this;
     }
     /// <summary>
     /// Updates the radar

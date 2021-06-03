@@ -6,6 +6,7 @@ using UnityEngine;
 /// </summary>
 public class EnemyReticleSystem : MonoBehaviour
 {
+    public static EnemyReticleSystem s_instance = null;
     /// <summary>
     /// The shape of the reticle
     /// </summary>
@@ -96,6 +97,11 @@ public class EnemyReticleSystem : MonoBehaviour
     /// The enemies that need to be removed from _assignedReticles
     /// </summary>
     private readonly List<Transform> _enemiesToRemove = new List<Transform>();
+
+    private void Awake()
+    {
+        s_instance = this;
+    }
     /// <summary>
     /// Updates the reticles and debugging information
     /// </summary>
