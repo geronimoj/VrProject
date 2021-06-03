@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RocketLauncher
   m_EditorClassIdentifier: 
   gunParts: 4
-  weaponIcon: {fileID: 0}
+  weaponIcon: {fileID: 21300000, guid: af1f1b45fa6b5e64894c04ceb8a592f7, type: 3}
   weaponType: 1
   fireType: 1
   projectileType: 0
@@ -22,5 +22,5 @@ MonoBehaviour:
   projectileSpeed: 100
   damage: 30
   refireSpeed: 1
-  currentRefire: 0
-  explosionRadius: 100
+  currentRefire: -52.654644
+  explosionRadius: 10
