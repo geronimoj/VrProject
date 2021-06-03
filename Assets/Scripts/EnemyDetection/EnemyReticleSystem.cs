@@ -92,7 +92,7 @@ public class EnemyReticleSystem : MonoBehaviour
     /// <summary>
     /// The enemies without assigned reticles that we need to track
     /// </summary>
-    private readonly List<Transform> _enemiesToTrack = new List<Transform>();
+    private List<Transform> _enemiesToTrack = new List<Transform>();
     /// <summary>
     /// The enemies that need to be removed from _assignedReticles
     /// </summary>

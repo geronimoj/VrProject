@@ -75,6 +75,11 @@ public class RadarSystem : MonoBehaviour
     private List<Transform> _enemiesToTrack = new List<Transform>();
 
     private readonly List<Transform> _enemiesToRemove = new List<Transform>();
+
+    private void Awake()
+    {
+        s_instance = this;
+    }
     /// <summary>
     /// Set the scale of the radar object
     /// </summary>
@@ -99,8 +104,6 @@ public class RadarSystem : MonoBehaviour
             Debug.LogError("The world reference point for the radar is not assigned");
             Debug.Break();
         }
-
-        s_instance = this;
     }
     /// <summary>
     /// Updates the radar
