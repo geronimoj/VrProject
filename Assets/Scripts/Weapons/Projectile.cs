@@ -89,7 +89,7 @@ public class Projectile : MonoBehaviour
                     }
                 }
                 //If they are an enemies projectile, destroy it
-                if (col.gameObject.layer == LayerMask.GetMask("EnemyProjectile"))
+                if (col.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
                 {   //Destroy the projectile
                     Destroy(col.gameObject);
                     //Are we supposed to destroy this projectile
