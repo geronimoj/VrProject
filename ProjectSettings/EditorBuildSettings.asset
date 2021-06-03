@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ZaydanScene.unity
     guid: b31d5bad8789e224fba4543344de65e6
+  - enabled: 1
+    path: Assets/Scenes/Josh's Scene.unity
+    guid: 51a1f13057fad4f4fba1d668a96e7fce
   m_configObjects: {}

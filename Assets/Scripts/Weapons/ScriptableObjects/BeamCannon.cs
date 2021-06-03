@@ -18,18 +18,10 @@ public class BeamCannon : Weapon
 
         if (!lr)
             lr = g.GetComponent<LineRenderer>();
+
         if(layerMask == 0)
         {
-            int layer1 = 8;
-            int layer2 = 9;
-            int layer3 = 10;
-            // Bitshifting to get the correct layer
-            int mask1 = 1 << layer1;
-            int mask2 = 1 << layer2;
-            int mask3 = 1 << layer3;
-
-            // Adding the masks together because that works for some reason
-            layerMask = mask1 | mask2 | mask3;
+            layerMask = LayerMask.GetMask("Enemy", "Wall", "EnemyProjectile");
         }
         
 
