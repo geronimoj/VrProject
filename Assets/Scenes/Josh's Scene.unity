@@ -788,7 +788,7 @@ MonoBehaviour:
   _billboardReticles: 0
   _reticlePrefab: {fileID: 2403415062403598523, guid: 2ef1772ac45b8aa4e9ce329daff82257,
     type: 3}
-  _reticleScale: 1
+  _reticleScale: 0.2
 --- !u!64 &777555244
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -857,12 +857,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777555242}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.16977325, y: 2.1769667, z: -3.4711592}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -6.123234e-17, y: 0.0000000754979, z: -6.1232336e-17, w: 1}
+  m_LocalPosition: {x: -0.002, y: 0.31, z: 0.095}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_Father: {fileID: 1856458198}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &811917782
 PrefabInstance:
@@ -1565,6 +1565,7 @@ MonoBehaviour:
   weapons:
   - {fileID: 11400000, guid: a710ae2d41141e640a7f1c0e61a7bb2b, type: 2}
   - {fileID: 11400000, guid: fa88622e2eeba5d4bbf24b6c7bf2fa2c, type: 2}
+  - {fileID: 11400000, guid: a710ae2d41141e640a7f1c0e61a7bb2b, type: 2}
   anchor: {fileID: 811917785}
   guns:
   - {fileID: 1545330160}
