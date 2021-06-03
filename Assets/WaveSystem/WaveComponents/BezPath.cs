@@ -14,6 +14,9 @@ public class BezPath : MonoBehaviour
 
     [SerializeField]
     public bool visible = true;
+
+    [SerializeField]
+    PathType type = PathType.Standard;
     public void OnValidate()
     {
         BakePath();
@@ -181,4 +184,11 @@ public class BezPath : MonoBehaviour
             get => points.w;
         }
     }
+}
+
+public enum PathType
+{
+    Standard,
+    Loop,
+    Pingpong
 }

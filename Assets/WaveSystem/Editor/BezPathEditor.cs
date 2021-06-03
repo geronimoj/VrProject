@@ -11,6 +11,7 @@ public class BezPathEditor : Editor
     SerializedProperty pathName;
     SerializedProperty visible;
     bool showInGuiLocal = false;
+    SerializedProperty type;
 
     GameObject PathManager;
     void OnEnable()
@@ -18,6 +19,7 @@ public class BezPathEditor : Editor
         nodes = serializedObject.FindProperty("nodes");
         pathName = serializedObject.FindProperty("pathName");
         visible = serializedObject.FindProperty("visible");
+        type = serializedObject.FindProperty("type");
 
         PathManager = GameObject.Find("PathManager");
     }
@@ -85,6 +87,9 @@ public class BezPathEditor : Editor
         EditorGUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
         EditorGUILayout.PropertyField(pathName,GUILayout.Width(200));
+        EditorGUILayout.Space(20);
+        EditorGUIUtility.labelWidth = 30;
+        EditorGUILayout.PropertyField(type,GUILayout.Width(110));
         EditorGUILayout.Space(20);
         EditorGUIUtility.labelWidth = 45;
         EditorGUILayout.PropertyField(visible);
