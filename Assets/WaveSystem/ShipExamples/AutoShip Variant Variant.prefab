@@ -7,6 +7,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 760549214157881861, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 760549214157881861, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.021577962
+      objectReference: {fileID: 0}
+    - target: {fileID: 760549214157881861, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3657135296704112296, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
         type: 3}
       propertyPath: m_Color.r
@@ -25,7 +40,7 @@ PrefabInstance:
     - target: {fileID: 6777656222595032711, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
         type: 3}
       propertyPath: m_Name
-      value: AutoShip Variant
+      value: AutoShip Variant Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8915306803616694596, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
         type: 3}
