@@ -78,6 +78,10 @@ public class Weapon : ScriptableObject
     // The current cooldown based on refireSpeed, so that each weapon can track it's own refire.
     [HideInInspector]
     public float currentRefire = 0;
+    /// <summary>
+    /// Returns true if the currentRefire is 0 or less
+    /// </summary>
+    public bool CanFire => currentRefire <= 0;
 
     public float explosionRadius;
 

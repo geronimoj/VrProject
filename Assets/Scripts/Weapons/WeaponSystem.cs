@@ -51,7 +51,7 @@ public class WeaponSystem : MonoBehaviour
             //throw;
         }
         //Added a null pointer check for the current weapon.
-        if (weapon && OGInputGetter.Get(OGInputGetter.OculusInputs.BackTrigger) && weapon.currentRefire <= 0)
+        if (weapon && OGInputGetter.Get(OGInputGetter.OculusInputs.BackTrigger) && weapon.CanFire)
         {
             Fire();
         }
