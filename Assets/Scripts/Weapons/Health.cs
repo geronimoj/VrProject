@@ -19,6 +19,8 @@ public class Health : MonoBehaviour
 
     public UnityEvent OnDeath;
 
+    public UnityEvent OnTakeDamage;
+
     void Start()
     {
         currentHealth = health;
@@ -32,6 +34,8 @@ public class Health : MonoBehaviour
             return;
 
         currentHealth -= damage;
+
+        OnTakeDamage.Invoke();
 
         if (currentHealth <= 0)
         {
