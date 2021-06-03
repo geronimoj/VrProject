@@ -34,9 +34,22 @@ public enum ProjectileType
     Beam,
 }
 
+[System.Flags]
+public enum Guns
+{
+    FarLeft =1,
+    Left =2,
+    Center =4,
+    Right =8,
+    FarRight = 16,
+}
+
 
 public class Weapon : ScriptableObject
 {
+
+    public Guns gunParts;
+
     /// <summary>
     /// The icon for the weapon.
     /// </summary>
@@ -66,14 +79,30 @@ public class Weapon : ScriptableObject
     [HideInInspector]
     public float currentRefire = 0;
 
+    public virtual void Fire(Transform gun) { 
+    }
+
     public virtual void Fire(List<Transform> guns)
     {   //Set the guns cooldown between shots
         currentRefire = refireSpeed;
+        var parts = System.Enum.GetValues(typeof(Guns));
+        int i = 0;
+        foreach (Guns part in parts)
+        {
+            if ((gunParts & part) != 0)
+            {
+                Fire(guns[i]);
+            }
+            i++;
+        }
     }
 
     public virtual void WeaponUpdate()
     {   //Reduce the cooldown between shots
         currentRefire -= Time.deltaTime;
+
+
+        
     }
     /// <summary>
     /// Called when the weapon is equipped
