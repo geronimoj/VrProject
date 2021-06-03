@@ -22,6 +22,11 @@ public class Projectile : MonoBehaviour
     public bool explode;
     public float explosionRadius;
     public GameObject explosion;
+    /// <summary>
+    /// Should the projectile be destroyed if it collides with an enemy projectile
+    /// </summary>
+    [Tooltip("Should the projectile be destroyed if it collides with an enemy projectile")]
+    public bool destroyOnContactWithProjectile = false;
 
     private bool flaggedForDestruction = false;
     /// <summary>
@@ -53,32 +58,51 @@ public class Projectile : MonoBehaviour
     {
         if (!flaggedForDestruction)
             Debug.Log("Hit Detected! Tag: " + col.gameObject.tag);
-
-        if (target == Target.Enemy && col.gameObject.CompareTag("Enemy"))
-        {
-            if (explode)
-            {
-                RaycastHit[] hits = Physics.SphereCastAll(transform.position, explosionRadius, Vector3.forward);
-                if (hits.Length > 0)
+        //Determine which types of collisions we need to look for
+        switch(target)
+        {   //We are targeting enemies
+            case Target.Enemy:
+                //If they are a standard enemy, deal damage
+                if (col.gameObject.CompareTag("Enemy"))
                 {
-                    for (int i = 0; i < hits.Length; i++)
+                    if (explode)
                     {
-                        if (hits[i].collider.gameObject.CompareTag("Enemy"))
+                        RaycastHit[] hits = Physics.SphereCastAll(transform.position, explosionRadius, Vector3.forward);
+                        if (hits.Length > 0)
                         {
-                            hits[i].collider.gameObject.GetComponent<Health>().DoDamage(damage);
+                            for (int i = 0; i < hits.Length; i++)
+                            {
+                                if (hits[i].collider.gameObject.CompareTag("Enemy"))
+                                {
+                                    hits[i].collider.gameObject.GetComponent<Health>().DoDamage(damage);
+                                }
+                            }
                         }
+                        GameObject g = Instantiate(explosion, transform.position, Quaternion.identity);
+                        StartCoroutine(DestroyAfter(g));
+                        Destroy(gameObject);
+                    }
+                    else
+                    {
+                        col.gameObject.GetComponent<Health>().DoDamage(damage);
+                        Destroy(gameObject);
                     }
                 }
-                GameObject g = Instantiate(explosion, transform.position, Quaternion.identity);
-                StartCoroutine(DestroyAfter(g));
-                Destroy(gameObject);
-            }
-            else
-            {
-                col.gameObject.GetComponent<Health>().DoDamage(damage);
-                Destroy(gameObject);
-            }
-
+                //If they are an enemies projectile, destroy it
+                if (col.gameObject.layer == LayerMask.GetMask("EnemyProjectile"))
+                {   //Destroy the projectile
+                    Destroy(col.gameObject);
+                    //Are we supposed to destroy this projectile
+                    if (destroyOnContactWithProjectile)
+                        //Destroy this
+                        Destroy(gameObject);
+                }
+                break;
+            //We are targeting the player
+            case Target.Player:
+                //We do a similar thing with the player
+                break;
         }
+        
     }
 }
