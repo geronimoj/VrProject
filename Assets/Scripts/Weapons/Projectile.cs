@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {   /// <summary>
-/// Determines if it damages enemies or player
-/// </summary>
+    /// Determines if it damages enemies or player
+    /// </summary>
     public enum Target
     {
         Enemy,

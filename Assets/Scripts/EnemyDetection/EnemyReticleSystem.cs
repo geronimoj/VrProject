@@ -29,7 +29,9 @@ public class EnemyReticleSystem : MonoBehaviour
     [Tooltip("The shape of the reticle system. Only draws reticles within the shape")]
     [SerializeField]
     protected ReticleShape _shape = ReticleShape.Quad;
-
+    /// <summary>
+    /// The shape of the reticle
+    /// </summary>
     public ReticleShape Shape => _shape;
     /// <summary>
     /// The radius of the reticle system when the shape is circle
@@ -92,12 +94,14 @@ public class EnemyReticleSystem : MonoBehaviour
     /// <summary>
     /// The enemies without assigned reticles that we need to track
     /// </summary>
-    private List<Transform> _enemiesToTrack = new List<Transform>();
+    private readonly List<Transform> _enemiesToTrack = new List<Transform>();
     /// <summary>
     /// The enemies that need to be removed from _assignedReticles
     /// </summary>
     private readonly List<Transform> _enemiesToRemove = new List<Transform>();
-
+    /// <summary>
+    /// Store an instance of this system
+    /// </summary>
     private void Awake()
     {
         s_instance = this;
