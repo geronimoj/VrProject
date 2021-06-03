@@ -59,7 +59,7 @@ public class Enemy : Health
     /// <summary>
     /// The targets the enemies can shoot at
     /// </summary>
-    private List<Transform> s_targets = new List<Transform>();
+    private static List<Transform> s_targets = new List<Transform>();
 
     private void Awake()
     {   //If the targets have not been setup, setup the targets
