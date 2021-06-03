@@ -75,6 +75,8 @@ public class Weapon : ScriptableObject
     // How long the player must wait before being able to fire the weapon again.
     public float refireSpeed;
 
+    public bool uniqueWeapon;
+
     // The current cooldown based on refireSpeed, so that each weapon can track it's own refire.
     [HideInInspector]
     public float currentRefire = 0;
@@ -91,17 +93,28 @@ public class Weapon : ScriptableObject
     public virtual void Fire(List<Transform> guns)
     {   //Set the guns cooldown between shots
         currentRefire = refireSpeed;
-        var parts = System.Enum.GetValues(typeof(Guns));
-        int i = 0;
-        foreach (Guns part in parts)
+
+        if (!uniqueWeapon)
         {
-            if ((gunParts & part) != 0)
+            var parts = System.Enum.GetValues(typeof(Guns));
+            int i = 0;
+            foreach (Guns part in parts)
             {
-                Fire(guns[i]);
+                if ((gunParts & part) != 0)
+                {
+                    Fire(guns[i]);
+                }
+                i++;
             }
-            i++;
         }
+        else
+        {
+            UniqueFire(guns);
+        }
+        
     }
+
+    public virtual void UniqueFire(List<Transform> guns) { }
 
     public virtual void WeaponUpdate()
     {   //Reduce the cooldown between shots
