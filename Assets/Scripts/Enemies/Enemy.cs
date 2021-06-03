@@ -142,5 +142,9 @@ public class Enemy : Health
     {   //Update the main weapon
         if (_mainWeapon)
             _mainWeapon.WeaponUpdate();
+        if (EnemyReticleSystem.s_instance)
+            EnemyReticleSystem.s_instance.LeaveReticleView(transform);
+        if (RadarSystem.s_instance)
+            RadarSystem.s_instance.LeaveRadar(transform);
     }
 }
