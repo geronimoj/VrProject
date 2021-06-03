@@ -22,8 +22,7 @@ MonoBehaviour:
   projectileSpeed: 0
   damage: 1
   refireSpeed: 0.0001
-  currentRefire: -7.517548
+  currentRefire: -11.851011
   explosionRadius: 0
-  lines:
-  - {fileID: 0}
+  lines: []
   health: {fileID: 0}
