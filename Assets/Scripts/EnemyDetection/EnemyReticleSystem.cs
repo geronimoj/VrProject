@@ -162,10 +162,12 @@ public class EnemyReticleSystem : MonoBehaviour
                 continue;
             }
             //Otherwise, update the positions of the reticles
-            _assignReticles[enemy].position = hit.point;
+            _assignReticles[enemy].position = hit.point - transform.forward * 0.01f;
             //If the reticles are billboarded, rotate them to the camera
             if (_billboardReticles)
                 _assignReticles[enemy].rotation = Quaternion.LookRotation(camToEnemy.normalized);
+            else
+                _assignReticles[enemy].rotation = Quaternion.LookRotation(transform.forward, Vector3.up);
         }
         //Remove any enemies that should be removed
         while (_enemiesToRemove.Count > 0)

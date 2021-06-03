@@ -96,6 +96,11 @@ public class Enemy : Health
     {   //Destory our instance of our main weapon
         if (_mainWeapon)
             Destroy(_mainWeapon);
+        //Remove the enemy from the radar or reticle view
+        if (EnemyReticleSystem.s_instance)
+            EnemyReticleSystem.s_instance.LeaveReticleView(transform);
+        if (RadarSystem.s_instance)
+            RadarSystem.s_instance.LeaveRadar(transform);
     }
     /// <summary>
     /// Fires the main weapon when the time is met
@@ -142,9 +147,5 @@ public class Enemy : Health
     {   //Update the main weapon
         if (_mainWeapon)
             _mainWeapon.WeaponUpdate();
-        if (EnemyReticleSystem.s_instance)
-            EnemyReticleSystem.s_instance.LeaveReticleView(transform);
-        if (RadarSystem.s_instance)
-            RadarSystem.s_instance.LeaveRadar(transform);
     }
 }
