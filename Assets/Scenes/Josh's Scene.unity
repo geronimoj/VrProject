@@ -1497,10 +1497,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 513d79093de82154a8dea10a40d9b8d1, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -5352,7 +5352,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _reticleOrigin
       value: 
-      objectReference: {fileID: 1856458198}
+      objectReference: {fileID: 811917784}
     - target: {fileID: 3823681127015308745, guid: a06690e85020b454bab8e28c3c03c52b,
         type: 3}
       propertyPath: m_Name
