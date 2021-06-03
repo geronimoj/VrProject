@@ -5,19 +5,32 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BeamCannon", menuName = "Weapon/Energy/Beam Cannon", order = 1)]
 public class BeamCannon : Weapon
 {
-    public LineRenderer lr;
+    public List<LineRenderer> lines;
     public Health health;
-    private GameObject g;
     private int layerMask = 0;
+    private int numGuns = 0;
 
-    public override void Fire(List<Transform> guns)
+    public override void Fire(Transform gun)
     {
-        // Spawn a beam from gun 2 (Center Gun)
-        if(!g)
-            g = Instantiate(spawnable, guns[2].position, guns[2].rotation);
+        if (lines.Count == 0)
+        {
+            var parts = System.Enum.GetValues(typeof(Guns));
+            foreach (Guns part in parts)
+            {
+                if ((gunParts & part) != 0)
+                {
+                    numGuns++;
+                }
 
-        if (!lr)
-            lr = g.GetComponent<LineRenderer>();
+            }
+        }
+
+        if(lines.Count < numGuns)
+        {
+            lines.Add(gun.gameObject.GetComponent<LineRenderer>());
+            Debug.Log("Adding Line Renderer from gun " + lines.Count);
+        }
+        
 
         if(layerMask == 0)
         {
@@ -25,11 +38,13 @@ public class BeamCannon : Weapon
         }
         
 
-        if (Physics.Raycast(g.transform.position, g.transform.forward, out RaycastHit hit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(gun.transform.position, gun.transform.forward, out RaycastHit hit, Mathf.Infinity, layerMask))
         {
-            lr.SetPosition(0, g.transform.position);
-            lr.SetPosition(1, hit.point);
-
+            for (int i = 0; i < lines.Count; i++)
+            {
+                lines[i].SetPosition(0, lines[i].gameObject.transform.position);
+                lines[i].SetPosition(1, hit.point);
+            }
 
             if (hit.collider.gameObject.CompareTag("Enemy"))
             {
@@ -41,6 +56,6 @@ public class BeamCannon : Weapon
         }
 
 
-        base.Fire(guns);
+        base.Fire(gun);
     }
 }

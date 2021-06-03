@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8bdc7d1b3584345af895ecdd2b377e, type: 3}
   m_Name: BeamCannon
   m_EditorClassIdentifier: 
+  gunParts: -1
   weaponIcon: {fileID: 0}
   weaponType: 2
   fireType: 0
@@ -21,6 +22,7 @@ MonoBehaviour:
   projectileSpeed: 0
   damage: 1
   refireSpeed: 0.0001
-  currentRefire: 0
-  lr: {fileID: 0}
+  currentRefire: -17.682905
+  lines:
+  - {fileID: 0}
   health: {fileID: 0}
