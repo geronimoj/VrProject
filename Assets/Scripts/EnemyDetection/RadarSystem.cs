@@ -70,12 +70,17 @@ public class RadarSystem : MonoBehaviour
     /// Stores all the blips that are not currently being used
     /// </summary>
     private readonly List<Transform> _inactiveBlips = new List<Transform>();
-
-    [SerializeField]
+    /// <summary>
+    /// The enemies that need to be tracked and don't have a blip
+    /// </summary>
     private List<Transform> _enemiesToTrack = new List<Transform>();
-
+    /// <summary>
+    /// The enemies that need to be removed
+    /// </summary>
     private readonly List<Transform> _enemiesToRemove = new List<Transform>();
-
+    /// <summary>
+    /// Assigns an instance of this radar
+    /// </summary>
     private void Awake()
     {
         s_instance = this;

@@ -115,7 +115,7 @@ MonoBehaviour:
   explode: 0
   explosionRadius: 0
   explosion: {fileID: 0}
-  target: 1
+  target: 0
 --- !u!96 &-2732731332474348787
 TrailRenderer:
   serializedVersion: 2

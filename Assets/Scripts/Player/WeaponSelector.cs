@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
-
+/// <summary>
+/// For selecting the weapon
+/// </summary>
 public class WeaponSelector : MonoBehaviour
 {
     public class SelectorEvent : UnityEvent<Weapon> { }

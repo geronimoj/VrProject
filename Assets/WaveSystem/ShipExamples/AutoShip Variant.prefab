@@ -81,6 +81,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4661970142565582864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777656222595032711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa5660f0a71892d4eb8ac076803854f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
+  destroyOnDeath: 1
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  _mainWeapon: {fileID: 11400000, guid: fc31dc9a5194d6348b2c830ee2d4fd93, type: 2}
+  _weaponFirePoints:
+  - {fileID: 1497189042052317891}
+  - {fileID: 1497189042052317891}
+  - {fileID: 1497189042052317891}
+  - {fileID: 1497189042052317891}
+  - {fileID: 1497189042052317891}
+  _maxTimeBetweenShots: 10
+  _minTimeBetweenShots: 5
+  _burstDuration: 0.5
+  OnFire:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7724254111716614895
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,39 +144,6 @@ Transform:
   m_Father: {fileID: 8915306803616694596}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4661970142565582864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6777656222595032711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa5660f0a71892d4eb8ac076803854f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 20
-  destroyOnDeath: 1
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  OnTakeDamage:
-    m_PersistentCalls:
-      m_Calls: []
-  _mainWeapon: {fileID: 11400000, guid: 8b654b57a70a2b94b92242b18d3c23c3, type: 2}
-  _weaponFirePoints:
-  - {fileID: 1497189042052317891}
-  - {fileID: 1497189042052317891}
-  - {fileID: 1497189042052317891}
-  - {fileID: 1497189042052317891}
-  - {fileID: 1497189042052317891}
-  _maxTimeBetweenShots: 1
-  _minTimeBetweenShots: 1
-  _burstDuration: 0.5
-  OnFire:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &8179379658194958657
 PrefabInstance:
   m_ObjectHideFlags: 0
