@@ -21,7 +21,7 @@ public class Health : MonoBehaviour
 
     public UnityEvent OnTakeDamage;
 
-    void Start()
+    protected void Start()
     {
         currentHealth = health;
     }
