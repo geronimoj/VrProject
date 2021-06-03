@@ -57,12 +57,6 @@ public class Weapon : ScriptableObject
     // The type of weapon, for the purposes of enemy types and resistances.
     public WeaponType weaponType;
 
-    // Behaviour for the weapon when the trigger is pressed or held.
-    public FireType fireType;
-
-    // Behaviour for the weapon after being fired.
-    public ProjectileType projectileType;
-
     // The GameObject to be spawned by the scriptable object.
     public GameObject spawnable;
 
