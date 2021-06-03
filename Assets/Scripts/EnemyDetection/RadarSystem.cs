@@ -146,7 +146,14 @@ public class RadarSystem : MonoBehaviour
         }
         //Loop over the enemy transforms and check if any have exited the radius
         foreach (Transform t in _enemyBlips.Keys)
-        {
+        {   //Make sure the enemy is still valid
+            if (t == null)
+            {   //Log an error
+                Debug.LogError("Enemy destroyed without releasing assigned blip on radar");
+                Debug.Break();
+                //Since the key is now invalid, we don't know which reticle to release so all we can do is report an error
+                continue;
+            }
             //Check if they have gone to far away from the radar
             if (Vector3.Distance(t.position, m_worldReferencePoint.position) > m_radarRange)
             {
@@ -181,7 +188,7 @@ public class RadarSystem : MonoBehaviour
     /// </summary>
     /// <param name="enemy">The enemy to create it for</param>
     /// <param name="removeImmediately">Should the enemy be removed immediately. This should be used to avoid crashing a foreach iteration</param>
-    private void LeaveRadar(Transform enemy, bool removeImmediately = true)
+    public void LeaveRadar(Transform enemy, bool removeImmediately = true)
     {   //If they didn't have a blip in the first place, don't remove theirs
         if (!_enemyBlips.ContainsKey(enemy))
             return;

@@ -144,7 +144,15 @@ public class EnemyReticleSystem : MonoBehaviour
         }
         //Start with the enemies already in view
         foreach (Transform enemy in _assignReticles.Keys)
-        {   //Get a vector from the camera to the enemy
+        {   //Make sure the enemy is still valid
+            if (enemy == null)
+            {   //Log an error
+                Debug.LogError("Enemy destroyed without releasing assigned reticles");
+                Debug.Break();
+                //Since the key is now invalid, we don't know which reticle to release so all we can do is report an error
+                continue;
+            }
+            //Get a vector from the camera to the enemy
             Vector3 camToEnemy = enemy.position - _reticleOrigin.position;
             //Check if the enemy is in view                                                                                                                 
             if (!Physics.Raycast(_reticleOrigin.position, camToEnemy.normalized, out RaycastHit hit, camToEnemy.magnitude, LayerMask.GetMask("ReticleQuad")) || (_shape == ReticleShape.Circle && (hit.point - transform.position).magnitude > _radius))
