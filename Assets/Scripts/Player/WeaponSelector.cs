@@ -72,6 +72,11 @@ public class WeaponSelector : MonoBehaviour
     [SerializeField]
     public Transform _canvas = null;
     /// <summary>
+    /// The object the is used to point out the direction the user is pointing on the track pad
+    /// </summary>
+    [Tooltip("The object the is used to point out the direction the user is pointing on the track pad")]
+    public Transform _circlePointer = null;
+    /// <summary>
     /// Stores the scale of the UI
     /// </summary>
     private void Start()
@@ -191,6 +196,13 @@ public class WeaponSelector : MonoBehaviour
         float weapAng = 360 / m_weapons.Length;
         //We also rotate everything such that up on the touchpad is 0 degrees
         float touchAng = Mathf.Atan2(touch.x, touch.y) * Mathf.Rad2Deg;
+
+        if (_circlePointer)
+        {
+            Vector3 euler = _circlePointer.eulerAngles;
+            euler.z = touchAng;
+            _circlePointer.eulerAngles = euler;
+        }
         //Its currently in range of -180 to 180. Its nicer for it to be in 0 - 360
         if (touchAng < 0)
             touchAng += 360;
