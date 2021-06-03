@@ -81,7 +81,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7697327712546136559
+--- !u!114 &4661970142565582864
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6777656222595032711}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c1798bba9385e342b25f6d710b43a04, type: 3}
+  m_Script: {fileID: 11500000, guid: aa5660f0a71892d4eb8ac076803854f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
@@ -99,6 +99,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  _mainWeapon: {fileID: 0}
+  _weaponFirePoints: []
+  _maxTimeBetweenShots: 10
+  _minTimeBetweenShots: 5
+  _burstDuration: 1
+  OnFire:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &8179379658194958657

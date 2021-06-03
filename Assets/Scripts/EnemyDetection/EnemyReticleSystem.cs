@@ -92,7 +92,7 @@ public class EnemyReticleSystem : MonoBehaviour
     /// <summary>
     /// The enemies without assigned reticles that we need to track
     /// </summary>
-    private readonly List<Transform> _enemiesToTrack = new List<Transform>();
+    private List<Transform> _enemiesToTrack = new List<Transform>();
     /// <summary>
     /// The enemies that need to be removed from _assignedReticles
     /// </summary>
@@ -144,7 +144,15 @@ public class EnemyReticleSystem : MonoBehaviour
         }
         //Start with the enemies already in view
         foreach (Transform enemy in _assignReticles.Keys)
-        {   //Get a vector from the camera to the enemy
+        {   //Make sure the enemy is still valid
+            if (enemy == null)
+            {   //Log an error
+                Debug.LogError("Enemy destroyed without releasing assigned reticles");
+                Debug.Break();
+                //Since the key is now invalid, we don't know which reticle to release so all we can do is report an error
+                continue;
+            }
+            //Get a vector from the camera to the enemy
             Vector3 camToEnemy = enemy.position - _reticleOrigin.position;
             //Check if the enemy is in view                                                                                                                 
             if (!Physics.Raycast(_reticleOrigin.position, camToEnemy.normalized, out RaycastHit hit, camToEnemy.magnitude, LayerMask.GetMask("ReticleQuad")) || (_shape == ReticleShape.Circle && (hit.point - transform.position).magnitude > _radius))
@@ -154,10 +162,12 @@ public class EnemyReticleSystem : MonoBehaviour
                 continue;
             }
             //Otherwise, update the positions of the reticles
-            _assignReticles[enemy].position = hit.point;
+            _assignReticles[enemy].position = hit.point - transform.forward * 0.01f;
             //If the reticles are billboarded, rotate them to the camera
             if (_billboardReticles)
                 _assignReticles[enemy].rotation = Quaternion.LookRotation(camToEnemy.normalized);
+            else
+                _assignReticles[enemy].rotation = Quaternion.LookRotation(transform.forward, Vector3.up);
         }
         //Remove any enemies that should be removed
         while (_enemiesToRemove.Count > 0)

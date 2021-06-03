@@ -78,18 +78,29 @@ public class Enemy : Health
     /// </summary>
     private void Start()
     {   //Create our own instance of the main weapon
-        _mainWeapon = Instantiate(_mainWeapon);
-        _mainWeapon.OnEquip();
+        if (_mainWeapon)
+        {
+            _mainWeapon = Instantiate(_mainWeapon);
+            _mainWeapon.OnEquip();
+        }
         //Set this enemy to be tracked by the radar and reticle system
-        RadarSystem.s_instance.TrackEnemy(transform);
-        EnemyReticleSystem.s_instance.TrackEnemy(transform);
+        if (RadarSystem.s_instance)
+            RadarSystem.s_instance.TrackEnemy(transform);
+        if (EnemyReticleSystem.s_instance)
+            EnemyReticleSystem.s_instance.TrackEnemy(transform);
     }
     /// <summary>
     /// Destroy our main weapon to avoid memory leak because I think they can be retained.
     /// </summary>
     private void OnDestroy()
     {   //Destory our instance of our main weapon
-        Destroy(_mainWeapon);
+        if (_mainWeapon)
+            Destroy(_mainWeapon);
+        //Remove the enemy from the radar or reticle view
+        if (EnemyReticleSystem.s_instance)
+            EnemyReticleSystem.s_instance.LeaveReticleView(transform);
+        if (RadarSystem.s_instance)
+            RadarSystem.s_instance.LeaveRadar(transform);
     }
     /// <summary>
     /// Fires the main weapon when the time is met
@@ -123,7 +134,7 @@ public class Enemy : Health
             }
         }
         //If the burst timer is still active and we can fire again, FIRE THE MAIN LAZER!!!!
-        if (t_burstTimer <= _burstDuration && _mainWeapon.CanFire)
+        if (_mainWeapon && t_burstTimer <= _burstDuration && _mainWeapon.CanFire)
         {
             _mainWeapon.Fire(_weaponFirePoints);
             OnFire.Invoke();
@@ -134,6 +145,7 @@ public class Enemy : Health
     /// </summary>
     private void Update()
     {   //Update the main weapon
-        _mainWeapon.WeaponUpdate();
+        if (_mainWeapon)
+            _mainWeapon.WeaponUpdate();
     }
 }
