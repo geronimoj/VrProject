@@ -131,7 +131,7 @@ MonoBehaviour:
   OnTakeDamage:
     m_PersistentCalls:
       m_Calls: []
-  _mainWeapon: {fileID: 11400000, guid: a710ae2d41141e640a7f1c0e61a7bb2b, type: 2}
+  _mainWeapon: {fileID: 11400000, guid: 8b654b57a70a2b94b92242b18d3c23c3, type: 2}
   _weaponFirePoints:
   - {fileID: 1497189042052317891}
   - {fileID: 1497189042052317891}
