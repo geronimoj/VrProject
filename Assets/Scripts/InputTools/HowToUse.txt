@@ -1,0 +1,32 @@
+DEVELOPED BY LUKE JONES
+
+How to Use:
+//////////////////////////////
+// Setting up OGInputGetter //
+//////////////////////////////
+Drag the OGInputGetter onto a gameObject such as the EventSystem, there must be 1 in the scene at all times and only 1.
+You do not need a reference to the OGInputGetter. All the Input based functions are static.
+
+You will need to assign the values for the controls as well as what each button maps to on the OGInputGetter.
+
+//////////////////////////////
+// Getting Canvases To Work //
+//////////////////////////////
+Canvases will not work by default as you had to remove the Graphics Raycaster and Standalone Input Moduel
+when setting up for VR. 
+1. Start off by dragging the EditorDebugging script onto an empty gameObject such as the EventSystem.
+2. Add the Standalone Input Module to the EventSystem and Graphics Raycaster to any canvases with interactable elements (buttons, etc)
+3. Put your UI in the UI array on the EditorDebugging script and EventSystem to the EventSystem.
+
+The EditorDebugging script basically just disables and enables the OVR scripts and original unity scripts depending on build
+
+/////////////////////////////
+// Controlling the Pointer //
+/////////////////////////////
+To simulate the head and camera we will use the OGControllerSimulator.
+1. Add an OGControllerSimulator component to the OVRCameraRig.
+2. Assign the RightHandAnchor to the Pointer on OGControllerSimulator.
+
+Notes: Start Rotate how close to the edge of the screen (as a percentage of the screen size) the cursor must
+	be before rotating starts.
+
