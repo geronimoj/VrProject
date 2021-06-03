@@ -88,6 +88,8 @@ public class Enemy : Health
             RadarSystem.s_instance.TrackEnemy(transform);
         if (EnemyReticleSystem.s_instance)
             EnemyReticleSystem.s_instance.TrackEnemy(transform);
+
+        _shotTime = Random.Range(_minTimeBetweenShots, _maxTimeBetweenShots);
     }
     /// <summary>
     /// Destroy our main weapon to avoid memory leak because I think they can be retained.
