@@ -55,6 +55,10 @@ public class WeaponSystem : MonoBehaviour
         {
             Fire();
         }
+        else if(weapon && OGInputGetter.Get(OGInputGetter.OculusInputs.BackTrigger) && weapon.uniqueWeapon)
+        {
+            Fire();
+        }
     }
 
     public void Fire()
