@@ -2,9 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+/// <summary>
+/// Class for the enemies
+/// </summary>
 public class Enemy : Health
-{
+{   /// <summary>
+    /// The number of points the player gains when the enemy dies
+    /// </summary>
+    [Tooltip("The number of points the player gains when the enemy dies")]
+    [SerializeField]
+    protected float _scoreGainOnDeath = 0;
     /// <summary>
     /// The enemies main weapon
     /// </summary>
@@ -59,8 +66,10 @@ public class Enemy : Health
     /// <summary>
     /// The targets the enemies can shoot at
     /// </summary>
-    private static List<Transform> s_targets = new List<Transform>();
-
+    private static readonly List<Transform> s_targets = new List<Transform>();
+    /// <summary>
+    /// Sets up the targets for the enemies to shoot
+    /// </summary>
     private void Awake()
     {   //If the targets have not been setup, setup the targets
         if (!s_setupTargets)
