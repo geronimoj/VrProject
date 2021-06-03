@@ -81,6 +81,8 @@
             kill += step(spacing - _Width / 2, yPos);
 
             float2 vec = float2(IN.vertexPos.x, IN.vertexPos.z);
+            //Calculate the bonus angle, based on the magnitude of the vector and a exponential function
+            //This is to allow for the top and bottom of the shader to not be pointy but thick
             float mag = 0.5 - length(vec);
             float scale = pow(_A, _B * (mag + _C)) + _D;
             vec = normalize(vec);
