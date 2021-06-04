@@ -19,7 +19,7 @@ MonoBehaviour:
     type: 3}
   projectileSpeed: 25
   damage: 5
-  refireSpeed: 0.1
+  refireSpeed: 1
   uniqueWeapon: 0
   currentRefire: 0
   explosionRadius: 0

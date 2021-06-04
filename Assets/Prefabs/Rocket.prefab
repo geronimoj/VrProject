@@ -115,6 +115,9 @@ MonoBehaviour:
   explode: 0
   explosionRadius: 0
   explosion: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
+  homing: 0
+  homingTarget: {fileID: 0}
+  homingAngle: 0
   destroyOnContactWithProjectile: 1
   target: 0
 --- !u!96 &-2732731332474348787
