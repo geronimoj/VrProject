@@ -60,13 +60,17 @@ public class BeamCannon : Weapon
 
     public override void WeaponUpdate()
     {
-        if(currentRefire <= 0)
+        if (lines.Count != 0)
         {
-            for (int i = 0; i < lines.Count; i++)
+            if (currentRefire <= 0)
             {
-                lines[i].SetPosition(1, lines[i].GetPosition(0));
+                for (int i = 0; i < lines.Count; i++)
+                {
+                    lines[i].SetPosition(1, lines[i].GetPosition(0));
+                }
             }
         }
+        
         base.WeaponUpdate();
     }
 
