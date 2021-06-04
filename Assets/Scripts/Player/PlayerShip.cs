@@ -41,7 +41,7 @@ public class PlayerShip : Health
     /// <summary>
     /// Sets up the health event calls
     /// </summary>
-    private void Start()
+    protected override void Start()
     {
         OnTakeDamage.AddListener(CallHealthEvents);
 

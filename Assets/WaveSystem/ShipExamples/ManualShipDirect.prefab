@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 6339358890935936299}
   - component: {fileID: 360816403649281183}
   - component: {fileID: 6152916958335922280}
-  - component: {fileID: 5154932329177691526}
+  - component: {fileID: 8874431109121099151}
   m_Layer: 8
   m_Name: ManualShipDirect
   m_TagString: Enemy
@@ -317,6 +317,7 @@ MonoBehaviour:
   - {x: 1.6358044, y: -2.8696194, z: 0, w: 29.4}
   - {x: 1.6168232, y: -2.8716364, z: 0, w: 29.7}
   visible: 1
+  type: 0
 --- !u!114 &6152916958335922280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 60
---- !u!114 &5154932329177691526
+--- !u!114 &8874431109121099151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -339,14 +340,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 3426654489065168838}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c1798bba9385e342b25f6d710b43a04, type: 3}
+  m_Script: {fileID: 11500000, guid: aa5660f0a71892d4eb8ac076803854f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 500
   destroyOnDeath: 1
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
   OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  _scoreGainOnDeath: 0
+  _mainWeapon: {fileID: 11400000, guid: fc31dc9a5194d6348b2c830ee2d4fd93, type: 2}
+  _weaponFirePoints:
+  - {fileID: 737312963890149381}
+  - {fileID: 737312963890149381}
+  - {fileID: 737312963890149381}
+  - {fileID: 737312963890149381}
+  - {fileID: 737312963890149381}
+  _maxTimeBetweenShots: 10
+  _minTimeBetweenShots: 6
+  _burstDuration: 5
+  OnFire:
     m_PersistentCalls:
       m_Calls: []

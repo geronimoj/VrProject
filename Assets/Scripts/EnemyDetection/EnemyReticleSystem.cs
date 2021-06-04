@@ -20,12 +20,6 @@ public class EnemyReticleSystem : ReticleDisplayer
     [SerializeField]
     private bool _useAsDisplay = true;
     /// <summary>
-    /// Should the ReticleSystem use its stats on all additional displays
-    /// </summary>
-    [Tooltip("Should the ReticleSystem use its stats on all additional displays")]
-    [SerializeField]
-    private bool _changeDisplaysToThis = true;
-    /// <summary>
     /// The enemies without assigned reticles that we need to track
     /// </summary>
     private readonly List<Transform> _enemiesToTrack = new List<Transform>();
@@ -71,7 +65,7 @@ public class EnemyReticleSystem : ReticleDisplayer
             //Get a vector from the reticles origin to the enemy
             Vector3 camToEnemy = enemy.position - _reticleOrigin.position;
             //Check if the enemy is in view
-            if (Physics.Raycast(_reticleOrigin.position, camToEnemy.normalized, out RaycastHit hit, camToEnemy.magnitude, LayerMask.GetMask("ReticleQuad")))
+            if (Physics.Raycast(_reticleOrigin.position, camToEnemy.normalized, out RaycastHit hit, camToEnemy.magnitude, m_quadLayers))
             {   //Perform an additional check if its a circle to make sure they are inside
                 if (_shape == ReticleShape.Circle && (hit.point - transform.position).magnitude > _radius)
                     //If they are outside, continue
@@ -93,8 +87,8 @@ public class EnemyReticleSystem : ReticleDisplayer
             //Get a vector from the camera to the enemy
             Vector3 camToEnemy = enemy.position - _reticleOrigin.position;
             //Check if the enemy is in view                                                                                                                 
-            if (!Physics.Raycast(_reticleOrigin.position, camToEnemy.normalized, out RaycastHit hit, camToEnemy.magnitude, LayerMask.GetMask("ReticleQuad")) || (_shape == ReticleShape.Circle && (hit.point - transform.position).magnitude > _radius))
-            {   
+            if (!Physics.Raycast(_reticleOrigin.position, camToEnemy.normalized, out RaycastHit hit, camToEnemy.magnitude, m_quadLayers) || (_shape == ReticleShape.Circle && (hit.point - transform.position).magnitude > _radius))
+            {
                 //Otherwise remove it from view
                 LeaveReticleView(enemy, false);
                 continue;
@@ -107,8 +101,10 @@ public class EnemyReticleSystem : ReticleDisplayer
             //And remove the enemy from the enemies we need to remove
             _enemiesToRemove.RemoveAt(0);
         }
-        //Update their position and scale
-        base.UpdateReticles();
+        //If this is a display, update the reticles
+        if (_useAsDisplay)
+            //Update their position and scale
+            base.UpdateReticles();
     }
     /// <summary>
     /// Tells each of the reticle displayers to stop displaying a reticel.
@@ -123,14 +119,23 @@ public class EnemyReticleSystem : ReticleDisplayer
             //If the enemy is not being removed immediately, put them in the toRemove list
             if (!leaveImmediately)
                 _enemiesToRemove.Add(enemy);
-            //Start tracking the enemy
-            _enemiesToTrack.Add(enemy);
+        }
+        else
+        {   //Make sure the reticles are not edited in the foreach loop this may or may not be called from
+            if (leaveImmediately)
+                //Still need to use assignReticles for tracking enemies
+                _assignReticles.Remove(enemy);
+            //If its been called from the foreach loop, remove it afterwards
+            else
+                _enemiesToRemove.Add(enemy);
         }
         //Tell each of the displayers to stop displaying this reticle
         foreach (ReticleDisplayer display in _additionalDisplays)
             //Null catch
             if (display)
                 display.LeaveReticleView(enemy, true);
+        //Start tracking the enemy
+        _enemiesToTrack.Add(enemy);
     }
     /// <summary>
     /// Tells each of the reticle displayers to display a reticle and only display using this system is useAsDisplay is true
@@ -139,17 +144,18 @@ public class EnemyReticleSystem : ReticleDisplayer
     public override void EnterReticleView(Transform enemy)
     {   //Should we use the reticle system as a display
         if (_useAsDisplay)
-        {
             base.EnterReticleView(enemy);
-            //Remove the enemy from being tracked
-            if (_enemiesToTrack.Contains(enemy))
-                _enemiesToTrack.Remove(enemy);
-        }
+        else
+            //We still need to use _assignedReticles to store which enemies are in view
+            _assignReticles.Add(enemy, null);
         //Tell each of the displayers to start displaying reticles for this enemy
         foreach (ReticleDisplayer display in _additionalDisplays)
             //Null catch
             if (display)
                 display.EnterReticleView(enemy);
+        //Remove the enemy from being tracked
+        if (_enemiesToTrack.Contains(enemy))
+            _enemiesToTrack.Remove(enemy);
     }
     /// <summary>
     /// Start tracking an enemy
@@ -162,14 +168,4 @@ public class EnemyReticleSystem : ReticleDisplayer
         //Start tracking that enemy
         _enemiesToTrack.Add(enemy);
     }
-
-#if UNITY_EDITOR
-    /// <summary>
-    /// Debugging information
-    /// </summary>
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, _radius);
-    }
-#endif
 }

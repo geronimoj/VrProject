@@ -85,7 +85,7 @@ public class Enemy : Health
     /// <summary>
     /// Creates a local instance of the main weapon to avoid multiple enemies using the same Object
     /// </summary>
-    private void Start()
+    protected override void Start()
     {   //Create our own instance of the main weapon
         if (_mainWeapon)
         {
