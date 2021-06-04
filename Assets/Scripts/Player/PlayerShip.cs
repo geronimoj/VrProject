@@ -114,4 +114,14 @@ public class PlayerShip : Health
         //This does not account for overkill
         GainScore(-damage * _scoreLossPerHealth);
     }
+    /// <summary>
+    /// Deals damage to the player
+    /// </summary>
+    /// <param name="damage">The damage to deal</param>
+    public static void DealDamage(float damage)
+    {   //Make sure we have an instance
+        if (s_instance)
+            //Deal the damage
+            s_instance.DoDamage(damage);
+    }
 }

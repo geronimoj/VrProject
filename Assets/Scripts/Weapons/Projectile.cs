@@ -108,6 +108,10 @@ public class Projectile : MonoBehaviour
                 break;
             //We are targeting the player
             case Target.Player:
+                //If its the players ship
+                if (col.gameObject.CompareTag("Player"))
+                    //Deal damage to it
+                    PlayerShip.DealDamage(damage);
                 //We do a similar thing with the player
                 break;
         }
