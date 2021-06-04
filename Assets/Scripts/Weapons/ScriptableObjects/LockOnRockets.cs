@@ -38,11 +38,9 @@ public class LockOnRockets : Weapon
 
         RaycastHit[] hits;
         hits = Physics.CapsuleCastAll(guns[2].position, guns[2].position + guns[2].forward * 300, 10, guns[2].forward, Mathf.Infinity, layerMask);
-        Debug.DrawRay(guns[2].position, guns[2].forward * 300);
 
         for (int i = 0; i < hits.Length; i++)
         {
-            Debug.Log(hits[i].collider.gameObject.name);
             if (hits[i].collider.gameObject.CompareTag("Enemy"))
             {
                 if (!targets.Contains(hits[i].transform))
