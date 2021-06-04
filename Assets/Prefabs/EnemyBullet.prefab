@@ -17,6 +17,11 @@ PrefabInstance:
       propertyPath: lifetime
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: -3177736990795534123, guid: 76f6c4cf71dcc9440b42f15954516d4c,
+        type: 3}
+      propertyPath: damage
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -2732731332474348787, guid: 76f6c4cf71dcc9440b42f15954516d4c,
         type: 3}
       propertyPath: m_Parameters.colorGradient.key0.g
