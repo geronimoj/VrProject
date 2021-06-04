@@ -10,7 +10,7 @@ public class LockOnRockets : Weapon
     private float lockOnTimer;
 
     private List<Transform> targets = new List<Transform>();
-    private List<Transform> guns;
+    private List<Transform> guns = new List<Transform>();
 
     public override void OnEquip()
     {
@@ -35,11 +35,15 @@ public class LockOnRockets : Weapon
         if (guns.Count == 0)
             guns = gun;
 
+        int layerMask = LayerMask.GetMask("Enemy", "Wall", "EnemyProjectile");
+
         RaycastHit[] hits;
-        hits = Physics.CapsuleCastAll(guns[0].position, guns[0].position + guns[0].forward * 300, 10, gun[0].forward);
+        hits = Physics.CapsuleCastAll(guns[2].position, guns[2].position + guns[2].forward * 300, 10, guns[2].forward, Mathf.Infinity, layerMask);
+        Debug.DrawRay(guns[2].position, guns[2].forward * 300);
 
         for (int i = 0; i < hits.Length; i++)
         {
+            Debug.Log(hits[i].collider.gameObject.name);
             if (hits[i].collider.gameObject.CompareTag("Enemy"))
             {
                 if (!targets.Contains(hits[i].transform))
@@ -50,7 +54,6 @@ public class LockOnRockets : Weapon
             
         }
         lockOnTimer = lockOnTime;
-        base.Fire(gun);
     }
 
     private void Release()

@@ -117,6 +117,8 @@ public class Weapon : ScriptableObject
 
         
     }
+    // Called on startup to ensure values are assigned
+    public virtual void OnStartup() { }
     /// <summary>
     /// Called when the weapon is equipped
     /// </summary>

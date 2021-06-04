@@ -10,6 +10,12 @@ public class BeamCannon : Weapon
     private int layerMask = 0;
     private int numGuns = 0;
 
+    public override void OnStartup()
+    {
+
+        base.OnStartup();
+    }
+
     public override void Fire(Transform gun)
     {
         if (lines.Count == 0)
