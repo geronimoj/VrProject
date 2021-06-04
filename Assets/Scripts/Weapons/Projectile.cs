@@ -69,6 +69,10 @@ public class Projectile : MonoBehaviour
     {
         if (!flaggedForDestruction)
             Debug.Log("Hit Detected! Tag: " + col.gameObject.tag);
+        if(homing && !homingTarget)
+        {
+            Explode();
+        }
         //Determine which types of collisions we need to look for
         switch(target)
         {   //We are targeting enemies
@@ -78,20 +82,7 @@ public class Projectile : MonoBehaviour
                 {
                     if (explode)
                     {
-                        RaycastHit[] hits = Physics.SphereCastAll(transform.position, explosionRadius, Vector3.forward);
-                        if (hits.Length > 0)
-                        {
-                            for (int i = 0; i < hits.Length; i++)
-                            {
-                                if (hits[i].collider.gameObject.CompareTag("Enemy"))
-                                {
-                                    hits[i].collider.gameObject.GetComponent<Health>().DoDamage(damage);
-                                }
-                            }
-                        }
-                        GameObject g = Instantiate(explosion, transform.position, Quaternion.identity);
-                        StartCoroutine(DestroyAfter(g));
-                        Destroy(gameObject);
+                        Explode();
                     }
                     else
                     {
@@ -105,8 +96,14 @@ public class Projectile : MonoBehaviour
                     Destroy(col.gameObject);
                     //Are we supposed to destroy this projectile
                     if (destroyOnContactWithProjectile)
-                        //Destroy this
-                        Destroy(gameObject);
+                    {
+                        //Destroy this or make it explode
+                        if (explode)
+                            Explode();
+                        else
+                            Destroy(gameObject);
+                    }
+                        
                 }
                 break;
             //We are targeting the player
@@ -115,5 +112,23 @@ public class Projectile : MonoBehaviour
                 break;
         }
         
+    }
+
+    private void Explode()
+    {
+        RaycastHit[] hits = Physics.SphereCastAll(transform.position, explosionRadius, Vector3.forward);
+        if (hits.Length > 0)
+        {
+            for (int i = 0; i < hits.Length; i++)
+            {
+                if (hits[i].collider.gameObject.CompareTag("Enemy"))
+                {
+                    hits[i].collider.gameObject.GetComponent<Health>().DoDamage(damage);
+                }
+            }
+        }
+        GameObject g = Instantiate(explosion, transform.position, Quaternion.identity);
+        StartCoroutine(DestroyAfter(g));
+        Destroy(gameObject);
     }
 }
