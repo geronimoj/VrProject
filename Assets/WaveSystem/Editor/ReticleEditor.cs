@@ -7,6 +7,9 @@ using UnityEditor;
 [CanEditMultipleObjects]
 public class ReticleEditor : Editor
 {
+    private SerializedProperty layers = null;
+    private SerializedProperty useAsDisplay = null;
+    private SerializedProperty adDisplay = null;
     private SerializedProperty origin = null;
     private SerializedProperty shape = null;
     private SerializedProperty radius = null;
@@ -15,7 +18,10 @@ public class ReticleEditor : Editor
     private SerializedProperty scale = null;
     private void OnEnable()
     {
+        layers = serializedObject.FindProperty("m_quadLayers");
+        useAsDisplay = serializedObject.FindProperty("_useAsDisplay");
         origin = serializedObject.FindProperty("_reticleOrigin");
+        adDisplay = serializedObject.FindProperty("_additionalDisplays");
         shape = serializedObject.FindProperty("_shape");
         radius = serializedObject.FindProperty("_radius");
         billboard = serializedObject.FindProperty("_billboardReticles");
@@ -26,8 +32,11 @@ public class ReticleEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
+        EditorGUILayout.PropertyField(layers);
         EditorGUILayout.PropertyField(origin);
         EditorGUILayout.PropertyField(shape);
+        EditorGUILayout.PropertyField(adDisplay);
+        EditorGUILayout.PropertyField(useAsDisplay);
 
         EnemyReticleSystem sys = target as EnemyReticleSystem;
         if (sys.Shape == EnemyReticleSystem.ReticleShape.Circle)

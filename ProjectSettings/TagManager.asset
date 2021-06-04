@@ -21,10 +21,10 @@ TagManager:
   - EnemyProjectile
   - ReticleQuad
   - PlayerProjectile
-  - 
-  - 
-  - 
-  - 
+  - LeftEye
+  - RightEye
+  - ReticleRight
+  - ReticleLeft
   - 
   - 
   - 
