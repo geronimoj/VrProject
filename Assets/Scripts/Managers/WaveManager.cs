@@ -7,32 +7,6 @@ using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
     /// <summary>
-    /// A wave
-    /// </summary>
-    [System.Serializable]
-    internal struct Wave
-    {
-        /// <summary>
-        /// The prefab for the wave
-        /// </summary>
-        [Tooltip("The prefab for the wave")]
-        public GameObject wavePrefab;
-        /// <summary>
-        /// The time at which the wave should spawn
-        /// </summary>
-        [Tooltip("The time at which the wave should spawn. This is in seconds")]
-        public float spawnTime;
-        /// <summary>
-        /// The event called when the wave starts
-        /// </summary>
-        public UnityEngine.Events.UnityEvent OnWaveStart;
-        /// <summary>
-        /// Has the wave already been spawned
-        /// </summary>
-        [HideInInspector]
-        public bool spawed;
-    }
-    /// <summary>
     /// A global timer, this aint ever going to end, don't worry.
     /// </summary>
     private float globalTime = 0;
@@ -41,7 +15,15 @@ public class WaveManager : MonoBehaviour
     /// </summary>
     [Tooltip("The waves that should be spawned")]
     [SerializeField]
-    private WaveManager.Wave[] waves = new Wave[0];
+    private Wave[] waves = new Wave[0];
+    /// <summary>
+    /// The paths that can be chosen from
+    /// </summary>
+    private readonly List<BezPath> _paths = new List<BezPath>();
+    /// <summary>
+    /// The formations that can be chosen from
+    /// </summary>
+    private readonly List<Formation> _formations = new List<Formation>();
     /// <summary>
     /// Logs that waves are starting to be spawned
     /// </summary>
@@ -55,18 +37,12 @@ public class WaveManager : MonoBehaviour
     private void Update()
     {   //Increment the global timer
         globalTime += Time.deltaTime;
-        //Loop over the waves
-        for (int i = 0; i < waves.Length; i++)
-            //If they meet the timer and the wave has not spawned, spawn it
-            if (!waves[i].spawed && globalTime > waves[i].spawnTime)
-            {   //Spawn the wave at 0, 0, 0
-                Instantiate(waves[i].wavePrefab, Vector3.zero, Quaternion.identity);
-                //Start the event for the wave starting
-                waves[i].OnWaveStart.Invoke();
-                //Set the wave to have spawned
-                waves[i].spawed = true;
+    }
 
-                Debug.Log("Spawned Wave");
-            }
+    private void LoadWavesAndFormations()
+    {
+        Wave[] waves = Resources.LoadAll<Wave>("Waves");
+        BezPath[] paths = Resources.LoadAll<BezPath>("Paths");
+        Formation[] formations = Resources.LoadAll<Formation>("Formations");
     }
 }
