@@ -125,6 +125,10 @@ public class Projectile : MonoBehaviour
                 {
                     hits[i].collider.gameObject.GetComponent<Health>().DoDamage(damage);
                 }
+                else if (hits[i].collider.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
+                {
+                    Destroy(hits[i].collider.gameObject);
+                }
             }
         }
         GameObject g = Instantiate(explosion, transform.position, Quaternion.identity);
