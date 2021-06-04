@@ -8,6 +8,10 @@ using UnityEngine.Events;
 public class PlayerShip : Health
 {
     /// <summary>
+    /// An instance of the player
+    /// </summary>
+    public static PlayerShip s_instance = null;
+    /// <summary>
     /// An event to be called when health hits a specific value
     /// </summary>
     [System.Serializable]
@@ -39,11 +43,26 @@ public class PlayerShip : Health
     [Tooltip("The events that occur at the specified health values. These are called whenever the player takes damages")]
     public HealthEvent[] healthEvents = new HealthEvent[0];
     /// <summary>
+    /// The players current score
+    /// </summary>
+    [Tooltip("The score the player currently has")]
+    public float m_currentScore = 0;
+    /// <summary>
+    /// The score lost per 1 damage the player takes
+    /// </summary>
+    [Tooltip("The score that is lost per 1 damage the player takes")]
+    protected float _scoreLossPerHealth = 0;
+    /// <summary>
+    /// Used by the player to determine if the game has finished
+    /// </summary>
+    public bool GameIsOver = false;
+    /// <summary>
     /// Sets up the health event calls
     /// </summary>
     protected override void Start()
     {
         OnTakeDamage.AddListener(CallHealthEvents);
+        s_instance = this;
 
         base.Start();
     }
@@ -72,5 +91,27 @@ public class PlayerShip : Health
     {   //Loop over the health events and set them to not be called anymore
         for (int i = 0; i < healthEvents.Length; i++)
             healthEvents[i].called = false;
+    }
+    /// <summary>
+    /// Give score to the player
+    /// </summary>
+    /// <param name="scoreToGain">Score to give</param>
+    public static void GainScore(float scoreToGain)
+    {   //Check that the game is not over and we have an instance of the player
+        if (!s_instance || s_instance.GameIsOver)
+            return;
+        //Give score
+        s_instance.m_currentScore += scoreToGain;
+    }
+    /// <summary>
+    /// Overrides the DoDamage to also reduce the players score
+    /// </summary>
+    /// <param name="damage">The damage dealt</param>
+    public override void DoDamage(float damage)
+    {
+        base.DoDamage(damage);
+        //Reduce the players score based on how much damage they just took
+        //This does not account for overkill
+        GainScore(-damage * _scoreLossPerHealth);
     }
 }

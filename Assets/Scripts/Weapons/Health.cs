@@ -28,7 +28,7 @@ public class Health : MonoBehaviour
 
     //Put the death check in DoDamage to reduce calls
 
-    public void DoDamage(float damage)
+    public virtual void DoDamage(float damage)
     {   //Don't deal damage to a dead character
         if (currentHealth < 0)
             return;
