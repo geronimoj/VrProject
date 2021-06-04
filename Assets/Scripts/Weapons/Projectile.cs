@@ -114,7 +114,7 @@ public class Projectile : MonoBehaviour
                     //Deal damage to it
                     PlayerShip.DealDamage(damage);
                     //Destroy this
-                    Destroy(gameObject)
+                    Destroy(gameObject);
                 }
                 //We do a similar thing with the player
                 break;
