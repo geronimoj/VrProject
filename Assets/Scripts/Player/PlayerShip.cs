@@ -55,7 +55,20 @@ public class PlayerShip : Health
     /// <summary>
     /// Used by the player to determine if the game has finished
     /// </summary>
-    public bool GameIsOver = false;
+    public bool GameIsOver => GameManager.GameIsOver;
+    /// <summary>
+    /// Returns true if the player is dead or the player does not currently exist
+    /// </summary>
+    public static bool PlayerIsDead 
+    { 
+        get 
+        {   //If the player has not spawned, they are dead
+            if (!s_instance)
+                return true;
+            //Otherwise return the players state
+            return s_instance.IsDead;
+        } 
+    }
     /// <summary>
     /// Sets up the health event calls
     /// </summary>
