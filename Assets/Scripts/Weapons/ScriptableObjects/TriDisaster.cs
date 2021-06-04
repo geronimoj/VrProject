@@ -38,7 +38,7 @@ public class TriDisaster : Weapon
         rocket2Refire -= Time.deltaTime;
         beamTimer -= Time.deltaTime;
 
-        if (beamTimer < 0)
+        if (lr && beamTimer < 0)
             lr.SetPosition(1, lr.GetPosition(0));
 
         if (laser1Refire < 0)

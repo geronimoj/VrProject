@@ -71,8 +71,9 @@ public class BeamCannon : Weapon
             if (currentRefire <= 0)
             {
                 for (int i = 0; i < lines.Count; i++)
-                {
-                    lines[i].SetPosition(1, lines[i].GetPosition(0));
+                {   //Make sure the lines are not null
+                    if (lines[i])
+                        lines[i].SetPosition(1, lines[i].GetPosition(0));
                 }
             }
         }
