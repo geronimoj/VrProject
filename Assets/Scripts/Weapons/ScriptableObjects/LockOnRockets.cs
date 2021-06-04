@@ -7,6 +7,7 @@ public class LockOnRockets : Weapon
 {
     public float lockOnTime;
     public float homingAngle;
+    public int maxTargets;
     private float lockOnTimer;
 
     private List<Transform> targets = new List<Transform>();
@@ -43,7 +44,7 @@ public class LockOnRockets : Weapon
         {
             if (hits[i].collider.gameObject.CompareTag("Enemy"))
             {
-                if (!targets.Contains(hits[i].transform))
+                if (!targets.Contains(hits[i].transform) && targets.Count < maxTargets)
                 {
                     targets.Add(hits[i].transform);
                 }
