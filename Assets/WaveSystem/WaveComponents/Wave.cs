@@ -4,6 +4,8 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class Wave : MonoBehaviour
 {
+    public static bool paused = false;
+
     public float spawnTime;
 
     public string path = "";
@@ -47,7 +49,9 @@ public class Wave : MonoBehaviour
     public void Update()
     {
         if (Application.isPlaying)
-        {
+        {   //Don't increment the timers if the waves are paused.
+            if (paused)
+                return;
             timer += Time.deltaTime;
             if (!spawned && timer > spawnTime)
                 Spawn();
