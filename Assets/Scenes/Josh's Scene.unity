@@ -1564,7 +1564,7 @@ GameObject:
   - component: {fileID: 1099497074}
   m_Layer: 17
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1848,7 +1848,6 @@ MonoBehaviour:
           m_CallState: 2
     called: 0
   m_currentScore: 0
-  GameIsOver: 0
 --- !u!4 &1287022730
 Transform:
   m_ObjectHideFlags: 0
