@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6bc0e8dee06ca4096c4937ce879d5d, type: 3}
+  m_Name: LockOnRockets
+  m_EditorClassIdentifier: 
+  gunParts: -1
+  weaponIcon: {fileID: 21300000, guid: b2c8c6dd57e3577498ed8e65e7bab2c5, type: 3}
+  weaponType: 1
+  spawnable: {fileID: 5521668472997189268, guid: 38086a14bb5f75f499da379909e62d28,
+    type: 3}
+  projectileSpeed: 100
+  damage: 20
+  refireSpeed: 0
+  uniqueWeapon: 0
+  currentRefire: 0
+  explosionRadius: 10
+  lockOnTime: 0.2
+  homingAngle: 30
