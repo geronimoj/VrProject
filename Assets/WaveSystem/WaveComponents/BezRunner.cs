@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class BezRunner : MonoBehaviour
 {
+    public static bool paused = false;
     bool loop = false;
     bool forward = true;
     float timer = 0;
@@ -22,7 +23,7 @@ public class BezRunner : MonoBehaviour
     }
     private void Update()
     {   //Make sure there is a path and the wave is not paused
-        if (path && !Wave.paused)
+        if (path && !paused)
         {
             if (forward)
                 timer += Time.deltaTime;
