@@ -36,6 +36,10 @@ public class TriDisaster : Weapon
         laser2Refire -= Time.deltaTime;
         rocket1Refire -= Time.deltaTime;
         rocket2Refire -= Time.deltaTime;
+        beamTimer -= Time.deltaTime;
+
+        if (beamTimer < 0)
+            lr.SetPosition(1, lr.GetPosition(0));
 
         if (laser1Refire < 0)
             laser1Refire = 0;
@@ -64,9 +68,7 @@ public class TriDisaster : Weapon
 
         FireBeam(guns[2]);
 
-        beamTimer -= Time.deltaTime;
-        if (beamTimer < 0)
-            lr.SetPosition(1, lr.GetPosition(0));
+        
 
         base.UniqueFire(guns);
     }
