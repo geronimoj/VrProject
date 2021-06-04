@@ -10,12 +10,11 @@ public class LockOnRockets : Weapon
     private float lockOnTimer;
 
     private List<Transform> targets = new List<Transform>();
-    private List<Transform> guns = new List<Transform>();
+    private List<Transform> guns;
 
     public override void OnEquip()
     {
         targets.Clear();
-        guns.Clear();
         lockOnTimer = lockOnTime;
         base.OnEquip();
     }
