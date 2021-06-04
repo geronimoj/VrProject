@@ -79,8 +79,10 @@ public class TriDisaster : Weapon
         Projectile p = b.GetComponent<Projectile>();
         p.damage = rocketDamage;
         p.projectileSpeed = rocketSpeed;
+        p.lifetime = projectileLifetime;
         p.explode = true;
         p.explosionRadius = explosionRadius;
+        
 
         refire += rocketRefire;
     }
@@ -91,6 +93,7 @@ public class TriDisaster : Weapon
         Projectile p = b.GetComponent<Projectile>();
         p.damage = laserDamage;
         p.projectileSpeed = laserSpeed;
+        p.lifetime = projectileLifetime;
 
         refire += laserRefire;
     }

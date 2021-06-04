@@ -9,7 +9,13 @@ public class Wave : MonoBehaviour
     public string path = "";
     public string formation = "";
 
-    bool spawned;
+    [SerializeField]
+    private bool sequential = false;
+
+    [SerializeField]
+    float spacing = 1;
+
+    bool spawned = false;
 
     float timer = 0;
 
@@ -91,10 +97,18 @@ public class Wave : MonoBehaviour
     {
         List<GameObject> spawnList = formComp.Spawn(position);
 
+        float delay = 0;
         foreach (GameObject spawn in spawnList)
         {
             BezRunner runner = spawn.GetComponent<BezRunner>();
             runner.path = pathComp;
+
+            if (sequential)
+            {
+                SpawnDelay d = spawn.AddComponent<SpawnDelay>();
+                d.delay = delay;
+                delay += spacing;
+            }
         }
 
         spawned = true;

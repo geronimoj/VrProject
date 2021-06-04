@@ -10,8 +10,10 @@ public class BezPathEditor : Editor
     SerializedProperty nodes;
     SerializedProperty pathName;
     SerializedProperty visible;
-    bool showInGuiLocal = false;
     SerializedProperty type;
+    SerializedProperty loopDelay;
+
+    bool showInGuiLocal = false;
 
     GameObject PathManager;
     void OnEnable()
@@ -20,13 +22,14 @@ public class BezPathEditor : Editor
         pathName = serializedObject.FindProperty("pathName");
         visible = serializedObject.FindProperty("visible");
         type = serializedObject.FindProperty("type");
+        loopDelay = serializedObject.FindProperty("loopDelay");
 
         PathManager = GameObject.Find("PathManager");
     }
 
     private void OnSceneGUI()
     {
-        if (!showInGuiLocal)
+        if (!showInGuiLocal||Application.IsPlaying(target))
             return;
 
         BezPath splinePath = target as BezPath;
@@ -76,13 +79,6 @@ public class BezPathEditor : Editor
     {
         serializedObject.Update();
 
-        SerializedProperty it = nodes.Copy();
-        int counter = 0;
-        int arrayNum = 0;
-        float epsilon = 0.1f;
-
-        float lastTime = -1;
-
         EditorGUIUtility.labelWidth = 80;
         EditorGUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
@@ -91,6 +87,8 @@ public class BezPathEditor : Editor
         EditorGUIUtility.labelWidth = 30;
         EditorGUILayout.PropertyField(type,GUILayout.Width(110));
         EditorGUILayout.Space(20);
+        if (type.intValue == (int)PathType.Loop)
+            EditorGUILayout.PropertyField(loopDelay, GUILayout.Width(70));
         EditorGUIUtility.labelWidth = 45;
         EditorGUILayout.PropertyField(visible);
         GUILayout.FlexibleSpace();
@@ -99,6 +97,12 @@ public class BezPathEditor : Editor
 
         EditorGUIUtility.labelWidth = 15;
 
+        SerializedProperty it = nodes.Copy();
+        int counter = 0;
+        int arrayNum = 0;
+        float epsilon = 0.1f;
+
+        float lastTime = 0;
         int nodeNum = 0;
 
         while (it.Next(true))
@@ -139,11 +143,7 @@ public class BezPathEditor : Editor
                                     EditorGUILayout.PropertyField(it, new GUIContent("Z"));
                                     break;
                                 case 3:
-                                    if (lastTime == -1)
-                                    {
-                                        it.floatValue = 0;
-                                    }
-                                    else
+
                                     if (it.floatValue < lastTime + epsilon)
                                         it.floatValue = lastTime + epsilon;
                                     lastTime = it.floatValue;
