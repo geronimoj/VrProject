@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7112936641322802617}
   - component: {fileID: 3486815236394940320}
   m_Layer: 13
-  m_Name: ReticleTestPrefab
+  m_Name: ReticleLeftEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c7052257918404b47bd6a365ce6019ca, type: 2}
+  - {fileID: 2100000, guid: b7d8d33f1f7f8b64b985db251c1bd9aa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
