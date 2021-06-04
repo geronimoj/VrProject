@@ -21,7 +21,7 @@ MonoBehaviour:
   damage: 0
   refireSpeed: 0
   uniqueWeapon: 1
-  currentRefire: -57.5606
+  currentRefire: -617.0734
   explosionRadius: 15
   laser: {fileID: 5521668472997189268, guid: 76f6c4cf71dcc9440b42f15954516d4c, type: 3}
   rocket: {fileID: 5521668472997189268, guid: 38086a14bb5f75f499da379909e62d28, type: 3}
@@ -30,5 +30,5 @@ MonoBehaviour:
   beamDamage: 2
   laserSpeed: 100
   rocketSpeed: 100
-  laserRefire: 0.1
+  laserRefire: 0.05
   rocketRefire: 0.3

@@ -17,10 +17,10 @@ MonoBehaviour:
   weaponType: 0
   spawnable: {fileID: 5521668472997189268, guid: 76f6c4cf71dcc9440b42f15954516d4c,
     type: 3}
-  projectileSpeed: 250
-  projectileLifetime: 2.5
-  damage: 3
-  refireSpeed: 0.15
+  projectileSpeed: 500
+  projectileLifetime: 1
+  damage: 4
+  refireSpeed: 0.09
   uniqueWeapon: 0
-  currentRefire: -917.8203
+  currentRefire: -633.2801
   explosionRadius: 0
