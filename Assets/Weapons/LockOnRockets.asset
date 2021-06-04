@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: LockOnRockets
   m_EditorClassIdentifier: 
   gunParts: -1
-  weaponIcon: {fileID: 21300000, guid: b2c8c6dd57e3577498ed8e65e7bab2c5, type: 3}
+  weaponIcon: {fileID: 21300000, guid: 5bb6907c3d25ce949b54023436b31f61, type: 3}
   weaponType: 1
   spawnable: {fileID: 5521668472997189268, guid: 38086a14bb5f75f499da379909e62d28,
     type: 3}
-  projectileSpeed: 50
-  damage: 20
+  projectileSpeed: 75
+  projectileLifetime: 30
+  damage: 10
   refireSpeed: 0
   uniqueWeapon: 0
-  currentRefire: -2.8128119
-  explosionRadius: 10
-  lockOnTime: 0.2
-  homingAngle: 3
+  currentRefire: -810.45557
+  explosionRadius: 5
+  lockOnTime: 0.5
+  homingAngle: 5
+  maxTargets: 100

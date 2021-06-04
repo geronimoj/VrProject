@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: DualMinigun
   m_EditorClassIdentifier: 
   gunParts: 10
-  weaponIcon: {fileID: 21300000, guid: ce8f78b2b9292484e97f36ad9568fc4f, type: 3}
+  weaponIcon: {fileID: 21300000, guid: e3b407db27b638e43b1d22891149058f, type: 3}
   weaponType: 0
   spawnable: {fileID: 5521668472997189268, guid: 76f6c4cf71dcc9440b42f15954516d4c,
     type: 3}
   projectileSpeed: 250
-  damage: 2
+  projectileLifetime: 2.5
+  damage: 3
   refireSpeed: 0.15
   uniqueWeapon: 0
-  currentRefire: -58.183464
+  currentRefire: -917.8203
   explosionRadius: 0
