@@ -99,6 +99,7 @@ public class Enemy : Health
             EnemyReticleSystem.s_instance.TrackEnemy(transform);
 
         _shotTime = Random.Range(_minTimeBetweenShots, _maxTimeBetweenShots);
+        t_burstTimer = _burstDuration + 1;
 
         base.Start();
     }
