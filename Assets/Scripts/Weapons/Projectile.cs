@@ -22,6 +22,10 @@ public class Projectile : MonoBehaviour
     public bool explode;
     public float explosionRadius;
     public GameObject explosion;
+
+    public bool homing;
+    public Transform homingTarget;
+    public float homingAngle;
     /// <summary>
     /// Should the projectile be destroyed if it collides with an enemy projectile
     /// </summary>
@@ -52,6 +56,13 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         transform.position += transform.forward * projectileSpeed * Time.deltaTime;
+        if (homing)
+        {
+            Vector3 desiredPos = homingTarget.position - transform.position;
+            float step = homingAngle * Time.deltaTime;
+            Vector3 newDir = Vector3.RotateTowards(transform.forward, desiredPos, step, 0.0f);
+            transform.rotation = Quaternion.LookRotation(newDir);
+        }
     }
 
     private void OnCollisionEnter(Collision col)

@@ -22,6 +22,7 @@ public class TriDisaster : Weapon
     private float rocket2Refire = 0;
     private float laser1Refire = 0;
     private float laser2Refire = 0;
+    private float beamTimer = 0.1f;
 
     private LineRenderer lr;
     private int layerMask;
@@ -35,6 +36,10 @@ public class TriDisaster : Weapon
         laser2Refire -= Time.deltaTime;
         rocket1Refire -= Time.deltaTime;
         rocket2Refire -= Time.deltaTime;
+        beamTimer -= Time.deltaTime;
+
+        if (beamTimer < 0)
+            lr.SetPosition(1, lr.GetPosition(0));
 
         if (laser1Refire < 0)
             laser1Refire = 0;
@@ -59,7 +64,11 @@ public class TriDisaster : Weapon
         if(laser2Refire == 0)
             FireLasers(guns[3], ref laser2Refire);
         
+
+
         FireBeam(guns[2]);
+
+        
 
         base.UniqueFire(guns);
     }
@@ -105,6 +114,6 @@ public class TriDisaster : Weapon
                 health.DoDamage(damage);
             }
         }
-
+        beamTimer = 0.1f;
     }
 }
