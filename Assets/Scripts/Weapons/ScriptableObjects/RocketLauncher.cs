@@ -11,6 +11,7 @@ public class RocketLauncher : Weapon
         Projectile p = b.GetComponent<Projectile>();
         p.damage = damage;
         p.projectileSpeed = projectileSpeed;
+        p.lifetime = projectileLifetime;
         p.explode = true;
         p.explosionRadius = explosionRadius;
 

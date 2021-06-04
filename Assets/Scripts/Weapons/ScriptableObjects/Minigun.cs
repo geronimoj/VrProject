@@ -11,6 +11,7 @@ public class Minigun : Weapon
        Projectile p = b.GetComponent<Projectile>();
        p.damage = damage;
        p.projectileSpeed = projectileSpeed;
+       p.lifetime = projectileLifetime;
 
        base.Fire(guns);
     }

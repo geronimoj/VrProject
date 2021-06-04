@@ -63,6 +63,9 @@ public class Weapon : ScriptableObject
     // How fast the projectile should move. Ignored for Beam weapons.
     public float projectileSpeed;
 
+    // How long the projectile will live for.
+    public float projectileLifetime;
+
     // How much damage the weapon does. Applied on collision for projectiles, or every frame for beams.
     public float damage;
 
