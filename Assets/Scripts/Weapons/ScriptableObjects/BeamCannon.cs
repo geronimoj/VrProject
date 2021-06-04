@@ -60,7 +60,7 @@ public class BeamCannon : Weapon
 
     public override void WeaponUpdate()
     {
-        if (lines.Count != 0)
+        if (lines != null)
         {
             if (currentRefire <= 0)
             {
