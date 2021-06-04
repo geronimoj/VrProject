@@ -32,8 +32,7 @@ public class LockOnRockets : Weapon
 
     public override void Fire(List<Transform> gun)
     {
-        if (guns.Count == 0)
-            guns = gun;
+        guns = gun;
 
         int layerMask = LayerMask.GetMask("Enemy", "Wall", "EnemyProjectile");
 
