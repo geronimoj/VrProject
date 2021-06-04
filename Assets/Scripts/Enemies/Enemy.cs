@@ -17,6 +17,8 @@ public class Enemy : Health
     /// </summary>
     [Tooltip("The enemies main weapon")]
     [SerializeField]
+    private Weapon _weapon = null;
+
     protected Weapon _mainWeapon = null;
     /// <summary>
     /// The points from which the enemies weapon fires
@@ -87,9 +89,9 @@ public class Enemy : Health
     /// </summary>
     protected override void Start()
     {   //Create our own instance of the main weapon
-        if (_mainWeapon)
+        if (_weapon)
         {
-            _mainWeapon = Instantiate(_mainWeapon);
+            _mainWeapon = Instantiate(_weapon);
             _mainWeapon.OnEquip();
         }
         //Set this enemy to be tracked by the radar and reticle system

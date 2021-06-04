@@ -21,8 +21,8 @@ public class BezRunner : MonoBehaviour
         }
     }
     private void Update()
-    {
-        if (path)
+    {   //Make sure there is a path and the wave is not paused
+        if (path && !Wave.paused)
         {
             if (forward)
                 timer += Time.deltaTime;
