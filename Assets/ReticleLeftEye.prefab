@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1746269696617994917}
   - component: {fileID: 7112936641322802617}
   - component: {fileID: 3486815236394940320}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ReticleTestPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

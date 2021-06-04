@@ -13,6 +13,8 @@ public class ReticleDisplayer : MonoBehaviour
         Quad = 0,
         Circle
     }
+
+    public LayerMask m_quadLayers = 0;
     /// <summary>
     /// The transform the raycasts should perform from when determining if an enemy is in view
     /// </summary>
@@ -108,12 +110,9 @@ public class ReticleDisplayer : MonoBehaviour
         {   //Get a vector to the enemies
             Vector3 camToEnemy = enemy.position - _reticleOrigin.position;
             //Check if the enemy is in view                                                                                                                 
-            if (!Physics.Raycast(_reticleOrigin.position, camToEnemy.normalized, out RaycastHit hit, camToEnemy.magnitude, LayerMask.GetMask("ReticleQuad")) || (_shape == ReticleShape.Circle && (hit.point - transform.position).magnitude > _radius))
-            {
-                //Otherwise remove it from view
-                LeaveReticleView(enemy, false);
+            if (!Physics.Raycast(_reticleOrigin.position, camToEnemy.normalized, out RaycastHit hit, camToEnemy.magnitude, m_quadLayers))
+                //If we don't hit the quad, continue
                 continue;
-            }
             //Otherwise, update the positions of the reticles
             _assignReticles[enemy].position = hit.point - transform.forward * 0.01f;
             //If the reticles are billboarded, rotate them to the camera
@@ -136,7 +135,7 @@ public class ReticleDisplayer : MonoBehaviour
         //Get a vector from the reticles origin to the enemy
         Vector3 camToEnemy = enemy.position - _reticleOrigin.position;
         //Raycast to the enemy onto the reticle quad. It is assumed that this will succeed
-        if (!Physics.Raycast(_reticleOrigin.position, camToEnemy.normalized, out RaycastHit hit, camToEnemy.magnitude, LayerMask.GetMask("ReticleQuad")))
+        if (!Physics.Raycast(_reticleOrigin.position, camToEnemy.normalized, out RaycastHit hit, camToEnemy.magnitude, m_quadLayers))
         {   //If the raycast fails, log an error
             Debug.LogError("Raycast failed to hit reticle quad for enemy " + enemy.name + ". Try using TrackEnemy instead.");
             return;
@@ -173,6 +172,9 @@ public class ReticleDisplayer : MonoBehaviour
     {   //Make sure the enemy has a reticle
         if (!_assignReticles.ContainsKey(enemy))
             return;
+        //If its already dead, give up
+        if (!_assignReticles[enemy])
+            return;
         //Store the reticle
         s_reticles.Add(_assignReticles[enemy]);
         //Disable the reticle
@@ -181,4 +183,14 @@ public class ReticleDisplayer : MonoBehaviour
         if (leaveImmediately)
             _assignReticles.Remove(enemy);
     }
+
+#if UNITY_EDITOR
+    /// <summary>
+    /// Debugging information
+    /// </summary>
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, _radius);
+    }
+#endif
 }

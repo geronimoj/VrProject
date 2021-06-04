@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8188577026594398639}
   - component: {fileID: 7206039795596515000}
   - component: {fileID: 198338308493488485}
-  m_Layer: 11
+  m_Layer: 15
   m_Name: RightView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1396207578204839237}
   m_LocalRotation: {x: -0, y: -0, z: -1.9945315e-24, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 3823681127015308748}
   m_RootOrder: 1
@@ -67,11 +67,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1c1d5e8bed8b742a81d966f6e35635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_quadLayers:
+    serializedVersion: 2
+    m_Bits: 32768
   _reticleOrigin: {fileID: 0}
-  _shape: 1
+  _shape: 0
   _radius: 0.5
   _billboardReticles: 0
-  _reticlePrefab: {fileID: 2403415062403598523, guid: 2ef1772ac45b8aa4e9ce329daff82257,
+  _reticlePrefab: {fileID: 4296052369649208906, guid: a5e9ab48345bd1a4ca6c978878e106a4,
     type: 3}
   _reticleScale: 0.04
 --- !u!1 &3823681127015308745
@@ -143,16 +146,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 295917eca71d01544893fe952346d958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_quadLayers:
+    serializedVersion: 2
+    m_Bits: 2048
   _reticleOrigin: {fileID: 0}
   _shape: 1
   _radius: 0.25
   _billboardReticles: 0
-  _reticlePrefab: {fileID: 2403415062403598523, guid: 2ef1772ac45b8aa4e9ce329daff82257,
-    type: 3}
+  _reticlePrefab: {fileID: 0}
   _reticleScale: 0.04
-  _additionalDisplays: []
-  _useAsDisplay: 1
-  _changeDisplaysToThis: 1
+  _additionalDisplays:
+  - {fileID: 8660365294640277620}
+  - {fileID: 198338308493488485}
+  _useAsDisplay: 0
 --- !u!1 &9059579005127219859
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,7 +171,7 @@ GameObject:
   - component: {fileID: 2747584073570828861}
   - component: {fileID: 1553464332465153716}
   - component: {fileID: 8660365294640277620}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: LeftView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +187,7 @@ Transform:
   m_GameObject: {fileID: 9059579005127219859}
   m_LocalRotation: {x: -0, y: -0, z: -1.9945315e-24, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 3823681127015308748}
   m_RootOrder: 0
@@ -220,8 +226,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1c1d5e8bed8b742a81d966f6e35635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_quadLayers:
+    serializedVersion: 2
+    m_Bits: 65536
   _reticleOrigin: {fileID: 0}
-  _shape: 1
+  _shape: 0
   _radius: 0.5
   _billboardReticles: 0
   _reticlePrefab: {fileID: 2403415062403598523, guid: 2ef1772ac45b8aa4e9ce329daff82257,
