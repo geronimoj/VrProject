@@ -9,6 +9,8 @@ public class WaveEditor : Editor
     SerializedProperty spawnTime;
     SerializedProperty position;
     SerializedProperty visible;
+    SerializedProperty sequential;
+    SerializedProperty spacing;
 
     bool showInGuiLocal = false;
 
@@ -25,6 +27,10 @@ public class WaveEditor : Editor
         position = serializedObject.FindProperty("position");
 
         visible = serializedObject.FindProperty("visible");
+
+        sequential = serializedObject.FindProperty("sequential");
+
+        spacing = serializedObject.FindProperty("spacing");
 
         PathManager = GameObject.Find("PathManager");
         FormationManager = GameObject.Find("FormationManager");
@@ -73,11 +79,29 @@ public class WaveEditor : Editor
         GUILayout.Space(20);
         spawnTime.floatValue = Mathf.Max(EditorGUILayout.FloatField("Time", spawnTime.floatValue, GUILayout.Width(80)), 0);
 
+
+
         EditorGUILayout.Space(20);
         EditorGUIUtility.labelWidth = 45;
         EditorGUILayout.PropertyField(visible);
 
         GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        EditorGUIUtility.labelWidth = 65;
+        EditorGUILayout.PropertyField(sequential);
+
+
+
+        if (sequential.boolValue)
+        {
+            EditorGUIUtility.labelWidth = 50;
+            GUILayout.Space(10);
+            EditorGUILayout.PropertyField(spacing);
+        }
+            GUILayout.FlexibleSpace();
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
