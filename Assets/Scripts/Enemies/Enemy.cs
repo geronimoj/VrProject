@@ -162,7 +162,7 @@ public class Enemy : Health
     /// <summary>
     /// Updates the main weapon and other stuff
     /// </summary>
-    private void Update()
+    protected virtual void Update()
     {   //Update the main weapon
         if (_mainWeapon)
             _mainWeapon.WeaponUpdate();
