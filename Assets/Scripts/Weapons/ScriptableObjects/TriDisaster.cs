@@ -82,7 +82,8 @@ public class TriDisaster : Weapon
         p.lifetime = projectileLifetime;
         p.explode = true;
         p.explosionRadius = explosionRadius;
-        
+        p.damageType = weaponType;
+
 
         refire += rocketRefire;
     }
@@ -94,6 +95,7 @@ public class TriDisaster : Weapon
         p.damage = laserDamage;
         p.projectileSpeed = laserSpeed;
         p.lifetime = projectileLifetime;
+        p.damageType = weaponType;
 
         refire += laserRefire;
     }
@@ -114,7 +116,12 @@ public class TriDisaster : Weapon
                 if (!health || hit.collider.gameObject != health.gameObject)
                     health = hit.collider.gameObject.GetComponent<Health>();
 
-                health.DoDamage(damage);
+                //If its armoured health, use its dodamage function
+                if (health as ArmouredHealth)
+                    (health as ArmouredHealth).DoDamage(damage, weaponType);
+                //Otherwise just use the normal
+                else
+                    health.DoDamage(damage);
             }
         }
         beamTimer = 0.1f;

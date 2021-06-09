@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// Health with a damage modifier
 /// </summary>
-public class Weakpoint : Health
+public class Weakpoint : ArmouredHealth
 {
     /// <summary>
     /// The damage modifier

@@ -15,6 +15,10 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     public float projectileSpeed;
     public float damage;
+    /// <summary>
+    /// The type of damage the projectile is dealing
+    /// </summary>
+    public WeaponType damageType = WeaponType.Ballistic;
 
     public float lifetime;
 
@@ -69,12 +73,12 @@ public class Projectile : MonoBehaviour
     {
         if (!flaggedForDestruction)
             Debug.Log("Hit Detected! Tag: " + col.gameObject.tag);
-        if(homing && !homingTarget)
+        if (homing && !homingTarget)
         {
             Explode();
         }
         //Determine which types of collisions we need to look for
-        switch(target)
+        switch (target)
         {   //We are targeting enemies
             case Target.Enemy:
                 //If they are a standard enemy, deal damage
@@ -86,7 +90,18 @@ public class Projectile : MonoBehaviour
                     }
                     else
                     {
-                        col.gameObject.GetComponent<Health>().DoDamage(damage);
+                        Health h = col.gameObject.GetComponent<Health>();
+                        //Null catch
+                        if (h)
+                        {
+                            ArmouredHealth ah = h as ArmouredHealth;
+                            //Null check
+                            if (ah)
+                                ah.DoDamage(damage, damageType);
+                            //If its null, try it on regular health
+                            else
+                                h.DoDamage(damage);
+                        }
                         Destroy(gameObject);
                     }
                 }
@@ -103,7 +118,7 @@ public class Projectile : MonoBehaviour
                         else
                             Destroy(gameObject);
                     }
-                        
+
                 }
                 break;
             //We are targeting the player
@@ -119,7 +134,7 @@ public class Projectile : MonoBehaviour
                 //We do a similar thing with the player
                 break;
         }
-        
+
     }
 
     private void Explode()
