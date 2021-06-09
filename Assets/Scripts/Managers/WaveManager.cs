@@ -164,6 +164,16 @@ public class WaveManager : MonoBehaviour
         return 0;
     }
     /// <summary>
+    /// For pausing the entire game
+    /// </summary>
+    /// <param name="value">The pause state. True = paused</param>
+    public void Pause(bool value)
+    {   //Pause wave spawning
+        _pause = value;
+        //Pause enemy movement
+        BezRunner.paused = value;
+    }
+    /// <summary>
     /// Pauses the spawning of enemies
     /// </summary>
     /// <param name="value">The pause state. True = paused</param>
