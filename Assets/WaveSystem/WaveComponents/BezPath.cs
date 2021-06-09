@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
+using System;
 public class BezPath : MonoBehaviour
 {
     public string pathName = "";
@@ -17,9 +18,13 @@ public class BezPath : MonoBehaviour
 
     [SerializeField]
     float loopDelay = 0.1f;
-    private float FinalTime => nodes[nodes.Count-1].t;
 
-    private float LoopTime => FinalTime + loopDelay;
+    [SerializeField]
+    public float[] timerList = new float[0];
+
+    [SerializeField]
+    public UnityEvent[] eventList = new UnityEvent[0];
+    private float TotalTime => type == PathType.Standard? nodes[nodes.Count-1].t : nodes[nodes.Count - 1].t + loopDelay;
 
     [SerializeField]
     PathType type = PathType.Standard;
@@ -55,59 +60,60 @@ public class BezPath : MonoBehaviour
 
             int lIndex = (nLIndex + nodes.Count) % nodes.Count;                     //Should give [CL-1,CL,CL+1,CL+2] looped
 
-            int cycleNum = Mathf.FloorToInt(t % LoopTime);                          //Get the number of cycles deep this node is
+            int cycleNum = Mathf.FloorToInt((float)nLIndex / nodes.Count);                          //Get the number of cycles deep this node is
 
-            float chrono = nodes[lIndex].t + (LoopTime*cycleNum);                   //Calculate the time for use
+            float chrono = nodes[lIndex].t + (TotalTime*cycleNum);                   //Calculate the time for use
 
             fourPoints[i] = new Node(nodes[lIndex].geoPos, chrono);                 //Compile the point into the point array
         }
 
         return fourPoints;                                                          //Return fourPoints
     }
-
-    Node[] FourPointsPingPong(float t)
-    {
-        Node[] fourPoints = new Node[4];                                            //Prep 4 node array
-
-        int CLI = GetCenterLeftIndex(t);                                            //Get the index of the first n in nodes where t>n.t
-
-        for (int i = 0; i < 4; i++)                                                 //For the 4 values of the array
-        {
-        }
-
-        return fourPoints;                                                          //Return fourPoints
-    }
-
     List<Vector3> UsePoints(float t)
     {
         Node[] fourPoints;
+
+        float transT = 0;
+
+        List<Vector3> usePoints = new List<Vector3>();                                              //Prep for the 3 transition points  
 
         switch (type)
         {
             case PathType.Standard:
                 fourPoints = FourPointsStandard(t);
                 break;
-            case PathType.Loop:
+
+            case PathType.OddLoop:
+                /* To manintain bezier continuity in a loop, the 3 points must be continuous across the ends.*/
+                fourPoints = FourPointsLoop(t);
+                break;
+            case PathType.LinearLoop:
                 fourPoints = FourPointsLoop(t);
                 break;
             default:
-                fourPoints = FourPointsPingPong(t);
+                fourPoints = new Node[0];
                 break;
         }
+        transT = Mathf.InverseLerp(fourPoints[1].t, fourPoints[2].t, t);
 
-        List<Vector3> usePoints = new List<Vector3>();                                              //Prep for the 3 transition points
-
-        float transT = Mathf.InverseLerp(fourPoints[1].t, fourPoints[2].t, t);                      //Get the current transition time
-
-        for (int i = 0; i < 3; i++)                                                                 //Populate the usePoint list
-            usePoints.Add(Vector3.Lerp(fourPoints[i].geoPos, fourPoints[i + 1].geoPos, transT));    //With the transition interpolations of the fourpoints
-
+        usePoints.Add(Vector3.Lerp(fourPoints[0].geoPos, fourPoints[1].geoPos, transT));
+        usePoints.Add(Vector3.Lerp(fourPoints[1].geoPos, fourPoints[2].geoPos, transT));
+        usePoints.Add(Vector3.Lerp(fourPoints[2].geoPos, fourPoints[3].geoPos, transT));
         return usePoints;                                                                           //Report usePoints
     }
 
     float GetNormalizedPathTime(float t)
     {
-        return Mathf.InverseLerp(nodes[0].t, FinalTime, t);
+        if (type == PathType.Standard)
+            return Mathf.InverseLerp(0, TotalTime, t % TotalTime);
+        else
+            if (type == PathType.OddLoop)
+            return (1 + Mathf.Sin(2 * Mathf.PI * t / TotalTime)) / 2;
+        else
+            if (type == PathType.LinearLoop)
+            return 0;
+        else
+            return 0;
     }
 
     int GetCenterLeftIndex(float time)
@@ -127,25 +133,19 @@ public class BezPath : MonoBehaviour
 
     int GetLoopCenterLeftIndex(float time)
     {
-        float timeInLoop = time % LoopTime;
+        float timeInLoop = time % TotalTime;
         int index = 0;                                      //Initialize index
-        while (timeInLoop >= nodes[index].t)                //As long as the loopTime is greater than or equal to the node value
-        {
-            index++;                                        //Add one to the index
-            if (index == nodes.Count)                       //If it is then past the end of the array, return the final point
-                return nodes.Count - 1;
-            if (timeInLoop < nodes[index].t)                      //Otherwise if loopTime is smaller than the current index
-                return index -1;                               //Return the previous one
-        }
+        while (index != nodes.Count && timeInLoop >= nodes[index].t)
+            index++;
 
-        return -1;
+        return index-1;
     }
 
     public void BakePath()
     {
         if (nodes.Count == 0)
             return;
-        float totalTime = FinalTime;
+        float totalTime = TotalTime;
         for (int i = 0; i < points.Length; i++)
         {
             float t = i * totalTime / points.Length;
@@ -157,7 +157,7 @@ public class BezPath : MonoBehaviour
     public Vector3 GetPos(float time)
     {
         int i = 1;
-        float modTime = type == PathType.Standard ? time : time % FinalTime;
+        float modTime = type == PathType.Standard ? time : time % TotalTime;
 
         while (points[i].w<modTime && i<points.Length-1)
             i++;
@@ -182,14 +182,14 @@ public class BezPath : MonoBehaviour
 
     public float NormalizedTime(Node n)
     {
-        return n.t / FinalTime;
+        return n.t / TotalTime;
     }
 
     public Vector3 CalcPos(float time)
     {
         List<Vector3> usePoints = UsePoints(time);                                  //Get the smoothed control points
 
-        float nPathTime = GetNormalizedPathTime(time%LoopTime);                     //Get the normalized time across the current base scope
+        float nPathTime = GetNormalizedPathTime(time);                     //Get the normalized time across the current base scope
 
         Vector3 pos = Bezier(usePoints, nPathTime);                                //Return the bezier function of those
 
@@ -270,6 +270,6 @@ public class BezPath : MonoBehaviour
 public enum PathType
 {
     Standard,
-    Loop,
-    Pingpong
+    LinearLoop,
+    OddLoop
 }

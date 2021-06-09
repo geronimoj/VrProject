@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.Events;
 
 [CustomEditor(typeof(BezPath))]
 [CanEditMultipleObjects]
@@ -12,6 +13,8 @@ public class BezPathEditor : Editor
     SerializedProperty visible;
     SerializedProperty type;
     SerializedProperty loopDelay;
+    SerializedProperty timers;
+    SerializedProperty events;
 
     bool showInGuiLocal = false;
 
@@ -23,6 +26,8 @@ public class BezPathEditor : Editor
         visible = serializedObject.FindProperty("visible");
         type = serializedObject.FindProperty("type");
         loopDelay = serializedObject.FindProperty("loopDelay");
+        timers = serializedObject.FindProperty("timerList");
+        events = serializedObject.FindProperty("eventList");
 
         PathManager = GameObject.Find("PathManager");
     }
@@ -87,7 +92,7 @@ public class BezPathEditor : Editor
         EditorGUIUtility.labelWidth = 30;
         EditorGUILayout.PropertyField(type,GUILayout.Width(110));
         EditorGUILayout.Space(20);
-        if (type.intValue == (int)PathType.Loop)
+        if (type.intValue == (int)PathType.LinearLoop || type.intValue == (int)PathType.OddLoop)
             EditorGUILayout.PropertyField(loopDelay, GUILayout.Width(70));
         EditorGUIUtility.labelWidth = 45;
         EditorGUILayout.PropertyField(visible);
@@ -97,71 +102,185 @@ public class BezPathEditor : Editor
 
         EditorGUIUtility.labelWidth = 15;
 
-        SerializedProperty it = nodes.Copy();
-        int counter = 0;
-        int arrayNum = 0;
-        float epsilon = 0.1f;
-
-        float lastTime = 0;
-        int nodeNum = 0;
-
-        while (it.Next(true))
+        #region Points
+        using (SerializedProperty it = nodes.Copy())
         {
-            switch (it.type)
+            int counter = 0;
+            int arrayNum = 0;
+            float epsilon = 0.1f;
+
+            float lastTime = 0;
+            int nodeNum = 0;
+
+            //EditorGUILayout.BeginVertical(GUILayout.Width(200));
+
+            while (it.Next(true))
             {
-                case "ArraySize":
-                    arrayNum++;
-                    if (arrayNum != 1)
-                        break;
-                    EditorGUILayout.BeginHorizontal();
-                    GUILayout.FlexibleSpace();
-                    if (GUILayout.Button("-"))
-                    {
-                        if (it.intValue > 1)
-                            it.intValue--;
-                    }
-                    if (GUILayout.Button("+"))
-                        it.intValue++;
-                    GUILayout.FlexibleSpace();
-                    EditorGUILayout.EndHorizontal();
-                    break;
-
-                case "float":
-                    if (arrayNum == 1)
-                    {
-                        if (nodeNum>0)
-                            switch (counter)
+                switch (it.type)
+                {
+                    case "ArraySize":
+                        arrayNum++;
+                        if (arrayNum ==1)
+                        {
+                            EditorGUILayout.BeginHorizontal();
+                            GUILayout.FlexibleSpace();
+                            if (GUILayout.Button("-"))
                             {
-                                case 0:
-                                    EditorGUILayout.BeginHorizontal();
-                                    EditorGUILayout.PropertyField(it, new GUIContent("X"));
-                                    break;
-                                case 1:
-                                    EditorGUILayout.PropertyField(it, new GUIContent("Y"));
-                                    break;
-                                case 2:
-                                    EditorGUILayout.PropertyField(it, new GUIContent("Z"));
-                                    break;
-                                case 3:
-
-                                    if (it.floatValue < lastTime + epsilon)
-                                        it.floatValue = lastTime + epsilon;
-                                    lastTime = it.floatValue;
-                                    EditorGUILayout.PropertyField(it, new GUIContent("T"));
-                                    EditorGUILayout.EndHorizontal();
-                                    break;
+                                if (it.intValue > 1)
+                                    it.intValue--;
                             }
-                        if (counter == 3)
-                            nodeNum++;
-                        counter = (counter + 1) % 4;
-                    }
-                    break;
+                            if (GUILayout.Button("+"))
+                                it.intValue++;
+                            GUILayout.FlexibleSpace();
+                            EditorGUILayout.EndHorizontal();
+                        }
+                        break;
+                    case "float":
+                        if (arrayNum == 1)                                                              //If it is the position array
+                        {
+                            if (nodeNum > 0)                                                            //If it is beyond the first node (as first is locked to 0,0,0,0)
+                            {
+                                switch (counter)
+                                {
+                                    case 0:
+                                        EditorGUILayout.BeginHorizontal();
+                                        EditorGUILayout.PropertyField(it, new GUIContent("X"));
+                                        break;
+                                    case 1:
+                                        EditorGUILayout.PropertyField(it, new GUIContent("Y"));
+                                        break;
+                                    case 2:
+                                        EditorGUILayout.PropertyField(it, new GUIContent("Z"));
+                                        break;
+                                    case 3:
 
-                case "_": break;
+                                        if (it.floatValue < lastTime + epsilon)
+                                            it.floatValue = lastTime + epsilon;
+                                        lastTime = it.floatValue;
+                                        EditorGUILayout.PropertyField(it, new GUIContent("T"));
+                                        EditorGUILayout.EndHorizontal();
+                                        break;
+                                }
+                            }
+                            if (counter == 3)
+                                nodeNum++;
+                            counter = (counter + 1) % 4;
+                        }
+
+                        break;
+
+
+                    case "_":
+                        EditorGUILayout.PropertyField(it);
+
+                        break;
+                }
+            }
+        }
+        #endregion
+
+        EditorGUILayout.Space(30);
+
+        int eventNum = 0;
+
+        using (SerializedProperty it = events.Copy())
+        {
+            int arrayNum = 0;
+            while (it.Next(true))
+            {
+                Debug.Log(it.type);
+                switch (it.type)
+                {
+                    case "ArraySize":
+                        arrayNum++;
+                        if (arrayNum != 1)
+                            break;
+                        EditorGUILayout.BeginHorizontal();
+                        GUILayout.FlexibleSpace();
+                        if (GUILayout.Button("-"))
+                        {
+                            if (it.intValue > 0)
+                                it.intValue--;
+                        }
+                        if (GUILayout.Button("+"))
+                            it.intValue++;
+                        eventNum = it.intValue;
+                        GUILayout.FlexibleSpace();
+                        EditorGUILayout.EndHorizontal();
+                        break;
+                    case "_":
+                        break;
+                }
             }
         }
 
-        serializedObject.ApplyModifiedProperties();
+        #region Events
+        EditorGUILayout.BeginHorizontal(GUILayout.Width(500));
+
+        EditorGUILayout.BeginVertical(GUILayout.Width(450));
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.LabelField("Event");
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
+        using (SerializedProperty it = events.Copy())
+        {
+            int arrayNum = 0;
+            while (it.Next(true))
+            {
+                Debug.Log(it.type);
+                switch (it.type)
+                {
+                    case "UnityEvent":
+                        EditorGUILayout.PropertyField(it);
+                        break;
+                    case "_":
+                        break;
+                }
+            }
+        }
+        EditorGUILayout.EndVertical();
+
+
+        EditorGUIUtility.labelWidth = 50;
+        EditorGUILayout.BeginVertical(GUILayout.Width(50));
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.LabelField("Time");
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
+        using (SerializedProperty it = timers.Copy())
+        {
+            int arrayNum = 0;
+            while (it.Next(true))
+            {
+                Debug.Log(it.type);
+                switch (it.type)
+                {
+                    case "ArraySize":
+                        arrayNum++;
+                        if (arrayNum != 1)
+                            break;
+                        it.intValue = eventNum;
+                        break;
+                    case "float":
+                        EditorGUILayout.BeginVertical(GUILayout.Height(95));
+                        GUILayout.FlexibleSpace();
+                        it.floatValue = EditorGUILayout.FloatField(it.floatValue,GUILayout.Height(20),GUILayout.Width(50));
+                        GUILayout.FlexibleSpace();
+                        EditorGUILayout.EndVertical();
+                        break;
+                    case "_":
+                        break;
+                }
+            }
+        }
+        EditorGUILayout.EndVertical();
+
+        EditorGUILayout.EndHorizontal();
+         #endregion
+
+            serializedObject.ApplyModifiedProperties();
 
         showInGuiLocal = visible.boolValue;
     }

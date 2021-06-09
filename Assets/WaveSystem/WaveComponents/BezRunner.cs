@@ -10,6 +10,7 @@ public class BezRunner : MonoBehaviour
     [HideInInspector]
     public BezPath path;
     Vector3 startPos;
+    int currEvent = 0;
     private void Start()
     {
         startPos = transform.position;
@@ -31,6 +32,12 @@ public class BezRunner : MonoBehaviour
                 timer -= Time.deltaTime;
 
             transform.position = startPos+path.GetPos(timer);
+
+            if (currEvent < path.timerList.Length && timer > path.timerList[currEvent])
+            {
+                path.eventList[currEvent].Invoke();
+                currEvent++;
+            }
         }
     }
 }
