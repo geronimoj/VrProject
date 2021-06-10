@@ -171,6 +171,7 @@ public class RadarSystem : MonoBehaviour
             //Set the local position of the blip
             blip.localPosition = (t.position - m_worldReferencePoint.position) / (m_radarRange * 2);
             blip.localPosition *= m_radarRadius;
+            blip.localPosition += transform.position;
         }
         //Because we can't remove the enemies from _enemyBlips in the foreach loop, we need to remove them now
         while (_enemiesToRemove.Count > 0)
