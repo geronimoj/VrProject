@@ -318,6 +318,8 @@ MonoBehaviour:
   - {x: 1.6168232, y: -2.8716364, z: 0, w: 29.7}
   visible: 1
   loopDelay: 0.1
+  timerList: []
+  eventList: []
   type: 0
 --- !u!114 &6152916958335922280
 MonoBehaviour:
@@ -352,8 +354,10 @@ MonoBehaviour:
   OnTakeDamage:
     m_PersistentCalls:
       m_Calls: []
+  _armour: 0
+  _armourAndSheildValue: 0
   _scoreGainOnDeath: 0
-  _mainWeapon: {fileID: 11400000, guid: fc31dc9a5194d6348b2c830ee2d4fd93, type: 2}
+  _weapon: {fileID: 11400000, guid: 1a8b5e7f2abb56145993a08fe14db46c, type: 2}
   _weaponFirePoints:
   - {fileID: 737312963890149381}
   - {fileID: 737312963890149381}
