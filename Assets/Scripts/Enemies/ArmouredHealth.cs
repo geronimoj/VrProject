@@ -17,6 +17,10 @@ public class ArmouredHealth : Health
     [SerializeField]
     protected float _armourAndSheildValue = 0;
     /// <summary>
+    /// Called when _armourAndShieldValue reach 0
+    /// </summary>
+    public UnityEngine.Events.UnityEvent OnBreakShield;
+    /// <summary>
     /// Does damage to the enemy given a unique damage type
     /// </summary>
     /// <param name="damage">The damage to deal</param>
@@ -38,6 +42,7 @@ public class ArmouredHealth : Health
                     //If the shields are gone, make them light armour
                     if (_armourAndSheildValue <= 0)
                     {
+                        OnBreakShield.Invoke();
                         _armour = ArmourType.Light;
                         //Do Overkill damage to the heath bar
                         currentHealth -= _armourAndSheildValue;
