@@ -117,4 +117,12 @@ public class Wave : MonoBehaviour
 
         spawned = true;
     }
+    /// <summary>
+    /// Resets the waves
+    /// </summary>
+    public void Reset()
+    {
+        spawned = false;
+        timer = 0;
+    }
 }
