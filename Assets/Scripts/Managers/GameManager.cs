@@ -61,6 +61,11 @@ public class GameManager : MonoBehaviour
         //Pause(true);
         _waveManager.LoadLevel("TutorialLevel");
     }
+
+    private void Start()
+    {
+        PlayerShip.s_instance.OnDeath.AddListener(GameOver);
+    }
     /// <summary>
     /// Core game loop
     /// </summary>
@@ -70,6 +75,11 @@ public class GameManager : MonoBehaviour
             return;
         //Check if the game is over
         _gameIsOver = PlayerShip.PlayerIsDead;
+    }
+
+    private void GameOver()
+    {
+
     }
     /// <summary>
     /// Quits the app
