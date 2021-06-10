@@ -15,11 +15,11 @@ MonoBehaviour:
   gunParts: 4
   weaponIcon: {fileID: 0}
   weaponType: 0
-  spawnable: {fileID: 7655535449077665971, guid: f6c6ae5204c286f488a680ef675430f5,
+  spawnable: {fileID: 2782385464166303479, guid: f6c6ae5204c286f488a680ef675430f5,
     type: 3}
   projectileSpeed: 25
   projectileLifetime: 30
-  damage: 1
+  damage: 3
   refireSpeed: 1
   uniqueWeapon: 0
   currentRefire: 0
