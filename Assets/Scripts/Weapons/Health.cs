@@ -30,14 +30,14 @@ public class Health : MonoBehaviour
 
     public virtual bool DoDamage(float damage)
     {   //Don't deal damage to a dead character
-        if (currentHealth < 0)
+        if (IsDead)
             return false;
 
         currentHealth -= damage;
 
         OnTakeDamage.Invoke();
 
-        if (currentHealth <= 0)
+        if (IsDead)
         {
             OnDeath.Invoke();
 

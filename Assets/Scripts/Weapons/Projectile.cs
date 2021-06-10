@@ -51,12 +51,20 @@ public class Projectile : MonoBehaviour
     /// Called when the projectile destroys itself
     /// </summary>
     public UnityEvent OnEnd;
+
+    public static UnityEvent DestroyProjectiles = new UnityEvent();
+
+    private void Destroy()
+    {
+        Destroy(gameObject);
+    }
     
 
     void Start()
     {
         StartCoroutine(DestroyAfter(gameObject));
         OnStart.Invoke();
+        DestroyProjectiles.AddListener(Destroy);
     }
 
     private IEnumerator DestroyAfter(GameObject o)

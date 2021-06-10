@@ -22,8 +22,8 @@ MonoBehaviour:
   damage: 10
   refireSpeed: 0
   uniqueWeapon: 0
-  currentRefire: -810.45557
+  currentRefire: -2616.054
   explosionRadius: 5
   lockOnTime: 0.5
   homingAngle: 5
-  maxTargets: 100
+  maxTargets: 8

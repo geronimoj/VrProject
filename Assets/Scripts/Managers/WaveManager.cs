@@ -1,11 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 /// <summary>
 /// Manages when waves should spawn
 /// </summary>
 public class WaveManager : MonoBehaviour
 {
+    protected string _currentLevel = "";
+    #region OLD
+    /*
+    /// <summary>
+    /// The currently level
+    /// </summary>
+    public Level m_level = Level.Level1;
+    /// <summary>
+    /// The current difficulty
+    /// </summary>
+    public Difficulty m_difficulty = Difficulty.Easy;
     /// <summary>
     /// A global timer, this aint ever going to end, don't worry.
     /// </summary>
@@ -33,16 +45,7 @@ public class WaveManager : MonoBehaviour
     /// <summary>
     /// The formations that can be chosen from. Dictionary for improved indexing
     /// </summary>
-    private readonly Dictionary<string, Formation> _formations = new Dictionary<string, Formation>();
-    /// <summary>
-    /// The currently level
-    /// </summary>
-    public Level m_level = Level.Level1;
-    /// <summary>
-    /// The current difficulty
-    /// </summary>
-    public Difficulty m_difficulty = Difficulty.Easy;
-    /// <summary>
+    private readonly Dictionary<string, Formation> _formations = new Dictionary<string, Formation>();/// <summary>
     /// Logs that waves are starting to be spawned
     /// </summary>
     private void Start()
@@ -164,12 +167,22 @@ public class WaveManager : MonoBehaviour
         return 0;
     }
     /// <summary>
+    /// The difficulty
+    /// </summary>
+    public enum Difficulty
+    {
+        Easy = 0,
+        Normal = 1,
+        Hard = 2
+    }*/
+    #endregion
+    /// <summary>
     /// For pausing the entire game
     /// </summary>
     /// <param name="value">The pause state. True = paused</param>
     public void Pause(bool value)
     {   //Pause wave spawning
-        _pause = value;
+        Wave.paused = value;
         //Pause enemy movement
         BezRunner.paused = value;
     }
@@ -179,16 +192,54 @@ public class WaveManager : MonoBehaviour
     /// <param name="value">The pause state. True = paused</param>
     public void PauseSpawning(bool value)
     {
-        _pause = value;
+        Wave.paused = value;
     }
     /// <summary>
     /// For resetting the level
     /// </summary>
     public void ResetLevel()
     {   //Reset the level time
-        _levelTime = 0;
+        //_levelTime = 0;
+        GameObject waveManager = GameObject.Find("WaveManager");
+        //If we found it, reset the waves on it
+        if (waveManager)
+        {   //Get the waves
+            Wave[] waves = waveManager.GetComponents<Wave>();
+            //Reset the wave
+            foreach (Wave wave in waves)
+                wave.Reset();
+        }
+        //Kill the enemies and destroy projectiles
+        Enemy.KillEnemies.Invoke();
+        Projectile.DestroyProjectiles.Invoke();
         //Kill all active enemies and Wave related events
         Debug.LogError("Reset Level does not kill all projectiles or kill all enemies.");
+    }
+    /// <summary>
+    /// Loads a level and unloads any previous levels
+    /// </summary>
+    /// <param name="level">The level to load</param>
+    public void LoadLevel(string levelSceneName)
+    {   //Unload the current level
+        UnloadLevel();
+        //Load the new level
+        SceneManager.LoadScene(levelSceneName);
+        _currentLevel = levelSceneName;
+    }
+    /// <summary>
+    /// Unloads the current level
+    /// </summary>
+    public void UnloadLevel()
+    {
+        //Unload the current level
+        if (_currentLevel != "")
+        {   //Kill the enemies and destroy the projectiles
+            Enemy.KillEnemies.Invoke();
+            Projectile.DestroyProjectiles.Invoke();
+            //Unload the scene
+            SceneManager.UnloadSceneAsync(_currentLevel);
+            _currentLevel = "";
+        }
     }
     /// <summary>
     /// The level to spawn for
@@ -196,14 +247,5 @@ public class WaveManager : MonoBehaviour
     public enum Level
     {
         Level1 = 1,
-    }
-    /// <summary>
-    /// The difficulty
-    /// </summary>
-    public enum Difficulty
-    {
-        Easy = 0,
-        Normal = 1,
-        Hard = 2
     }
 }
