@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void Awake()
     {   //Pause the game while everything loads
-        Pause(true);
+        //Pause(true);
 #if !UNITY_EDITOR
         _waveManager.LoadLevel("TutorialLevel");
 #endif
