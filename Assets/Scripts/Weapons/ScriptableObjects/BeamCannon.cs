@@ -10,7 +10,7 @@ public class BeamCannon : Weapon
     private int layerMask = 0;
     private int numGuns = 0;
 
-    private float fireTimer = 0.2f;
+    private float fireTimer = 0.3f;
     private float damageTick = 0.25f;
     private float damageTickTimer = 0;
 
@@ -70,6 +70,7 @@ public class BeamCannon : Weapon
             }
         }
 
+        fireTimer = 0.3f;
 
         base.Fire(gun);
     }
