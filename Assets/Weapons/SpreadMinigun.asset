@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf2a6c6a884b12e4a9f876c69aa46791, type: 3}
+  m_Name: SpreadMinigun
+  m_EditorClassIdentifier: 
+  gunParts: 10
+  weaponIcon: {fileID: 21300000, guid: a68a94896b3b5d24aa401ae98ab5bd2c, type: 3}
+  weaponType: 0
+  spawnable: {fileID: 5521668472997189268, guid: 76f6c4cf71dcc9440b42f15954516d4c,
+    type: 3}
+  projectileSpeed: 500
+  projectileLifetime: 1
+  damage: 4
+  refireSpeed: 0.09
+  uniqueWeapon: 0
+  currentRefire: 0
+  explosionRadius: 0
+  deviation: {x: 0.5, y: 0.5}
+  extraBullets: 3
