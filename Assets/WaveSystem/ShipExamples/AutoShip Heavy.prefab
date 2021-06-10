@@ -37,10 +37,20 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4661970142565582864, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
+        type: 3}
+      propertyPath: _armour
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661970142565582864, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
+        type: 3}
+      propertyPath: _armourAndSheildValue
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6777656222595032711, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
         type: 3}
       propertyPath: m_Name
-      value: AutoShip Variant Variant
+      value: AutoShip Heavy
       objectReference: {fileID: 0}
     - target: {fileID: 8915306803616694596, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
         type: 3}

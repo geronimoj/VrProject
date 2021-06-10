@@ -54,7 +54,8 @@ public class MultiPointEnemy : Enemy
     /// Removes all code from DoDamage. You cannot deal damage to this enemy directly
     /// </summary>
     /// <param name="damage">The damage to deal</param>
-    public override void DoDamage(float damage)
+    public override bool DoDamage(float damage)
     {
+        return true;
     }
 }

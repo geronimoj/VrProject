@@ -15,10 +15,10 @@ public class Weakpoint : ArmouredHealth
     /// Multiplies the damage by m_weakpointModifier before dealing damage
     /// </summary>
     /// <param name="damage">The damage to deal</param>
-    public override void DoDamage(float damage)
+    public override bool DoDamage(float damage)
     {   //Modify the damage
         damage *= m_weakpointModifier;
         //Deal the damage
-        base.DoDamage(damage);
+        return base.DoDamage(damage);
     }
 }

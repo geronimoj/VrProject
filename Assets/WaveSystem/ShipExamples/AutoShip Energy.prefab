@@ -30,7 +30,17 @@ PrefabInstance:
     - target: {fileID: 5553430878425626427, guid: 6d258f2b3039595488fd449296c583eb,
         type: 3}
       propertyPath: m_Name
-      value: AutoShip Variant Variant Variant
+      value: AutoShip Energy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6029203612496419244, guid: 6d258f2b3039595488fd449296c583eb,
+        type: 3}
+      propertyPath: _armour
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6029203612496419244, guid: 6d258f2b3039595488fd449296c583eb,
+        type: 3}
+      propertyPath: _armourAndSheildValue
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7541037695019176184, guid: 6d258f2b3039595488fd449296c583eb,
         type: 3}
