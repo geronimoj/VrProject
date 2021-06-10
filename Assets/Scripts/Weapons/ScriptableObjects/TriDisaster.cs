@@ -118,7 +118,7 @@ public class TriDisaster : Weapon
 
                 //If its armoured health, use its dodamage function
                 if (health as ArmouredHealth)
-                    (health as ArmouredHealth).DoDamage(damage, weaponType);
+                    (health as ArmouredHealth).DoDamage(damage, WeaponType.Energy);
                 //Otherwise just use the normal
                 else
                     health.DoDamage(damage);
