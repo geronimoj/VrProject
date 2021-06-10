@@ -7,12 +7,13 @@ public class Minigun : Weapon
 {
     public override void Fire(Transform guns)
     {
-       GameObject b = Instantiate(spawnable, guns.position, guns.rotation);
-       Projectile p = b.GetComponent<Projectile>();
-       p.damage = damage;
-       p.projectileSpeed = projectileSpeed;
-       p.lifetime = projectileLifetime;
+        GameObject b = Instantiate(spawnable, guns.position, guns.rotation);
+        Projectile p = b.GetComponent<Projectile>();
+        p.damage = damage;
+        p.projectileSpeed = projectileSpeed;
+        p.lifetime = projectileLifetime;
+        p.damageType = weaponType;
 
-       base.Fire(guns);
+        base.Fire(guns);
     }
 }

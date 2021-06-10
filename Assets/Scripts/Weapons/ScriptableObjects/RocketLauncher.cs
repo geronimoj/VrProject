@@ -14,6 +14,7 @@ public class RocketLauncher : Weapon
         p.lifetime = projectileLifetime;
         p.explode = true;
         p.explosionRadius = explosionRadius;
+        p.damageType = weaponType;
 
         base.Fire(gun);
     }

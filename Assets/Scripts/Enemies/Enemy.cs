@@ -5,7 +5,7 @@ using UnityEngine.Events;
 /// <summary>
 /// Class for the enemies
 /// </summary>
-public class Enemy : Health
+public class Enemy : ArmouredHealth
 {   /// <summary>
     /// The number of points the player gains when the enemy dies
     /// </summary>
@@ -18,7 +18,9 @@ public class Enemy : Health
     [Tooltip("The enemies main weapon")]
     [SerializeField]
     private Weapon _weapon = null;
-
+    /// <summary>
+    /// The enemies main weapon
+    /// </summary>
     protected Weapon _mainWeapon = null;
     /// <summary>
     /// The points from which the enemies weapon fires

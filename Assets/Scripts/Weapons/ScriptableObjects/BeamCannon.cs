@@ -55,8 +55,12 @@ public class BeamCannon : Weapon
             {
                 if (!health || hit.collider.gameObject != health.gameObject)
                     health = hit.collider.gameObject.GetComponent<Health>();
-
-                health.DoDamage(damage);
+                //If its armoured health, use its dodamage function
+                if (health as ArmouredHealth)
+                    (health as ArmouredHealth).DoDamage(damage, weaponType);
+                //Otherwise just use the normal
+                else
+                    health.DoDamage(damage);
             }
         }
 

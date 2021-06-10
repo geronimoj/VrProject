@@ -68,6 +68,7 @@ public class LockOnRockets : Weapon
             p.homing = true;
             p.homingTarget = targets[i];
             p.homingAngle = homingAngle;
+            p.damageType = weaponType;
         }
         targets.Clear();
         lockOnTimer = 0;
