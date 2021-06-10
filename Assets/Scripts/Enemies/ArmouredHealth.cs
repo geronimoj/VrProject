@@ -47,6 +47,9 @@ public class ArmouredHealth : Health
                 }
                 break;
             case WeaponType.Explosive:
+                //Deal no damage to shielded targets
+                if (_armour == ArmourType.Shielded)
+                    return;
                 //If the target is armoured, increase the damage of explosive weaponry
                 if (_armour == ArmourType.Armoured)
                     damage *= _armourAndSheildValue;
