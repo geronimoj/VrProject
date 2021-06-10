@@ -5343,8 +5343,8 @@ MonoBehaviour:
   formation: BonusForm
   sequential: 1
   spacing: 2
-  pathComp: {fileID: 0}
-  formComp: {fileID: 0}
+  pathComp: {fileID: 1971824982}
+  formComp: {fileID: 1825455265}
   position: {x: 23, y: 40, z: 30}
   visible: 1
 --- !u!114 &2103978848
@@ -5364,8 +5364,8 @@ MonoBehaviour:
   formation: BonusForm
   sequential: 1
   spacing: 1
-  pathComp: {fileID: 0}
-  formComp: {fileID: 0}
+  pathComp: {fileID: 1971824982}
+  formComp: {fileID: 1825455265}
   position: {x: -23, y: 40, z: 30}
   visible: 1
 --- !u!114 &2103978849
@@ -5385,8 +5385,8 @@ MonoBehaviour:
   formation: BonusForm
   sequential: 1
   spacing: 2
-  pathComp: {fileID: 0}
-  formComp: {fileID: 0}
+  pathComp: {fileID: 1971824982}
+  formComp: {fileID: 1825455265}
   position: {x: 0, y: 40, z: 30}
   visible: 1
 --- !u!114 &2103978850
@@ -5406,8 +5406,8 @@ MonoBehaviour:
   formation: BonusForm
   sequential: 1
   spacing: 2
-  pathComp: {fileID: 0}
-  formComp: {fileID: 0}
+  pathComp: {fileID: 1971824982}
+  formComp: {fileID: 1825455265}
   position: {x: 0, y: 55, z: 30}
   visible: 1
 --- !u!114 &2103978851
@@ -5427,8 +5427,8 @@ MonoBehaviour:
   formation: BonusForm
   sequential: 1
   spacing: 2
-  pathComp: {fileID: 0}
-  formComp: {fileID: 0}
+  pathComp: {fileID: 1971824982}
+  formComp: {fileID: 1825455265}
   position: {x: -23, y: 55, z: 30}
   visible: 1
 --- !u!114 &2103978852
@@ -5448,8 +5448,8 @@ MonoBehaviour:
   formation: BonusForm
   sequential: 1
   spacing: 2
-  pathComp: {fileID: 0}
-  formComp: {fileID: 0}
+  pathComp: {fileID: 1971824982}
+  formComp: {fileID: 1825455265}
   position: {x: 23, y: 55, z: 30}
   visible: 1
 --- !u!1 &2114766592
