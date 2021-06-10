@@ -19,14 +19,15 @@ public class SeparateHealth : Weakpoint
     /// Deals damage to the target and also this if m_alsoDealDamageToThis is true
     /// </summary>
     /// <param name="damage">The damage to deal</param>
-    public override void DoDamage(float damage)
+    public override bool DoDamage(float damage)
     {   //Check if we should deal damage to this
         if (m_alsoDealDamageToThis)
             //Call the base
-            base.DoDamage(damage);
+            return base.DoDamage(damage);
         //Modify the damage
         damage *= m_weakpointModifier;
         //Redirect the damage to the target
         m_damageDestination.DoDamage(damage);
+        return true;
     }
 }

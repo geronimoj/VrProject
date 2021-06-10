@@ -108,12 +108,18 @@ public class Projectile : MonoBehaviour
                             ArmouredHealth ah = h as ArmouredHealth;
                             //Null check
                             if (ah)
-                                ah.DoDamage(damage, damageType);
+                            {
+                                if (ah.DoDamage(damage, damageType))
+                                    Destroy(gameObject);
+                            }
                             //If its null, try it on regular health
                             else
-                                h.DoDamage(damage);
+                            {
+                                if (h.DoDamage(damage))
+                                    Destroy(gameObject);
+                            }
+                                
                         }
-                        Destroy(gameObject);
                     }
                 }
                 //If they are an enemies projectile, destroy it
