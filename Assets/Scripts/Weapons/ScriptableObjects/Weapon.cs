@@ -13,27 +13,6 @@ public enum WeaponType
     Energy
 }
 
-public enum FireType
-{
-    // Hold trigger to continuously fire the weapon.
-    Automatic = 0,
-    // Press trigger to fire the weapon.
-    SemiAutomatic,
-    // Hold trigger to charge weapon, release to fire.
-    Charge,
-    // Hold trigger to lock on to enemies, release to fire at all locks.
-    LockOn,
-
-}
-
-public enum ProjectileType
-{
-    // Projectile will travel at a specified speed.
-    Projectile = 0,
-    // Projectile is an instant line from point A to point B.
-    Beam,
-}
-
 [System.Flags]
 public enum Guns
 {
