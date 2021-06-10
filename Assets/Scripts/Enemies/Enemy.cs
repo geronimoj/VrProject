@@ -71,6 +71,8 @@ public class Enemy : ArmouredHealth
     /// The targets the enemies can shoot at
     /// </summary>
     private static readonly List<Transform> s_targets = new List<Transform>();
+
+    public static UnityEvent KillEnemies;
     /// <summary>
     /// Sets up the targets for the enemies to shoot
     /// </summary>
@@ -85,6 +87,8 @@ public class Enemy : ArmouredHealth
             foreach (GameObject obj in objects)
                 s_targets.Add(obj.transform);
         }
+
+        KillEnemies.AddListener(Kill);
     }
     /// <summary>
     /// Creates a local instance of the main weapon to avoid multiple enemies using the same Object
@@ -168,5 +172,10 @@ public class Enemy : ArmouredHealth
     {   //Update the main weapon
         if (_mainWeapon)
             _mainWeapon.WeaponUpdate();
+    }
+
+    private void Kill()
+    {
+        Destroy(gameObject);
     }
 }
