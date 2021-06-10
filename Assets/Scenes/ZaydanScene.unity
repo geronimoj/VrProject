@@ -1024,7 +1024,7 @@ PrefabInstance:
     - target: {fileID: 8552569522878149124, guid: 4f8dc0ba0dd642140af40a2e097d3bb6,
         type: 3}
       propertyPath: m_weapons.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8552569522878149124, guid: 4f8dc0ba0dd642140af40a2e097d3bb6,
         type: 3}
@@ -1055,6 +1055,12 @@ PrefabInstance:
       propertyPath: m_weapons.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: f15eedf0c772f6446b303dbe4cd8baef,
+        type: 2}
+    - target: {fileID: 8552569522878149124, guid: 4f8dc0ba0dd642140af40a2e097d3bb6,
+        type: 3}
+      propertyPath: m_weapons.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 48c132f61e6bdf240b45c1510257d376,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f8dc0ba0dd642140af40a2e097d3bb6, type: 3}
@@ -2731,6 +2737,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fa88622e2eeba5d4bbf24b6c7bf2fa2c, type: 2}
   - {fileID: 11400000, guid: 8b654b57a70a2b94b92242b18d3c23c3, type: 2}
   - {fileID: 11400000, guid: f15eedf0c772f6446b303dbe4cd8baef, type: 2}
+  - {fileID: 11400000, guid: 48c132f61e6bdf240b45c1510257d376, type: 2}
   anchor: {fileID: 811917785}
   guns:
   - {fileID: 1545330160}
@@ -4454,6 +4461,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7798543975568730622, guid: ec89dbfd7d51ff848b8d50b195fd790a,
+        type: 3}
+      propertyPath: _armour
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7798543975568730622, guid: ec89dbfd7d51ff848b8d50b195fd790a,
+        type: 3}
+      propertyPath: _armourAndSheildValue
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec89dbfd7d51ff848b8d50b195fd790a, type: 3}
