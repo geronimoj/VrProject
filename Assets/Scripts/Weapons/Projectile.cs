@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Projectile : MonoBehaviour
 {   /// <summary>
@@ -42,10 +43,20 @@ public class Projectile : MonoBehaviour
     /// </summary>
     [Tooltip("The team that takes the damage")]
     public Target target;
+    /// <summary>
+    /// Called when the projectiles spawns
+    /// </summary>
+    public UnityEvent OnStart;
+    /// <summary>
+    /// Called when the projectile destroys itself
+    /// </summary>
+    public UnityEvent OnEnd;
+    
 
     void Start()
     {
         StartCoroutine(DestroyAfter(gameObject));
+        OnStart.Invoke();
     }
 
     private IEnumerator DestroyAfter(GameObject o)
@@ -157,5 +168,10 @@ public class Projectile : MonoBehaviour
         GameObject g = Instantiate(explosion, transform.position, Quaternion.identity);
         StartCoroutine(DestroyAfter(g));
         Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        OnEnd.Invoke();
     }
 }
