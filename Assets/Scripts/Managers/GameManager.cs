@@ -58,7 +58,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void Awake()
     {   //Pause the game while everything loads
-        Pause(true);
+        //Pause(true);
+        _waveManager.LoadLevel("TutorialLevel");
     }
     /// <summary>
     /// Core game loop
