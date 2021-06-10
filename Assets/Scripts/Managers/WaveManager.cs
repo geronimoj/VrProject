@@ -177,24 +177,6 @@ public class WaveManager : MonoBehaviour
     }*/
     #endregion
     /// <summary>
-    /// For pausing the entire game
-    /// </summary>
-    /// <param name="value">The pause state. True = paused</param>
-    public void Pause(bool value)
-    {   //Pause wave spawning
-        Wave.paused = value;
-        //Pause enemy movement
-        BezRunner.paused = value;
-    }
-    /// <summary>
-    /// Pauses the spawning of enemies
-    /// </summary>
-    /// <param name="value">The pause state. True = paused</param>
-    public void PauseSpawning(bool value)
-    {
-        Wave.paused = value;
-    }
-    /// <summary>
     /// For resetting the level
     /// </summary>
     public void ResetLevel()
@@ -223,7 +205,7 @@ public class WaveManager : MonoBehaviour
     {   //Unload the current level
         UnloadLevel();
         //Load the new level
-        SceneManager.LoadScene(levelSceneName);
+        SceneManager.LoadScene(levelSceneName, LoadSceneMode.Additive);
         _currentLevel = levelSceneName;
     }
     /// <summary>

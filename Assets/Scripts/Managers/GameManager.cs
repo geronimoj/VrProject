@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Tracks gameover stat and player death
+/// </summary>
 public class GameManager : MonoBehaviour
 {
-    /// <summary>
-    /// A list of the enemies currently in the scene. Used to track if we should pause enemy spawning momentarily to avoid overwhelming the player
-    /// </summary>
-    private static readonly List<GameObject> _enemies = new List<GameObject>();
+    [Tooltip("The wave manager")]
+    [SerializeField]
+    protected WaveManager _waveManager = null;
     /// <summary>
     /// Has the game finished
     /// </summary>
@@ -68,5 +69,12 @@ public class GameManager : MonoBehaviour
             return;
         //Check if the game is over
         _gameIsOver = PlayerShip.PlayerIsDead;
+    }
+    /// <summary>
+    /// Quits the app
+    /// </summary>
+    public void ExitApp()
+    {   //Quit the application
+        Application.Quit();
     }
 }

@@ -43,6 +43,13 @@ public class TutorialManager : MonoBehaviour
     /// </summary>
     public bool TutorialFinished => _currentStage >= _tutorialStage.Length;
 
+    private void Start()
+    {
+        _tasksCompleted = -1;
+    }
+    /// <summary>
+    /// Checks if the next stage of the tutorial has started
+    /// </summary>
     private void Update()
     {   //If the tutorial has finished, don't do anything
         if (TutorialFinished)
