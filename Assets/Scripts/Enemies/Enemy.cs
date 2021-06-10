@@ -127,6 +127,17 @@ public class Enemy : ArmouredHealth
         //Give your score to the player
         PlayerShip.GainScore(_scoreGainOnDeath);
     }
+
+    private void OnDisable()
+    {   //Remove the enemy from the radar or reticle view
+        if (EnemyReticleSystem.s_instance)
+            EnemyReticleSystem.s_instance.LeaveReticleView(transform);
+
+        if (RadarSystem.s_instance)
+            RadarSystem.s_instance.LeaveRadar(transform);
+        //Give your score to the player
+        PlayerShip.GainScore(_scoreGainOnDeath);
+    }
     /// <summary>
     /// Fires the main weapon when the time is met
     /// </summary>

@@ -337,7 +337,7 @@ PrefabInstance:
     - target: {fileID: 719004885059515230, guid: b0f7eb64794cb61418e7e29a28b4c888,
         type: 3}
       propertyPath: destroyOnDeath
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 719004885059515230, guid: b0f7eb64794cb61418e7e29a28b4c888,
         type: 3}
@@ -544,7 +544,7 @@ PrefabInstance:
     - target: {fileID: 7638243068585219233, guid: 220a96184eaacb24eb9dbaeefebc71da,
         type: 3}
       propertyPath: destroyOnDeath
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 532219378, guid: 220a96184eaacb24eb9dbaeefebc71da, type: 3}
@@ -713,7 +713,7 @@ PrefabInstance:
     - target: {fileID: 8106480358412470088, guid: dfc94b5c4f3020a41b26a86ef5ff2686,
         type: 3}
       propertyPath: destroyOnDeath
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8106480358412470088, guid: dfc94b5c4f3020a41b26a86ef5ff2686,
         type: 3}
@@ -2108,7 +2108,7 @@ PrefabInstance:
     - target: {fileID: 8106480358412470088, guid: dfc94b5c4f3020a41b26a86ef5ff2686,
         type: 3}
       propertyPath: destroyOnDeath
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8106480358412470088, guid: dfc94b5c4f3020a41b26a86ef5ff2686,
         type: 3}

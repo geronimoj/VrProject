@@ -45,7 +45,8 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        _tasksCompleted = -1;
+        _tasksCompleted = int.MaxValue;
+        _currentStage = -1;
     }
     /// <summary>
     /// Checks if the next stage of the tutorial has started
@@ -55,11 +56,13 @@ public class TutorialManager : MonoBehaviour
         if (TutorialFinished)
             return;
 
-        if (_tasksCompleted >= _tutorialStage[_currentStage]._requiredNumberOfCompletedTasks)
+        if (_currentStage < 0 || _tasksCompleted >= _tutorialStage[_currentStage]._requiredNumberOfCompletedTasks)
         {   //Reset the task timer
             _tasksCompleted = 0;
-            //Call OnStageEnd
-            _tutorialStage[_currentStage].OnEndStage.Invoke();
+            //Make sure the index is valid
+            if (_currentStage >= 0)
+                //Call OnStageEnd
+                _tutorialStage[_currentStage].OnEndStage.Invoke();
             //Move to the next stage
             _currentStage++;
             //If the tutorial has finished, return
