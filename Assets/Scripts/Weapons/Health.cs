@@ -28,10 +28,10 @@ public class Health : MonoBehaviour
 
     //Put the death check in DoDamage to reduce calls
 
-    public virtual void DoDamage(float damage)
+    public virtual bool DoDamage(float damage)
     {   //Don't deal damage to a dead character
         if (currentHealth < 0)
-            return;
+            return false;
 
         currentHealth -= damage;
 
@@ -44,5 +44,6 @@ public class Health : MonoBehaviour
             if (destroyOnDeath)
                 Destroy(gameObject);
         }
+        return true;
     }
 }

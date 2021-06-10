@@ -21,14 +21,14 @@ public class ArmouredHealth : Health
     /// </summary>
     /// <param name="damage">The damage to deal</param>
     /// <param name="damageType">The type of damage being dealt</param>
-    public void DoDamage(float damage, WeaponType damageType)
+    public bool DoDamage(float damage, WeaponType damageType)
     {   //Deal damage the correct way
         switch (damageType)
         {   //Anti Light armour
             case WeaponType.Ballistic:
                 //If the damage type is sheilds, don't do anything
                 if (_armour == ArmourType.Shielded)
-                    return;
+                    return false;
                 break;
             case WeaponType.Energy:
                 //Deal damage to sheilds first
@@ -43,20 +43,20 @@ public class ArmouredHealth : Health
                         currentHealth -= _armourAndSheildValue;
                     }
                     //Don't deal damage to the ship yet
-                    return;
+                    return false;
                 }
                 break;
             case WeaponType.Explosive:
                 //Deal no damage to shielded targets
                 if (_armour == ArmourType.Shielded)
-                    return;
+                    return false;
                 //If the target is armoured, increase the damage of explosive weaponry
                 if (_armour == ArmourType.Armoured)
                     damage *= _armourAndSheildValue;
                 break;
         }
         //Do damage direct to the health
-        DoDamage(damage);
+        return DoDamage(damage);
     }
     /// <summary>
     /// The type of armour the enemy has

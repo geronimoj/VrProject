@@ -120,12 +120,14 @@ public class PlayerShip : Health
     /// Overrides the DoDamage to also reduce the players score
     /// </summary>
     /// <param name="damage">The damage dealt</param>
-    public override void DoDamage(float damage)
+    public override bool DoDamage(float damage)
     {
-        base.DoDamage(damage);
         //Reduce the players score based on how much damage they just took
         //This does not account for overkill
         GainScore(-damage * _scoreLossPerHealth);
+
+        return base.DoDamage(damage);
+        
     }
     /// <summary>
     /// Deals damage to the player
