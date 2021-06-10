@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     /// <param name="paused">The paused stat</param>
     public static void Pause(bool paused)
     {
+        Debug.Log("Paused State: " + paused);
         Wave.paused = paused;
         BezRunner.paused = paused;
     }
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviour
     /// <param name="paused">The pause state</param>
     public static void PauseSpawning(bool paused)
     {
+        Debug.Log("Wave Paused State: " + paused);
         Wave.paused = paused;
         //Make sure the runners aren't paused
         BezRunner.paused = false;
