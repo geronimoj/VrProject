@@ -52,7 +52,7 @@ public class Projectile : MonoBehaviour
     /// </summary>
     public UnityEvent OnEnd;
 
-    public static UnityEvent DestroyProjectiles;
+    public static UnityEvent DestroyProjectiles = new UnityEvent();
 
     private void Destroy()
     {

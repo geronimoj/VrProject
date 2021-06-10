@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+/// <summary>
+/// Manages the tutorial
+/// </summary>
 public class TutorialManager : MonoBehaviour
 {
+    /// <summary>
+    /// A stage in the tutorial
+    /// </summary>
     [System.Serializable]
     public struct Stage
     {

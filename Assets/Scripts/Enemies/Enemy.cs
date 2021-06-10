@@ -72,7 +72,7 @@ public class Enemy : ArmouredHealth
     /// </summary>
     private static readonly List<Transform> s_targets = new List<Transform>();
 
-    public static UnityEvent KillEnemies;
+    public static UnityEvent KillEnemies = new UnityEvent();
     /// <summary>
     /// Sets up the targets for the enemies to shoot
     /// </summary>
