@@ -4,8 +4,12 @@ using UnityEngine;
 /// <summary>
 /// Tracks gameover stat and player death
 /// </summary>
+[RequireComponent(typeof(WaveManager))]
 public class GameManager : MonoBehaviour
 {
+    /// <summary>
+    /// Reference to the WaveManager for loading scenes
+    /// </summary>
     [Tooltip("The wave manager")]
     [SerializeField]
     protected WaveManager _waveManager = null;
@@ -58,13 +62,23 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void Awake()
     {   //Pause the game while everything loads
-        //Pause(true);
+        Pause(true);
         _waveManager.LoadLevel("TutorialLevel");
     }
-
+    /// <summary>
+    /// Prepares the GameManager
+    /// </summary>
     private void Start()
     {
         PlayerShip.s_instance.OnDeath.AddListener(GameOver);
+        //If the wave manager is null, try and find it
+        if (!_waveManager)
+        {   //Attempt to get it
+            _waveManager = GetComponent<WaveManager>();
+            //If its still null, log an error
+            if (!_waveManager)
+                Debug.LogError("Could not find WaveManager as GameManager");
+        }
     }
     /// <summary>
     /// Core game loop
@@ -76,10 +90,23 @@ public class GameManager : MonoBehaviour
         //Check if the game is over
         _gameIsOver = PlayerShip.PlayerIsDead;
     }
-
+    /// <summary>
+    /// Called when the game ends
+    /// </summary>
     private void GameOver()
     {
-
+        Debug.LogError("Game over logic not implemented.");
+    }
+    /// <summary>
+    /// Called when the game starts
+    /// </summary>
+    public void StartGame()
+    {   //Reset the player
+        PlayerShip.s_instance.Reset();
+        //Enable the waves to spawn
+        Pause(false);
+        //Reset the score
+        PlayerShip.s_instance.m_currentScore = 0;
     }
     /// <summary>
     /// Quits the app
