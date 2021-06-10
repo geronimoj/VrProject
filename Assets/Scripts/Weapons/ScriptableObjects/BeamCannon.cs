@@ -10,6 +10,10 @@ public class BeamCannon : Weapon
     private int layerMask = 0;
     private int numGuns = 0;
 
+    private float fireTimer = 0.2f;
+    private float damageTick = 0.25f;
+    private float damageTickTimer = 0;
+
     public override void OnStartup()
     {
 
@@ -51,7 +55,7 @@ public class BeamCannon : Weapon
                 lines[i].SetPosition(1, hit.point);
             }
 
-            if (hit.collider.gameObject.CompareTag("Enemy"))
+            if (hit.collider.gameObject.CompareTag("Enemy") && damageTickTimer >= damageTick)
             {
                 if (!health || hit.collider.gameObject != health.gameObject)
                     health = hit.collider.gameObject.GetComponent<Health>();
@@ -61,6 +65,8 @@ public class BeamCannon : Weapon
                 //Otherwise just use the normal
                 else
                     health.DoDamage(damage);
+
+                damageTickTimer = 0;
             }
         }
 
@@ -80,6 +86,12 @@ public class BeamCannon : Weapon
                         lines[i].SetPosition(1, lines[i].GetPosition(0));
                 }
             }
+        }
+
+        fireTimer -= Time.deltaTime;
+        if(fireTimer > 0)
+        {
+            damageTickTimer += Time.deltaTime;
         }
         
         base.WeaponUpdate();
