@@ -612,6 +612,7 @@ namespace UnityEngine.EventSystems
             leftData.pointerCurrentRaycast = raycast;
             m_RaycastResultCache.Clear();
 
+            if (m_Cursor)
             m_Cursor.SetCursorRay(rayTransform);
 
             OVRRaycaster ovrRaycaster = raycast.module as OVRRaycaster;
@@ -630,6 +631,7 @@ namespace UnityEngine.EventSystems
                     // Set are gaze indicator with this world position and normal
                     Vector3 worldPos = raycast.worldPosition;
                     Vector3 normal = GetRectTransformNormal(graphicRect);
+                    if (m_Cursor)
                     m_Cursor.SetCursorStartDest(rayTransform.position, worldPos, normal);
                 }
             }
@@ -654,6 +656,7 @@ namespace UnityEngine.EventSystems
 
                 leftData.position = physicsRaycaster.GetScreenPos(raycast.worldPosition);
 
+                if (m_Cursor)
                 m_Cursor.SetCursorStartDest(rayTransform.position, position, raycast.worldNormal);
             }
 
