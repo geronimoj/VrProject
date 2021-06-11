@@ -206,7 +206,7 @@ PrefabInstance:
     - target: {fileID: 1042229299550929102, guid: 9592b95c6e0deaf4d8cb0c80673ea8f8,
         type: 3}
       propertyPath: m_radarRange
-      value: 50
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 1042229299550929102, guid: 9592b95c6e0deaf4d8cb0c80673ea8f8,
         type: 3}
