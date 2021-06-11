@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 /// <summary>
 /// Tracks gameover stat and player death
 /// </summary>
@@ -13,6 +14,10 @@ public class GameManager : MonoBehaviour
     [Tooltip("The wave manager")]
     [SerializeField]
     protected WaveManager _waveManager = null;
+    /// <summary>
+    /// Is the gameover scene open
+    /// </summary>
+    private bool _gameOverSceneIsOpen = false;
     /// <summary>
     /// Has the game finished
     /// </summary>
@@ -67,7 +72,8 @@ public class GameManager : MonoBehaviour
         //Pause(true);
 #if !UNITY_EDITOR
         _waveManager.LoadLevel("MainMenu");
-#endif
+#endif  //Set up listeners
+        _waveManager.OnLevelChange.AddListener(CloseGameOverMenu);
     }
     /// <summary>
     /// Prepares the GameManager
@@ -100,6 +106,10 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         Debug.LogError("Game over logic not implemented.");
+        //Load the gameOver scene
+        SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
+        //Toggle it to be open
+        _gameOverSceneIsOpen = true;
     }
     /// <summary>
     /// Called when the game starts
@@ -109,8 +119,20 @@ public class GameManager : MonoBehaviour
         PlayerShip.s_instance.Reset();
         //Enable the waves to spawn
         Pause(false);
-        //Reset the score
-        PlayerShip.s_instance.CurrentScore = 0;
+        //Cloes the gameOver menu
+        CloseGameOverMenu();
+    }
+    /// <summary>
+    /// Unloads the GameOver scene if its open
+    /// </summary>
+    public void CloseGameOverMenu()
+    {
+        //Unload the GameOver scene if its open
+        if (_gameOverSceneIsOpen)
+        {
+            SceneManager.UnloadSceneAsync("GameOver");
+            _gameIsOver = false;
+        }
     }
     /// <summary>
     /// Quits the app

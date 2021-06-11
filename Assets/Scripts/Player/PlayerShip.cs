@@ -174,6 +174,7 @@ public class PlayerShip : Health
     public void Reset()
     {
         currentHealth = health;
+        CurrentScore = 0;
         ResetEvents();
     }
 }
