@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SpaceShip.unity
     guid: 01d3065b2c98b3243a0861a04e1c910d
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/TutorialLevel.unity
     guid: 26bba4298bd95cb40859f2ef8edfea6f
   - enabled: 1
