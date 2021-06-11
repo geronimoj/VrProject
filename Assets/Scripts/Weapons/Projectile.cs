@@ -28,7 +28,10 @@ public class Projectile : MonoBehaviour
     public float explosionRadius;
     public GameObject explosion;
 
+    [HideInInspector]
     public bool homing;
+
+    public bool seeking;
     public Transform homingTarget;
     public float homingAngle;
     /// <summary>
@@ -80,7 +83,7 @@ public class Projectile : MonoBehaviour
     {
         transform.position += transform.forward * projectileSpeed * Time.deltaTime;
         //Null catch the homing to avoid the enemy dying before the projectile reaches its target and causing errors
-        if (homing && homingTarget)
+        if (homing && homingTarget || seeking && homingTarget)
         {
             Vector3 desiredPos = homingTarget.position - transform.position;
             float step = homingAngle * Time.deltaTime;
@@ -91,6 +94,19 @@ public class Projectile : MonoBehaviour
         if (homing && !homingTarget)
         {
             Explode();
+        }
+
+        if(seeking && !homingTarget)
+        {
+            RaycastHit[] hits = Physics.CapsuleCastAll(transform.position, transform.position + transform.forward * 300, 10, transform.forward, Mathf.Infinity, LayerMask.GetMask("Enemy"));
+
+            for (int i = 0; i < hits.Length; i++)
+            {
+                if (hits[i].transform.gameObject.GetComponent<Health>())
+                {
+                    homingTarget = hits[i].transform;
+                }
+            }
         }
         
     }

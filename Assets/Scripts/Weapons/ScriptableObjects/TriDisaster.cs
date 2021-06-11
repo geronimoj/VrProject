@@ -8,6 +8,8 @@ public class TriDisaster : Weapon
     public GameObject bullet;
     public GameObject rocket;
 
+    public bool seekingRockets = false;
+
     public float bulletDamage;
     public float rocketDamage;
     public float beamDamage;
@@ -83,6 +85,7 @@ public class TriDisaster : Weapon
         p.explode = true;
         p.explosionRadius = explosionRadius;
         p.damageType = weaponType;
+        p.seeking = seekingRockets;
 
 
         refire += rocketRefire;
