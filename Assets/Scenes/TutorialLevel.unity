@@ -2890,6 +2890,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2023548772}
   - component: {fileID: 2023548771}
+  - component: {fileID: 2023548773}
   m_Layer: 0
   m_Name: Skyboxsetter
   m_TagString: Untagged
@@ -2909,7 +2910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ddd0206aaff8340a173c27c1499221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skybox: {fileID: 2100000, guid: 7298203db88f93b438745cc8ac7b9b39, type: 2}
+  skybox: {fileID: 2100000, guid: 6bdeffdcd79ca314198d9c9ed5b96110, type: 2}
 --- !u!4 &2023548772
 Transform:
   m_ObjectHideFlags: 0
@@ -2924,6 +2925,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2023548773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023548770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 136bb17ff4240e44589fd22b358c4d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skyboxMaterial: {fileID: 2100000, guid: 6bdeffdcd79ca314198d9c9ed5b96110, type: 2}
+  displayTop: 1
+  _setInstantly: 1
+  _transitionDuration: 5
 --- !u!1 &2050538883
 GameObject:
   m_ObjectHideFlags: 0

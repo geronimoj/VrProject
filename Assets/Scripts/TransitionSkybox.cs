@@ -14,7 +14,13 @@ public class TransitionSkybox : MonoBehaviour
     /// <summary>
     /// Is it scrolling up or down
     /// </summary>
+    [SerializeField]
     private bool displayTop = false;
+    /// <summary>
+    /// Should the skybox be instantly set to the value
+    /// </summary>
+    [SerializeField]
+    private bool _setInstantly = false;
     /// <summary>
     /// Timer for the transition
     /// </summary>
@@ -24,6 +30,18 @@ public class TransitionSkybox : MonoBehaviour
     /// </summary>
     [Tooltip("The duration of the transition")]
     public float _transitionDuration = 0;
+    /// <summary>
+    /// Sets the timer correct
+    /// </summary>
+    private void Start()
+    {
+        if (!_setInstantly)
+            //Set it to sweep from the other value
+            t_timer = displayTop ? _transitionDuration : 0;
+        else
+            //Set it to already be finished
+            t_timer = !displayTop ? _transitionDuration : 0;
+    }
     /// <summary>
     /// Update the skybox
     /// </summary>
