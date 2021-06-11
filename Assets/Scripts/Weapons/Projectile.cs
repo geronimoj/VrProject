@@ -79,7 +79,7 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         transform.position += transform.forward * projectileSpeed * Time.deltaTime;
-        if (homing)
+        if (homing && homingTarget)
         {
             Vector3 desiredPos = homingTarget.position - transform.position;
             float step = homingAngle * Time.deltaTime;
