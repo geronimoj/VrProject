@@ -76,4 +76,9 @@ public class TransitionSkybox : MonoBehaviour
     {
         displayTop = top;
     }
+
+    public void Toggle()
+    {
+        displayTop = !displayTop;
+    }
 }
