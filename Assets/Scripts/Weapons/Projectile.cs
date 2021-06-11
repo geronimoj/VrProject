@@ -79,6 +79,7 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         transform.position += transform.forward * projectileSpeed * Time.deltaTime;
+        //Null catch the homing to avoid the enemy dying before the projectile reaches its target and causing errors
         if (homing && homingTarget)
         {
             Vector3 desiredPos = homingTarget.position - transform.position;
