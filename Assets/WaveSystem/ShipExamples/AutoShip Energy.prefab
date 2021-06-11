@@ -127,18 +127,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6029203612496419244, guid: 6d258f2b3039595488fd449296c583eb,
         type: 3}
+      propertyPath: OnBreakShield.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6029203612496419244, guid: 6d258f2b3039595488fd449296c583eb,
+        type: 3}
       propertyPath: _armour
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6029203612496419244, guid: 6d258f2b3039595488fd449296c583eb,
         type: 3}
       propertyPath: _armourAndSheildValue
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6029203612496419244, guid: 6d258f2b3039595488fd449296c583eb,
         type: 3}
       propertyPath: health
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6029203612496419244, guid: 6d258f2b3039595488fd449296c583eb,
+        type: 3}
+      propertyPath: OnBreakShield.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6029203612496419244, guid: 6d258f2b3039595488fd449296c583eb,
+        type: 3}
+      propertyPath: OnBreakShield.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6029203612496419244, guid: 6d258f2b3039595488fd449296c583eb,
+        type: 3}
+      propertyPath: OnBreakShield.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8772745942128274280}
+    - target: {fileID: 6029203612496419244, guid: 6d258f2b3039595488fd449296c583eb,
+        type: 3}
+      propertyPath: OnBreakShield.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6029203612496419244, guid: 6d258f2b3039595488fd449296c583eb,
+        type: 3}
+      propertyPath: OnBreakShield.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6029203612496419244, guid: 6d258f2b3039595488fd449296c583eb,
+        type: 3}
+      propertyPath: _scoreGainOnDeath
+      value: 175
       objectReference: {fileID: 0}
     - target: {fileID: 7541037695019176184, guid: 6d258f2b3039595488fd449296c583eb,
         type: 3}
