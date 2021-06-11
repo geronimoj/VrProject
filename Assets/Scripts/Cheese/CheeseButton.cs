@@ -35,7 +35,7 @@ public class CheeseButton : MonoBehaviour
         //Make sure the skybox is fulling showing one or the other image
         float offset = _skyboxMat.GetFloat("_Offset");
         //Make sure the offset is finished basically
-        if (offset > -0.99 || offset < 0.99)
+        if (offset > -0.99 && offset < 0.99)
             return;
         //If true, change top image
         bool changeTop = offset >= 0.99;
