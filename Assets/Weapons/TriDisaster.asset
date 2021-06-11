@@ -18,17 +18,20 @@ MonoBehaviour:
   spawnable: {fileID: 0}
   projectileSpeed: 0
   projectileLifetime: 3
-  damage: 0
+  damage: 2
   refireSpeed: 0
+  seeking: 1
+  turnAngle: 5
   uniqueWeapon: 1
-  currentRefire: -1.6392257
+  currentRefire: -12.081903
   explosionRadius: 15
   bullet: {fileID: 5521668472997189268, guid: 76f6c4cf71dcc9440b42f15954516d4c, type: 3}
   rocket: {fileID: 5521668472997189268, guid: 38086a14bb5f75f499da379909e62d28, type: 3}
-  bulletDamage: 0
+  seekingRockets: 1
+  bulletDamage: 2
   rocketDamage: 20
   beamDamage: 2
-  bulletSpeed: 0
+  bulletSpeed: 100
   rocketSpeed: 100
-  bulletRefire: 0
+  bulletRefire: 0.01
   rocketRefire: 0.3

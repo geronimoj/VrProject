@@ -248,7 +248,7 @@ MonoBehaviour:
   seeking: 0
   homingTarget: {fileID: 0}
   homingAngle: 0
-  homingCastRadius: 5
+  homingCastRadius: 20
   destroyOnContactWithProjectile: 0
   target: 0
   OnStart:
