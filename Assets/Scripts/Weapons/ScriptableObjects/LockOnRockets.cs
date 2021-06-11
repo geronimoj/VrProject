@@ -6,7 +6,6 @@ using UnityEngine;
 public class LockOnRockets : Weapon
 {
     public float lockOnTime;
-    public float homingAngle;
     public int maxTargets;
 
     public int rocketsPerTarget;
@@ -73,7 +72,7 @@ public class LockOnRockets : Weapon
                 p.explosionRadius = explosionRadius;
                 p.homing = true;
                 p.homingTarget = targets[i];
-                p.homingAngle = homingAngle;
+                p.homingAngle = turnAngle;
                 p.damageType = weaponType;
                 currentGun++;
             }
@@ -91,7 +90,7 @@ public class LockOnRockets : Weapon
                     p.explosionRadius = explosionRadius;
                     p.homing = true;
                     p.homingTarget = targets[i];
-                    p.homingAngle = homingAngle;
+                    p.homingAngle = turnAngle;
                     p.damageType = weaponType;
                     currentGun++;
                 }

@@ -51,6 +51,9 @@ public class Weapon : ScriptableObject
     // How long the player must wait before being able to fire the weapon again.
     public float refireSpeed;
 
+    public bool seeking;
+    public float turnAngle;
+
     public bool uniqueWeapon;
 
     // The current cooldown based on refireSpeed, so that each weapon can track it's own refire.

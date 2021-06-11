@@ -13,6 +13,8 @@ public class Minigun : Weapon
         p.projectileSpeed = projectileSpeed;
         p.lifetime = projectileLifetime;
         p.damageType = weaponType;
+        p.seeking = seeking;
+        p.homingAngle = turnAngle;
 
         base.Fire(gun);
     }

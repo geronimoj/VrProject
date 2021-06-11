@@ -28,9 +28,13 @@ public class Projectile : MonoBehaviour
     public float explosionRadius;
     public GameObject explosion;
 
+    [HideInInspector]
     public bool homing;
+
+    public bool seeking;
     public Transform homingTarget;
     public float homingAngle;
+    public float homingCastRadius;
     /// <summary>
     /// Should the projectile be destroyed if it collides with an enemy projectile
     /// </summary>
@@ -80,23 +84,39 @@ public class Projectile : MonoBehaviour
     {
         transform.position += transform.forward * projectileSpeed * Time.deltaTime;
         //Null catch the homing to avoid the enemy dying before the projectile reaches its target and causing errors
-        if (homing && homingTarget)
+        if (homing && homingTarget || seeking && homingTarget)
         {
             Vector3 desiredPos = homingTarget.position - transform.position;
             float step = homingAngle * Time.deltaTime;
             Vector3 newDir = Vector3.RotateTowards(transform.forward, desiredPos, step, 0.0f);
             transform.rotation = Quaternion.LookRotation(newDir);
         }
+
+        if (homing && !homingTarget)
+        {
+            Explode();
+        }
+
+        if(seeking && !homingTarget)
+        {
+            RaycastHit[] hits = Physics.CapsuleCastAll(transform.position, transform.position + transform.forward * 300, homingCastRadius, transform.forward, Mathf.Infinity, LayerMask.GetMask("Enemy"));
+
+            for (int i = 0; i < hits.Length; i++)
+            {
+                if (hits[i].transform.gameObject.GetComponent<Health>())
+                {
+                    homingTarget = hits[i].transform;
+                }
+            }
+        }
+        
     }
 
     private void OnCollisionEnter(Collision col)
     {
         if (!flaggedForDestruction)
             Debug.Log("Hit Detected! Tag: " + col.gameObject.tag);
-        if (homing && !homingTarget)
-        {
-            Explode();
-        }
+        
         //Determine which types of collisions we need to look for
         switch (target)
         {   //We are targeting enemies

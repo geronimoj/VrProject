@@ -499,7 +499,7 @@ MonoBehaviour:
   spacing: 1
   pathComp: {fileID: 1971824979}
   formComp: {fileID: 1825455262}
-  position: {x: -20, y: 15, z: 45}
+  position: {x: -20, y: -15, z: 45}
   visible: 1
 --- !u!114 &608133024
 MonoBehaviour:
@@ -3110,7 +3110,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
