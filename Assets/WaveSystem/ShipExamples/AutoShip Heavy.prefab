@@ -68,6 +68,16 @@ PrefabInstance:
       propertyPath: _minTimeBetweenShots
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4661970142565582864, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
+        type: 3}
+      propertyPath: _maxTimeBetweenShots
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4661970142565582864, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
+        type: 3}
+      propertyPath: _burstDuration
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6505946151994338042, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
         type: 3}
       propertyPath: m_IsActive

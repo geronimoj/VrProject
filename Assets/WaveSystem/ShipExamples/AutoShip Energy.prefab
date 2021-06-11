@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6693a6cd8e0fcdb40a310e5fd4a7b117, type: 2}
+  - {fileID: 2100000, guid: dd04df616d67bbd4b8f84609d26a1ce9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -179,6 +179,22 @@ PrefabInstance:
         type: 3}
       propertyPath: _scoreGainOnDeath
       value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 6029203612496419244, guid: 6d258f2b3039595488fd449296c583eb,
+        type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: fc31dc9a5194d6348b2c830ee2d4fd93,
+        type: 2}
+    - target: {fileID: 6029203612496419244, guid: 6d258f2b3039595488fd449296c583eb,
+        type: 3}
+      propertyPath: _minTimeBetweenShots
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6029203612496419244, guid: 6d258f2b3039595488fd449296c583eb,
+        type: 3}
+      propertyPath: _maxTimeBetweenShots
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7541037695019176184, guid: 6d258f2b3039595488fd449296c583eb,
         type: 3}
