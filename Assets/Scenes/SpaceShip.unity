@@ -1203,7 +1203,7 @@ PrefabInstance:
     - target: {fileID: 8552569522878149124, guid: 4f8dc0ba0dd642140af40a2e097d3bb6,
         type: 3}
       propertyPath: m_weapons.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8552569522878149124, guid: 4f8dc0ba0dd642140af40a2e097d3bb6,
         type: 3}
@@ -1240,6 +1240,12 @@ PrefabInstance:
       propertyPath: m_weapons.Array.data[5]
       value: 
       objectReference: {fileID: 11400000, guid: 48c132f61e6bdf240b45c1510257d376,
+        type: 2}
+    - target: {fileID: 8552569522878149124, guid: 4f8dc0ba0dd642140af40a2e097d3bb6,
+        type: 3}
+      propertyPath: m_weapons.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7060f74f159bfce43a51e16243fdd2a5,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f8dc0ba0dd642140af40a2e097d3bb6, type: 3}
@@ -1801,7 +1807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18e5896c3f8bb246b937e2e37eb4a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentLevel: 
+  _currentLevel: MainMenu
   OnLevelChange:
     m_PersistentCalls:
       m_Calls: []
@@ -2201,12 +2207,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
   weapons:
-  - {fileID: 11400000, guid: f15eedf0c772f6446b303dbe4cd8baef, type: 2}
+  - {fileID: 11400000, guid: a710ae2d41141e640a7f1c0e61a7bb2b, type: 2}
   - {fileID: 11400000, guid: fa88622e2eeba5d4bbf24b6c7bf2fa2c, type: 2}
   - {fileID: 11400000, guid: 8b654b57a70a2b94b92242b18d3c23c3, type: 2}
-  - {fileID: 11400000, guid: a710ae2d41141e640a7f1c0e61a7bb2b, type: 2}
+  - {fileID: 11400000, guid: f15eedf0c772f6446b303dbe4cd8baef, type: 2}
   - {fileID: 11400000, guid: eaa77d065e93603419b061a4379e74c3, type: 2}
   - {fileID: 11400000, guid: 48c132f61e6bdf240b45c1510257d376, type: 2}
+  - {fileID: 11400000, guid: 7060f74f159bfce43a51e16243fdd2a5, type: 2}
   anchor: {fileID: 811917785}
   guns:
   - {fileID: 1545330160}
