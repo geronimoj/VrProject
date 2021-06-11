@@ -34,10 +34,13 @@ public class TransitionSkybox : MonoBehaviour
     /// Sets the timer correct
     /// </summary>
     private void Start()
-    {
+    {   //-1 to 1 range
+        float transitionValue = skyboxMaterial.GetFloat("_Offset");
+        //0 - 1 range
+        transitionValue = (transitionValue + 1) / 2;
         if (!_setInstantly)
             //Set it to sweep from the other value
-            t_timer = displayTop ? _transitionDuration : 0;
+            t_timer = displayTop ? _transitionDuration * transitionValue : 0;
         else
             //Set it to already be finished
             t_timer = !displayTop ? _transitionDuration : 0;
