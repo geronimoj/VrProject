@@ -198,6 +198,10 @@ public class RadarSystem : MonoBehaviour
     {   //If they didn't have a blip in the first place, don't remove theirs
         if (!_enemyBlips.ContainsKey(enemy))
             return;
+        //If the blip is destroyed, don't do anything.
+        //This is just editor code since this should not happen in run time
+        if (!_enemyBlips[enemy])
+            return;
         //Store the now inactive blip
         _inactiveBlips.Add(_enemyBlips[enemy]);
         //Dissable the blip
