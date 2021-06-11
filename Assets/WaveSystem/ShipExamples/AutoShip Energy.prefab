@@ -133,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 3314111584344782826, guid: 6d258f2b3039595488fd449296c583eb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3314111584344782826, guid: 6d258f2b3039595488fd449296c583eb,
         type: 3}
@@ -143,7 +143,7 @@ PrefabInstance:
     - target: {fileID: 4127031249689712373, guid: 6d258f2b3039595488fd449296c583eb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4127031249689712373, guid: 6d258f2b3039595488fd449296c583eb,
         type: 3}
@@ -246,7 +246,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnTakeDamage.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 6385152429422799344}
+      objectReference: {fileID: 7771456335377879753}
     - target: {fileID: 6029203612496419244, guid: 6d258f2b3039595488fd449296c583eb,
         type: 3}
       propertyPath: OnTakeDamage.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -335,9 +335,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7084146623684378250}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &6385152429422799344 stripped
+--- !u!95 &7771456335377879753 stripped
 Animator:
-  m_CorrespondingSourceObject: {fileID: 4238854406617601914, guid: 6d258f2b3039595488fd449296c583eb,
+  m_CorrespondingSourceObject: {fileID: 690796280256212035, guid: 6d258f2b3039595488fd449296c583eb,
     type: 3}
   m_PrefabInstance: {fileID: 7084146623684378250}
   m_PrefabAsset: {fileID: 0}
