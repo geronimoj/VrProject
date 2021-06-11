@@ -15,14 +15,37 @@ public class CheeseButton : MonoBehaviour
 
     private TransitionSkybox _skybox = null;
 
+    private Material _skyboxMat = null;
+
+    public Button button = null;
+
     void Start()
     {
-        
+        _skyboxMat = _skybox.skyboxMaterial;
+        //Setup the on click event
+        if (button)
+            button.onClick.AddListener(OnPressButton);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void OnPressButton()
+    {   //If we are missing any components, don't do anything
+        if (!(m_cheese && _skybox && _skyboxMat))
+            return;
+        //Make sure the skybox is fulling showing one or the other image
+        float offset = _skyboxMat.GetFloat("_Offset");
+        //Make sure the offset is finished basically
+        if (offset > -0.99 || offset < 0.99)
+            return;
+        //If true, change top image
+        bool changeTop = offset >= 0.99;
+
+        if (changeTop)
+            _skyboxMat.SetTexture("_CubeTop", m_cheese);
+        else
+            _skyboxMat.SetTexture("_CubeBot", m_cheese);
+        //Swap the skybox
+        _skybox.Toggle();
+        //Remove us from the button so you can't remove it
+        button.onClick.RemoveListener(OnPressButton);
     }
 }
