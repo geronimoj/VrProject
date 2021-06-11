@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
         //Enable the waves to spawn
         Pause(false);
         //Reset the score
-        PlayerShip.s_instance.m_currentScore = 0;
+        PlayerShip.s_instance.CurrentScore = 0;
     }
     /// <summary>
     /// Quits the app

@@ -12,6 +12,8 @@ public class Health : MonoBehaviour
     /// Returns true when the charcater is dead
     /// </summary>
     public bool IsDead => currentHealth <= 0;
+
+    public float CurrentHealth => currentHealth;
     /// <summary>
     /// Should the gameObject be destroyed on death
     /// </summary>

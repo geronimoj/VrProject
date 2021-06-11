@@ -16,6 +16,10 @@ public class DisplayPlayer : MonoBehaviour
     /// </summary>
     public TextMeshProUGUI m_text = null;
     /// <summary>
+    /// The health bar of the player
+    /// </summary>
+    public BarUI m_healthBar = null;
+    /// <summary>
     /// The text to appear before the score
     /// </summary>
     public string prefix = "Score: ";
@@ -30,6 +34,14 @@ public class DisplayPlayer : MonoBehaviour
     {   //Attempt to get a reference to the player if we don't
         if (!_player)
             _player = PlayerShip.s_instance;
+
+        if (_player)
+        {
+            _player.OnScoreChange.AddListener(UpdateUI);
+            _player.OnTakeDamage.AddListener(UpdateUI);
+        }
+        else
+            Debug.LogError("Could not find Player in scene. Make sure player exists before this script starts");
         //Update the UI
         UpdateUI();
     }
@@ -42,6 +54,15 @@ public class DisplayPlayer : MonoBehaviour
             return;
         //Set the players text
         if (m_text)
-            m_text.text = prefix + _player.m_currentScore + suffix;
+            m_text.text = prefix + _player.CurrentScore + suffix;
+        //Update the health bar
+        if (m_healthBar)
+            m_healthBar.Percentage = _player.CurrentHealth / _player.health;
+    }
+
+    private void OnDestroy()
+    {   //Remove this from OnScoreChange
+        _player.OnScoreChange.RemoveListener(UpdateUI);
+        _player.OnTakeDamage.RemoveListener(UpdateUI);
     }
 }
