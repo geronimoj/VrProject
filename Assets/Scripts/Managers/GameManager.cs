@@ -72,15 +72,15 @@ public class GameManager : MonoBehaviour
         //Pause(true);
 #if !UNITY_EDITOR
         _waveManager.LoadLevel("MainMenu");
-#endif  //Set up listeners
-        _waveManager.OnLevelChange.AddListener(CloseGameOverMenu);
+#endif  
     }
     /// <summary>
     /// Prepares the GameManager
     /// </summary>
     private void Start()
-    {
+    {   //Set up listeners
         PlayerShip.s_instance.OnDeath.AddListener(GameOver);
+        _waveManager.OnLevelChange.AddListener(CloseGameOverMenu);
         //If the wave manager is null, try and find it
         if (!_waveManager)
         {   //Attempt to get it
