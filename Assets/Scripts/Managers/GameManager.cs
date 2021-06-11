@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {   //Set up listeners
         PlayerShip.s_instance.OnDeath.AddListener(GameOver);
-        _waveManager.OnLevelChange.AddListener(CloseGameOverMenu);
+        _waveManager.OnLevelChange.AddListener(StartGame);
         //If the wave manager is null, try and find it
         if (!_waveManager)
         {   //Attempt to get it

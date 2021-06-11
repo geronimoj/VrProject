@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485722521739458000}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.8428454, y: -4.212863, z: 2.263864}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
   m_Children: []
   m_Father: {fileID: 8915306803616694596}
@@ -208,6 +208,108 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &-6211094975933184314
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777656222595032711}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4b279cbd20faaf341bd816688586fe41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4661970142565582864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777656222595032711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa5660f0a71892d4eb8ac076803854f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 30
+  destroyOnDeath: 1
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3335678004328805997}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2639359081626378622}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -6211094975933184314}
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TookDamage
+          m_BoolArgument: 0
+        m_CallState: 2
+  _armour: 0
+  _armourAndSheildValue: 0
+  OnBreakShield:
+    m_PersistentCalls:
+      m_Calls: []
+  _scoreGainOnDeath: 100
+  _weapon: {fileID: 11400000, guid: fc31dc9a5194d6348b2c830ee2d4fd93, type: 2}
+  _weaponFirePoints:
+  - {fileID: 1497189042052317891}
+  - {fileID: 1497189042052317891}
+  - {fileID: 1497189042052317891}
+  - {fileID: 1497189042052317891}
+  - {fileID: 1497189042052317891}
+  _maxTimeBetweenShots: 15
+  _minTimeBetweenShots: 1
+  _burstDuration: 0.5
+  OnFire:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 21863477072149668}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7724254111716614895
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +335,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7724254111716614895}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.17441666, y: -0.4371435, z: -0.752}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
   m_Children: []
   m_Father: {fileID: 8915306803616694596}
@@ -335,78 +437,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4661970142565582864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6777656222595032711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa5660f0a71892d4eb8ac076803854f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 30
-  destroyOnDeath: 1
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3335678004328805997}
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnTakeDamage:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2639359081626378622}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _armour: 0
-  _armourAndSheildValue: 0
-  OnBreakShield:
-    m_PersistentCalls:
-      m_Calls: []
-  _scoreGainOnDeath: 100
-  _weapon: {fileID: 11400000, guid: fc31dc9a5194d6348b2c830ee2d4fd93, type: 2}
-  _weaponFirePoints:
-  - {fileID: 1497189042052317891}
-  - {fileID: 1497189042052317891}
-  - {fileID: 1497189042052317891}
-  - {fileID: 1497189042052317891}
-  - {fileID: 1497189042052317891}
-  _maxTimeBetweenShots: 15
-  _minTimeBetweenShots: 1
-  _burstDuration: 0.5
-  OnFire:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 21863477072149668}
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &2983685984769438707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -653,6 +683,12 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6894515158904592666, guid: c0c0c2ab5993eb3498d65db639739f74,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -4869900940657489547, guid: f2c3efeec3774964db00933223436c89,
+        type: 3}
     - target: {fileID: 8165283801893798436, guid: c0c0c2ab5993eb3498d65db639739f74,
         type: 3}
       propertyPath: m_Enabled
