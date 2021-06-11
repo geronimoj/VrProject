@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[DefaultExecutionOrder(1)]
 public class PhysicsObjectPusher : MonoBehaviour
 {
     public Transform pointer = null;
-    public float force = 100;
-    private float _force = 100;
-    private bool push = true;
+    //public float force = 100;
+    //private float _force = 100;
+    //private bool push = true;
     public LineRenderer lRend = null;
 
     private void Start()
     {
         if (!lRend)
             lRend = gameObject.AddComponent<LineRenderer>(); 
-        push = true;
+        //push = true;
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (!pointer)
         {
@@ -28,16 +29,14 @@ public class PhysicsObjectPusher : MonoBehaviour
         Ray ray = new Ray(pointer.position, pointer.forward);
 
         if (lRend)
-        {
             lRend.SetPosition(0, ray.origin);
-        }
 
-        if (OGInputGetter.Get(OGInputGetter.OculusInputs.BackTrigger) && Physics.Raycast(ray, out RaycastHit hit))
+        if (/*OGInputGetter.Get(OGInputGetter.OculusInputs.BackTrigger) && */Physics.Raycast(ray, out RaycastHit hit))
         {
-            Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
-            //SHUT UNITY, JUST USE NULL PROPAGATION
-            if (rb)
-                rb.AddForce(_force * ray.direction);
+        //    Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
+        //    //SHUT UNITY, JUST USE NULL PROPAGATION
+        //    if (rb)
+        //        rb.AddForce(_force * ray.direction);
 
             if (lRend)
                 lRend.SetPosition(1, hit.point);
@@ -49,8 +48,8 @@ public class PhysicsObjectPusher : MonoBehaviour
 
     public void TogglePushDirection()
     {
-        push = !push;
+        //push = !push;
 
-        _force = push ? force : -force;
+        //_force = push ? force : -force;
     }
 }
