@@ -77,9 +77,10 @@ public class LockOnRockets : Weapon
             }
             else
             {
+                int currentGun = 0;
                 for (int j = 0; j < rocketsPerTarget; j++)
                 {
-                    GameObject b = Instantiate(spawnable, guns[i % 5].position, guns[i % 5].rotation);
+                    GameObject b = Instantiate(spawnable, guns[currentGun].position, guns[currentGun].rotation);
                     Projectile p = b.GetComponent<Projectile>();
                     p.damage = damage;
                     p.projectileSpeed = projectileSpeed;
@@ -90,6 +91,7 @@ public class LockOnRockets : Weapon
                     p.homingTarget = targets[i];
                     p.homingAngle = homingAngle;
                     p.damageType = weaponType;
+                    currentGun++;
                     j++;
                 }
             }
