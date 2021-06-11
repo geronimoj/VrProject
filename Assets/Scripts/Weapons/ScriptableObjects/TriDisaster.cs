@@ -100,6 +100,7 @@ public class TriDisaster : Weapon
         p.projectileSpeed = bulletSpeed;
         p.lifetime = projectileLifetime;
         p.damageType = weaponType;
+        p.seeking = seeking;
 
         refire += bulletRefire;
     }
