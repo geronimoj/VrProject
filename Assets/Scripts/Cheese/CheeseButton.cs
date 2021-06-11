@@ -21,6 +21,7 @@ public class CheeseButton : MonoBehaviour
 
     void Start()
     {
+        _skybox = GetComponent<TransitionSkybox>();
         _skyboxMat = _skybox.skyboxMaterial;
         //Setup the on click event
         if (button)
