@@ -47,6 +47,11 @@ PrefabInstance:
       propertyPath: _armourAndSheildValue
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4661970142565582864, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
+        type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6777656222595032711, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
         type: 3}
       propertyPath: m_Name

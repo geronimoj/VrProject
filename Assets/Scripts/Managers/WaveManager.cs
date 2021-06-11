@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class WaveManager : MonoBehaviour
 {
+    [Tooltip("For telling it what the extra current scene is. DEBUGGING ONLY")]
+    [SerializeField]
     protected string _currentLevel = "";
     #region OLD
     /*

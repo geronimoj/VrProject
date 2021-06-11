@@ -112,22 +112,7 @@ public class Projectile : MonoBehaviour
                         Health h = col.gameObject.GetComponent<Health>();
                         //Null catch
                         if (h)
-                        {
-                            ArmouredHealth ah = h as ArmouredHealth;
-                            //Null check
-                            if (ah)
-                            {
-                                if (ah.DoDamage(damage, damageType))
-                                    Destroy(gameObject);
-                            }
-                            //If its null, try it on regular health
-                            else
-                            {
-                                if (h.DoDamage(damage))
-                                    Destroy(gameObject);
-                            }
-                                
-                        }
+                            DealDamage(h);
                     }
                 }
                 //If they are an enemies projectile, destroy it
@@ -171,7 +156,7 @@ public class Projectile : MonoBehaviour
             {
                 if (hits[i].collider.gameObject.CompareTag("Enemy"))
                 {
-                    hits[i].collider.gameObject.GetComponent<Health>().DoDamage(damage);
+                    DealDamage(hits[i].collider.gameObject.GetComponent<Health>());
                 }
                 else if (hits[i].collider.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
                 {
@@ -182,6 +167,25 @@ public class Projectile : MonoBehaviour
         GameObject g = Instantiate(explosion, transform.position, Quaternion.identity);
         StartCoroutine(DestroyAfter(g));
         Destroy(gameObject);
+    }
+
+    private void DealDamage(Health health)
+    {
+        if (health == null)
+            return;
+        ArmouredHealth ah = health as ArmouredHealth;
+        //Null check
+        if (ah)
+        {
+            if (ah.DoDamage(damage, damageType))
+                Destroy(gameObject);
+        }
+        //If its null, try it on regular health
+        else
+        {
+            if (health.DoDamage(damage))
+                Destroy(gameObject);
+        }
     }
 
     private void OnDestroy()

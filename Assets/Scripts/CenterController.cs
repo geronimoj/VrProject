@@ -19,17 +19,18 @@ public class CenterController : MonoBehaviour
     /// A fixed offset from targetPosition in global units
     /// </summary>
     public Vector3 m_offset;
-#if !UNITY_EDITOR
     /// <summary>
     /// Update the position of the controllres anchor
     /// </summary>
     private void LateUpdate()
     {
+#if !UNITY_EDITOR
         //Make sure we have a position
         if (!m_targetPosition)
             return;
         //Set the position
         transform.position = m_offset +  m_targetPosition.position + transform.forward * m_controllerLength;
-    }
 #endif
+    }
+
 }

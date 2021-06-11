@@ -43,6 +43,10 @@ public class PlayerShip : Health
     [Tooltip("The events that occur at the specified health values. These are called whenever the player takes damages")]
     public HealthEvent[] healthEvents = new HealthEvent[0];
     /// <summary>
+    /// Called to reset the events
+    /// </summary>
+    public UnityEvent ResetAllEvents;
+    /// <summary>
     /// The players current score
     /// </summary>
     [Tooltip("The score the player currently has")]
@@ -69,13 +73,17 @@ public class PlayerShip : Health
             return s_instance.IsDead;
         } 
     }
+
+    private void Awake()
+    {
+        s_instance = this;
+    }
     /// <summary>
     /// Sets up the health event calls
     /// </summary>
     protected override void Start()
     {
         OnTakeDamage.AddListener(CallHealthEvents);
-        s_instance = this;
 
         base.Start();
     }
@@ -104,6 +112,8 @@ public class PlayerShip : Health
     {   //Loop over the health events and set them to not be called anymore
         for (int i = 0; i < healthEvents.Length; i++)
             healthEvents[i].called = false;
+        //Reset all the events
+        ResetAllEvents.Invoke();
     }
     /// <summary>
     /// Give score to the player
@@ -138,5 +148,14 @@ public class PlayerShip : Health
         if (s_instance)
             //Deal the damage
             s_instance.DoDamage(damage);
+    }
+    /// <summary>
+    /// Heals the player to full & resets the events
+    /// </summary>
+    [ContextMenu("Reset")]
+    public void Reset()
+    {
+        currentHealth = health;
+        ResetEvents();
     }
 }
