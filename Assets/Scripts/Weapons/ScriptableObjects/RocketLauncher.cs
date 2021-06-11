@@ -15,6 +15,8 @@ public class RocketLauncher : Weapon
         p.explode = true;
         p.explosionRadius = explosionRadius;
         p.damageType = weaponType;
+        p.seeking = seeking;
+        p.homingAngle = turnAngle;
 
         base.Fire(gun);
     }

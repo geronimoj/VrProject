@@ -86,6 +86,7 @@ public class TriDisaster : Weapon
         p.explosionRadius = explosionRadius;
         p.damageType = weaponType;
         p.seeking = seekingRockets;
+        p.homingAngle = turnAngle;
 
 
         refire += rocketRefire;

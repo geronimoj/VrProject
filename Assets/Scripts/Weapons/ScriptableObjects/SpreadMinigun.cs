@@ -41,6 +41,8 @@ public class SpreadMinigun : Minigun
             p.projectileSpeed = projectileSpeed;
             p.lifetime = projectileLifetime;
             p.damageType = weaponType;
+            p.seeking = seeking;
+            p.homingAngle = turnAngle;
         }
 
         fireTimer = 0.3f;

@@ -34,6 +34,7 @@ public class Projectile : MonoBehaviour
     public bool seeking;
     public Transform homingTarget;
     public float homingAngle;
+    public float homingCastRadius;
     /// <summary>
     /// Should the projectile be destroyed if it collides with an enemy projectile
     /// </summary>
@@ -98,7 +99,7 @@ public class Projectile : MonoBehaviour
 
         if(seeking && !homingTarget)
         {
-            RaycastHit[] hits = Physics.CapsuleCastAll(transform.position, transform.position + transform.forward * 300, 10, transform.forward, Mathf.Infinity, LayerMask.GetMask("Enemy"));
+            RaycastHit[] hits = Physics.CapsuleCastAll(transform.position, transform.position + transform.forward * 300, homingCastRadius, transform.forward, Mathf.Infinity, LayerMask.GetMask("Enemy"));
 
             for (int i = 0; i < hits.Length; i++)
             {

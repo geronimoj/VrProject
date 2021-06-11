@@ -245,8 +245,10 @@ MonoBehaviour:
   explosionRadius: 0
   explosion: {fileID: 0}
   homing: 0
+  seeking: 0
   homingTarget: {fileID: 0}
   homingAngle: 0
+  homingCastRadius: 5
   destroyOnContactWithProjectile: 0
   target: 0
   OnStart:
