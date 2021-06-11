@@ -87,16 +87,19 @@ public class Projectile : MonoBehaviour
             Vector3 newDir = Vector3.RotateTowards(transform.forward, desiredPos, step, 0.0f);
             transform.rotation = Quaternion.LookRotation(newDir);
         }
+
+        if (homing && !homingTarget)
+        {
+            Explode();
+        }
+        
     }
 
     private void OnCollisionEnter(Collision col)
     {
         if (!flaggedForDestruction)
             Debug.Log("Hit Detected! Tag: " + col.gameObject.tag);
-        if (homing && !homingTarget)
-        {
-            Explode();
-        }
+        
         //Determine which types of collisions we need to look for
         switch (target)
         {   //We are targeting enemies
