@@ -31,7 +31,7 @@ public class PhysicsObjectPusher : MonoBehaviour
         if (lRend)
             lRend.SetPosition(0, ray.origin);
 
-        if (/*OGInputGetter.Get(OGInputGetter.OculusInputs.BackTrigger) && */Physics.Raycast(ray, out RaycastHit hit))
+        if (/*OGInputGetter.Get(OGInputGetter.OculusInputs.BackTrigger) && */Physics.Raycast(ray, out RaycastHit hit, 100, LayerMask.GetMask("Enemy", "EnemyProjectile")))
         {
         //    Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
         //    //SHUT UNITY, JUST USE NULL PROPAGATION
