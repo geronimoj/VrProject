@@ -8,6 +8,9 @@ public class LockOnRockets : Weapon
     public float lockOnTime;
     public float homingAngle;
     public int maxTargets;
+
+    public int rocketsPerTarget;
+
     private float lockOnTimer;
 
     private List<Transform> targets = new List<Transform>();
@@ -58,17 +61,39 @@ public class LockOnRockets : Weapon
     {
         for (int i = 0; i < targets.Count; i++)
         {
-            GameObject b = Instantiate(spawnable, guns[i % 5].position, guns[i % 5].rotation);
-            Projectile p = b.GetComponent<Projectile>();
-            p.damage = damage;
-            p.projectileSpeed = projectileSpeed;
-            p.lifetime = projectileLifetime;
-            p.explode = true;
-            p.explosionRadius = explosionRadius;
-            p.homing = true;
-            p.homingTarget = targets[i];
-            p.homingAngle = homingAngle;
-            p.damageType = weaponType;
+            if(rocketsPerTarget < 2)
+            {
+                GameObject b = Instantiate(spawnable, guns[i % 5].position, guns[i % 5].rotation);
+                Projectile p = b.GetComponent<Projectile>();
+                p.damage = damage;
+                p.projectileSpeed = projectileSpeed;
+                p.lifetime = projectileLifetime;
+                p.explode = true;
+                p.explosionRadius = explosionRadius;
+                p.homing = true;
+                p.homingTarget = targets[i];
+                p.homingAngle = homingAngle;
+                p.damageType = weaponType;
+            }
+            else
+            {
+                for (int j = 0; j < rocketsPerTarget; j++)
+                {
+                    GameObject b = Instantiate(spawnable, guns[i % 5].position, guns[i % 5].rotation);
+                    Projectile p = b.GetComponent<Projectile>();
+                    p.damage = damage;
+                    p.projectileSpeed = projectileSpeed;
+                    p.lifetime = projectileLifetime;
+                    p.explode = true;
+                    p.explosionRadius = explosionRadius;
+                    p.homing = true;
+                    p.homingTarget = targets[i];
+                    p.homingAngle = homingAngle;
+                    p.damageType = weaponType;
+                    j++;
+                }
+            }
+            
         }
         targets.Clear();
         lockOnTimer = 0;

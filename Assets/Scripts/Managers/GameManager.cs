@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
     {   //Pause the game while everything loads
         //Pause(true);
 #if !UNITY_EDITOR
-        _waveManager.LoadLevel("Level1");
+        _waveManager.LoadLevel("MainMenu");
 #endif
     }
     /// <summary>
@@ -117,6 +117,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ExitApp()
     {   //Quit the application
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
         Application.Quit();
+#endif
     }
 }
