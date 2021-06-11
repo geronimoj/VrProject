@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c74fe4af96ef16d4ba2b7ffa12b06fd1, type: 3}
+  m_Name: RocketLauncherEnemy
+  m_EditorClassIdentifier: 
+  gunParts: 10
+  weaponIcon: {fileID: 21300000, guid: 6078c80390f2df84dba3a128562de43f, type: 3}
+  weaponType: 1
+  spawnable: {fileID: 5521668472997189268, guid: 495d0d7cbdbe9c4498e6ee9322300dce,
+    type: 3}
+  projectileSpeed: 10
+  projectileLifetime: 2.5
+  damage: 3
+  refireSpeed: 1
+  uniqueWeapon: 0
+  currentRefire: -970.0628
+  explosionRadius: 10

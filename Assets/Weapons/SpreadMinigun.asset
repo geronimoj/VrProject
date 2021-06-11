@@ -20,12 +20,12 @@ MonoBehaviour:
   projectileSpeed: 500
   projectileLifetime: 1
   damage: 2
-  refireSpeed: 0.09
+  refireSpeed: 0.08
   uniqueWeapon: 0
-  currentRefire: -71.24136
+  currentRefire: -0.9452203
   explosionRadius: 0
   deviation: {x: 0.06, y: 0.06}
   converge: 1
-  convergenceRange: {x: 0.1, y: 0.01}
+  convergenceRange: {x: 0.2, y: 0.01}
   convergeTime: 3
   extraBullets: 4

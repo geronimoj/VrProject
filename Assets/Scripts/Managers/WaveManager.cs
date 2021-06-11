@@ -10,6 +10,11 @@ public class WaveManager : MonoBehaviour
     [Tooltip("For telling it what the extra current scene is. DEBUGGING ONLY")]
     [SerializeField]
     protected string _currentLevel = "";
+    /// <summary>
+    /// Called when the level changes
+    /// </summary>
+    [HideInInspector]
+    public UnityEngine.Events.UnityEvent OnLevelChange;
     #region OLD
     /*
     /// <summary>
@@ -209,6 +214,8 @@ public class WaveManager : MonoBehaviour
         //Load the new level
         SceneManager.LoadScene(levelSceneName, LoadSceneMode.Additive);
         _currentLevel = levelSceneName;
+        //Call the event
+        OnLevelChange.Invoke();
     }
     /// <summary>
     /// Unloads the current level

@@ -50,7 +50,25 @@ public class PlayerShip : Health
     /// The players current score
     /// </summary>
     [Tooltip("The score the player currently has")]
-    public float m_currentScore = 0;
+    protected float _currentScore = 0;
+    /// <summary>
+    /// The players current score
+    /// </summary>
+    public float CurrentScore
+    {
+        get => _currentScore;
+        set
+        {
+            _currentScore = value;
+
+            OnScoreChange.Invoke();
+        }
+    }
+    /// <summary>
+    /// Called when the score changes
+    /// </summary>
+    [HideInInspector]
+    public UnityEvent OnScoreChange;
     /// <summary>
     /// The score lost per 1 damage the player takes
     /// </summary>
@@ -84,6 +102,7 @@ public class PlayerShip : Health
     protected override void Start()
     {
         OnTakeDamage.AddListener(CallHealthEvents);
+        OnDeath.AddListener(SaveScore);
 
         base.Start();
     }
@@ -124,7 +143,7 @@ public class PlayerShip : Health
         if (!s_instance || s_instance.GameIsOver)
             return;
         //Give score
-        s_instance.m_currentScore += scoreToGain;
+        s_instance.CurrentScore += scoreToGain;
     }
     /// <summary>
     /// Overrides the DoDamage to also reduce the players score
@@ -156,6 +175,15 @@ public class PlayerShip : Health
     public void Reset()
     {
         currentHealth = health;
+        CurrentScore = 0;
         ResetEvents();
+    }
+    /// <summary>
+    /// Saves the current score to memory
+    /// </summary>
+    private void SaveScore()
+    {   //If there is a score manager, save the score
+        if (ScoreManager.s_instance)
+            ScoreManager.s_instance.SaveScore(CurrentScore);
     }
 }
