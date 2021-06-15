@@ -6,7 +6,6 @@ using UnityEngine;
 /// </summary>
 public class EnemyReticleSystem : ReticleDisplayer
 {
-    public static EnemyReticleSystem s_instance = null;
     /// <summary>
     /// The additional displays to display enemies from
     /// </summary>
@@ -27,13 +26,6 @@ public class EnemyReticleSystem : ReticleDisplayer
     /// The enemies that need to be removed from _assignedReticles
     /// </summary>
     private readonly List<Transform> _enemiesToRemove = new List<Transform>();
-    /// <summary>
-    /// Store an instance of this system
-    /// </summary>
-    private void Awake()
-    {
-        s_instance = this;
-    }
     /// <summary>
     /// Updates the reticles and debugging information
     /// </summary>
