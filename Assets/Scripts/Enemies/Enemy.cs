@@ -73,6 +73,8 @@ public class Enemy : ArmouredHealth
     private static readonly List<Transform> s_targets = new List<Transform>();
 
     public static UnityEvent KillEnemies = new UnityEvent();
+
+    private EnemyReticleSystem _ert = null;
     /// <summary>
     /// Sets up the targets for the enemies to shoot
     /// </summary>
@@ -87,6 +89,11 @@ public class Enemy : ArmouredHealth
             foreach (GameObject obj in objects)
                 s_targets.Add(obj.transform);
         }
+
+        GameObject go = GameObject.FindGameObjectWithTag("EnemyReticle");
+
+        if (go)
+            _ert = go.GetComponent<EnemyReticleSystem>();
 
         KillEnemies.AddListener(Kill);
     }
@@ -103,8 +110,8 @@ public class Enemy : ArmouredHealth
         //Set this enemy to be tracked by the radar and reticle system
         if (RadarSystem.s_instance)
             RadarSystem.s_instance.TrackEnemy(transform);
-        if (EnemyReticleSystem.s_instance)
-            EnemyReticleSystem.s_instance.TrackEnemy(transform);
+        if (_ert)
+            _ert.TrackEnemy(transform);
 
         _shotTime = Random.Range(_minTimeBetweenShots, _maxTimeBetweenShots);
         t_burstTimer = _burstDuration + 1;
@@ -119,8 +126,8 @@ public class Enemy : ArmouredHealth
         if (_mainWeapon)
             Destroy(_mainWeapon);
         //Remove the enemy from the radar or reticle view
-        if (EnemyReticleSystem.s_instance)
-            EnemyReticleSystem.s_instance.LeaveReticleView(transform);
+        if (_ert)
+            _ert.LeaveReticleView(transform);
 
         if (RadarSystem.s_instance)
             RadarSystem.s_instance.LeaveRadar(transform);
@@ -130,8 +137,8 @@ public class Enemy : ArmouredHealth
 
     private void OnDisable()
     {   //Remove the enemy from the radar or reticle view
-        if (EnemyReticleSystem.s_instance)
-            EnemyReticleSystem.s_instance.LeaveReticleView(transform);
+        if (_ert)
+            _ert.LeaveReticleView(transform);
 
         if (RadarSystem.s_instance)
             RadarSystem.s_instance.LeaveRadar(transform);
