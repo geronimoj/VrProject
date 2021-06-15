@@ -100,4 +100,9 @@ public class LockOnRockets : Weapon
         targets.Clear();
         lockOnTimer = 0;
     }
+    /// <summary>
+    /// For getting the targets
+    /// </summary>
+    /// <returns>The targets as an array</returns>
+    public Transform[] GetTargets() => targets.ToArray();
 }
