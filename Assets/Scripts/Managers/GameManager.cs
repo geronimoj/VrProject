@@ -105,7 +105,6 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void GameOver()
     {
-        Debug.LogError("Game over logic not implemented.");
         //Load the gameOver scene
         SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
         //Toggle it to be open
