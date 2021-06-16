@@ -20,9 +20,12 @@ MonoBehaviour:
   projectileLifetime: 0
   damage: 5
   refireSpeed: 0.0001
+  seeking: 0
+  turnAngle: 0
   uniqueWeapon: 0
-  currentRefire: -0.8649928
+  currentRefire: -15.215751
   explosionRadius: 0
   splitRadius: 20
   lineSpawner: {fileID: 5930121868549244647, guid: 205ebacd283fb104bb97676b242fb703,
     type: 3}
+  maxLines: 15
