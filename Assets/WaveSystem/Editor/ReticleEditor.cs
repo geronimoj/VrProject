@@ -14,6 +14,7 @@ public class ReticleEditor : Editor
     private SerializedProperty shape = null;
     private SerializedProperty radius = null;
     private SerializedProperty billboard = null;
+    private SerializedProperty keepTracking = null;
     private SerializedProperty prefab = null;
     private SerializedProperty scale = null;
     private void OnEnable()
@@ -27,6 +28,7 @@ public class ReticleEditor : Editor
         billboard = serializedObject.FindProperty("_billboardReticles");
         prefab = serializedObject.FindProperty("_reticlePrefab");
         scale = serializedObject.FindProperty("_reticleScale");
+        keepTracking = serializedObject.FindProperty("_trackRemovedEnemies");
     }
 
     public override void OnInspectorGUI()
@@ -43,6 +45,7 @@ public class ReticleEditor : Editor
             EditorGUILayout.PropertyField(radius);
 
         EditorGUILayout.PropertyField(billboard);
+        EditorGUILayout.PropertyField(keepTracking);
         EditorGUILayout.PropertyField(prefab);
         EditorGUILayout.PropertyField(scale);
         serializedObject.ApplyModifiedProperties();

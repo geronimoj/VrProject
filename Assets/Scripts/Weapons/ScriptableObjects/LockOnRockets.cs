@@ -60,6 +60,8 @@ public class LockOnRockets : Weapon
         if (lockOnTimer < 0)
             Release();
 
+        CheckReticleDisplay();
+
         base.WeaponUpdate();
     }
 
@@ -79,12 +81,7 @@ public class LockOnRockets : Weapon
                 if (targets.Count < maxTargets && !targets.Contains(hits[i].transform))
                 {
                     targets.Add(hits[i].transform);
-                    //We have to swap around the track removed enemies so the reticle does not immediately re-display again.
-                    //We basically remove it from view and stop tracking it
-                    _defaultReticleSystem._trackRemovedEnemies = false;
-                    _defaultReticleSystem.LeaveReticleView(hits[i].transform);
-                    //Reset the boolean
-                    _defaultReticleSystem._trackRemovedEnemies = true;
+                    _defaultReticleSystem.StopTracking(hits[i].transform);
                     _mainReticleSystem.EnterReticleView(hits[i].transform);
                 }
             }
@@ -153,8 +150,17 @@ public class LockOnRockets : Weapon
         //Remove the targets from the reticle view
         for (int i = 0; i < targets.Count; i++)
         {
-            _mainReticleSystem.LeaveReticleView(targets[i]);
+            _mainReticleSystem.StopTracking(targets[i]);
             _defaultReticleSystem.TrackEnemy(targets[i]);
         }
+    }
+    /// <summary>
+    /// Ensures only one EnemyReticleSystem is displaying a reticle for a enemy at a time
+    /// </summary>
+    private void CheckReticleDisplay()
+    {   
+        for (int i = 0; i < targets.Count; i++)
+            //Make sure the enemies being targeted are not being displayed by the other reticle system
+            _defaultReticleSystem.StopTracking(targets[i]);
     }
 }

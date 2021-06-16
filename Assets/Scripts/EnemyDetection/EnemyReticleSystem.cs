@@ -167,4 +167,16 @@ public class EnemyReticleSystem : ReticleDisplayer
         //Start tracking that enemy
         _enemiesToTrack.Add(enemy);
     }
+    /// <summary>
+    /// Stops tracking and removes an enemy from view
+    /// </summary>
+    /// <param name="enemy">The enemy to stop tracking</param>
+    public void StopTracking(Transform enemy)
+    {   //If the enemy has a reticle, remove the reticle
+        if (_assignReticles.ContainsKey(enemy))
+            LeaveReticleView(enemy);
+        //If the enemy is being tracked, stop tracking it
+        if (_enemiesToTrack.Contains(enemy))
+            _enemiesToTrack.Remove(enemy);
+    }
 }
