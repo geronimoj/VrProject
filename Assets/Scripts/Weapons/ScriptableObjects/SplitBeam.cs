@@ -7,6 +7,7 @@ public class SplitBeam : Weapon
 {
     public float splitRadius;
     public GameObject lineSpawner;
+    public int maxLines;
 
     private List<Health> targets;
     private List<LineRenderer> primaryLines;
@@ -169,6 +170,16 @@ public class SplitBeam : Weapon
                     }
                 }
             }
+        }
+
+        if(splitLines.Count >= maxLines)
+        {
+            int l = splitLines.Count;
+            for (int i = 0; i < l; i++)
+            {
+                Destroy(splitLines[i]);
+            }
+            splitLines.Clear();
         }
 
 
