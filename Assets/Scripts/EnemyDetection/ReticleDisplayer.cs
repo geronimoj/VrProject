@@ -140,6 +140,7 @@ public class ReticleDisplayer : MonoBehaviour
             Debug.LogError("Raycast failed to hit reticle quad for enemy " + enemy.name + ". Try using TrackEnemy instead.");
             return;
         }
+        Transform ret;
         //Check if we can re-use a reticle or have to create a new one
         if (s_reticles.Count > 0)
         {   //Re-use a reticle
@@ -150,6 +151,8 @@ public class ReticleDisplayer : MonoBehaviour
             s_reticles[0].rotation = transform.rotation;
             //Set the position of the reticle
             s_reticles[0].position = hit.point;
+            //Assign ret
+            ret = s_reticles[0];
             //Remove the re-used reticle
             s_reticles.RemoveAt(0);
         }
@@ -161,7 +164,14 @@ public class ReticleDisplayer : MonoBehaviour
             reticle.transform.localScale = new Vector3(_reticleScale, _reticleScale, _reticleScale);
             //Store the reticle
             _assignReticles.Add(enemy, reticle.transform);
+            //Assign ret
+            ret = reticle.transform;
         }
+        //Get the retcile script
+        Reticle r = ret.GetComponent<Reticle>();
+        //If it was successful, set the target
+        if (r)
+            r.SetTarget(enemy);
     }
     /// <summary>
     /// Stop the enemy from having a reticle
@@ -178,6 +188,7 @@ public class ReticleDisplayer : MonoBehaviour
         //Store the reticle
         s_reticles.Add(_assignReticles[enemy]);
         //Disable the reticle
+        //The Reticle script on it will set the target to null when its dissabled
         _assignReticles[enemy].gameObject.SetActive(false);
         //This is done to get around foreach iteration
         if (leaveImmediately)

@@ -22,7 +22,7 @@ MonoBehaviour:
   damage: 20
   refireSpeed: 0.8
   seeking: 1
-  turnAngle: 5
+  turnAngle: 2
   uniqueWeapon: 0
-  currentRefire: -0.7305256
+  currentRefire: -141.17316
   explosionRadius: 10

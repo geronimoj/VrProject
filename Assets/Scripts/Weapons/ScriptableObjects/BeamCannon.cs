@@ -68,6 +68,9 @@ public class BeamCannon : Weapon
 
                 damageTickTimer = 0;
             }
+            //If its a projectile, destroy it
+            else if (hit.transform.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
+                Destroy(hit.collider.gameObject);
         }
 
         fireTimer = 0.3f;

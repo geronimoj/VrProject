@@ -58,6 +58,10 @@ public class WeaponSelector : MonoBehaviour
     /// </summary>
     private bool _isOpen = false;
     /// <summary>
+    /// Is the selector opening
+    /// </summary>
+    private bool _opening = false;
+    /// <summary>
     /// The images for each weapon
     /// </summary>
     private readonly List<GameObject> _weaponImageUI = new List<GameObject>();
@@ -106,15 +110,16 @@ public class WeaponSelector : MonoBehaviour
         //If the user is no longer touching the touchPad, close the selector
         else
             CloseSelector();
-        //If the selector is open, select a weapon
-        if (IsOpen)
+        //If the selector is opening, select a weapon
+        if (_opening)
             SetSelectWeapon();
     }
     /// <summary>
     /// Called when the selector is opening
     /// </summary>
     public void OpenSelector()
-    {
+    {   //Set the selector to be opening
+        _opening = true;
         if (!_isOpen)
         {
             float weapAng = 360 / m_weapons.Length;
@@ -168,9 +173,11 @@ public class WeaponSelector : MonoBehaviour
             }
             _isOpen = false;
         }
+        //Set opening to not be opening
+        _opening = false;
         //If the UI is open and the selected weapon is valid
         //This will only be able to be called the first time CloseSelector is called after the Selector fully opens
-        if (IsOpen && _selectedWeaponIndex < m_weapons.Length)
+        if (_isOpen && _selectedWeaponIndex < m_weapons.Length)
             //Call the OnChangeWeapon event
             OnChangeWeapon.Invoke(m_weapons[_selectedWeaponIndex]);
         //Decrement the scale timer

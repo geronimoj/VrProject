@@ -113,7 +113,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnTakeDamage.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 4238854406617601914}
+      objectReference: {fileID: 690796280256212035}
     - target: {fileID: 4661970142565582864, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
         type: 3}
       propertyPath: OnTakeDamage.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -242,9 +242,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1377729409405981116}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &4238854406617601914 stripped
+--- !u!95 &690796280256212035 stripped
 Animator:
-  m_CorrespondingSourceObject: {fileID: -6211094975933184314, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
+  m_CorrespondingSourceObject: {fileID: -7311420170250633729, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
     type: 3}
   m_PrefabInstance: {fileID: 1377729409405981116}
   m_PrefabAsset: {fileID: 0}
