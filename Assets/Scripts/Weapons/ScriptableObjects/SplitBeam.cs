@@ -142,6 +142,23 @@ public class SplitBeam : Weapon
 
             
         }
+        else
+        {
+            for (int i = 0; i < primaryLines.Count; i++)
+            {   //Make sure the lines are not null
+                if (primaryLines[i])
+                    primaryLines[i].SetPosition(1, primaryLines[i].GetPosition(0));
+
+            }
+            for (int i = 0; i < splitLines.Count; i++)
+            {
+                if (splitLines[i])
+                {
+                    splitLines[i].SetPosition(0, Vector3.zero);
+                    splitLines[i].SetPosition(1, Vector3.zero);
+                }
+            }
+        }
         
 
         fireTimer = 0.3f;
