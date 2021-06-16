@@ -61,7 +61,8 @@ public class SplitBeam : Weapon
 
             if (hit.collider.gameObject.CompareTag("Enemy"))
             {
-                if (targets.Count < 1 || !targets[0] || hit.collider.gameObject != targets[0].gameObject)
+                Health h = hit.collider.gameObject.GetComponent<Health>();
+                if (targets.Count < 1 || !targets[0] || !targets.Contains(h))
                     targets.Add(hit.collider.gameObject.GetComponent<Health>());
                 
 
@@ -71,7 +72,7 @@ public class SplitBeam : Weapon
 
                 for (int i = 0; i < hits.Length; i++)
                 {
-                    Health h = hits[i].collider.gameObject.GetComponent<Health>();
+                    h = hits[i].collider.gameObject.GetComponent<Health>();
                     if (h && !targets.Contains(h))
                     {
                         targets.Add(h);
