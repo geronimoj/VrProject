@@ -16,7 +16,7 @@ public class EnemyTurret : MonoBehaviour
     private void LateUpdate()
     {   //Look at the target point
         Vector3 toTarget = Enemy.s_targets[target].position - transform.position;
-        transform.rotation = Quaternion.LookRotation(-toTarget.normalized, Vector3.up);
+        transform.rotation = Quaternion.LookRotation(-toTarget.normalized, transform.up);
     }
     /// <summary>
     /// Sets the target the ship is targeting
