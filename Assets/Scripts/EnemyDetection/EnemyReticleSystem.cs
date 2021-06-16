@@ -6,7 +6,6 @@ using UnityEngine;
 /// </summary>
 public class EnemyReticleSystem : ReticleDisplayer
 {
-    public static EnemyReticleSystem s_instance = null;
     /// <summary>
     /// The additional displays to display enemies from
     /// </summary>
@@ -20,6 +19,11 @@ public class EnemyReticleSystem : ReticleDisplayer
     [SerializeField]
     private bool _useAsDisplay = true;
     /// <summary>
+    /// Should the enemies be continued to be tracked after they have left the view
+    /// </summary>
+    [Tooltip("Should the ReticleSystem continue to track an enemy after it has been removed from view")]
+    public bool _trackRemovedEnemies = true;
+    /// <summary>
     /// The enemies without assigned reticles that we need to track
     /// </summary>
     private readonly List<Transform> _enemiesToTrack = new List<Transform>();
@@ -27,13 +31,6 @@ public class EnemyReticleSystem : ReticleDisplayer
     /// The enemies that need to be removed from _assignedReticles
     /// </summary>
     private readonly List<Transform> _enemiesToRemove = new List<Transform>();
-    /// <summary>
-    /// Store an instance of this system
-    /// </summary>
-    private void Awake()
-    {
-        s_instance = this;
-    }
     /// <summary>
     /// Updates the reticles and debugging information
     /// </summary>
@@ -134,8 +131,10 @@ public class EnemyReticleSystem : ReticleDisplayer
             //Null catch
             if (display)
                 display.LeaveReticleView(enemy, true);
-        //Start tracking the enemy
-        _enemiesToTrack.Add(enemy);
+
+        if (_trackRemovedEnemies)
+            //Start tracking the enemy
+            _enemiesToTrack.Add(enemy);
     }
     /// <summary>
     /// Tells each of the reticle displayers to display a reticle and only display using this system is useAsDisplay is true
@@ -167,5 +166,17 @@ public class EnemyReticleSystem : ReticleDisplayer
             return;
         //Start tracking that enemy
         _enemiesToTrack.Add(enemy);
+    }
+    /// <summary>
+    /// Stops tracking and removes an enemy from view
+    /// </summary>
+    /// <param name="enemy">The enemy to stop tracking</param>
+    public void StopTracking(Transform enemy)
+    {   //If the enemy has a reticle, remove the reticle
+        if (_assignReticles.ContainsKey(enemy))
+            LeaveReticleView(enemy);
+        //If the enemy is being tracked, stop tracking it
+        if (_enemiesToTrack.Contains(enemy))
+            _enemiesToTrack.Remove(enemy);
     }
 }

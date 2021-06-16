@@ -30,8 +30,8 @@ public class Reticle : MonoBehaviour
     /// </summary>
     private void OnDisable()
     {
-        target = null;
         OnLoseTarget();
+        target = null;
     }
     /// <summary>
     /// Called when the target is assigned

@@ -74,7 +74,7 @@ public class ReticleDisplayer : MonoBehaviour
     /// <summary>
     /// The unassigned reticles
     /// </summary>
-    protected static readonly List<Transform> s_reticles = new List<Transform>();
+    protected readonly List<Transform> s_reticles = new List<Transform>();
     /// <summary>
     /// Rescales the quad to be the correct radius
     /// </summary>

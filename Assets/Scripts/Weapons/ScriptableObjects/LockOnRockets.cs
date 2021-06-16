@@ -14,11 +14,41 @@ public class LockOnRockets : Weapon
 
     private List<Transform> targets = new List<Transform>();
     private List<Transform> guns = new List<Transform>();
+    /// <summary>
+    /// The reticle system for aiming
+    /// </summary>
+    private EnemyReticleSystem _defaultReticleSystem = null;
+    /// <summary>
+    /// The reticle system for displaying targeted enemies
+    /// </summary>
+    private EnemyReticleSystem _mainReticleSystem = null;
+
+    private void Setup()
+    {
+        GameObject go;
+        if (!_defaultReticleSystem)
+        {
+            go = GameObject.FindGameObjectWithTag("EnemyReticle");
+
+            if (go)
+                _defaultReticleSystem = go.GetComponent<EnemyReticleSystem>();
+        }
+
+        if (!_mainReticleSystem)
+        {
+            go = GameObject.FindGameObjectWithTag("TargetReticle");
+
+            if (go)
+                _mainReticleSystem = go.GetComponent<EnemyReticleSystem>();
+        }
+    }
 
     public override void OnEquip()
     {
+        ClearReticles();
         targets.Clear();
         lockOnTimer = lockOnTime;
+        Setup();
         base.OnEquip();
     }
 
@@ -29,6 +59,8 @@ public class LockOnRockets : Weapon
 
         if (lockOnTimer < 0)
             Release();
+
+        CheckReticleDisplay();
 
         base.WeaponUpdate();
     }
@@ -46,9 +78,11 @@ public class LockOnRockets : Weapon
         {
             if (hits[i].collider.gameObject.CompareTag("Enemy"))
             {
-                if (!targets.Contains(hits[i].transform) && targets.Count < maxTargets)
+                if (targets.Count < maxTargets && !targets.Contains(hits[i].transform))
                 {
                     targets.Add(hits[i].transform);
+                    _defaultReticleSystem.StopTracking(hits[i].transform);
+                    _mainReticleSystem.EnterReticleView(hits[i].transform);
                 }
             }
             
@@ -97,6 +131,7 @@ public class LockOnRockets : Weapon
             }
             
         }
+        ClearReticles();
         targets.Clear();
         lockOnTimer = 0;
     }
@@ -105,4 +140,27 @@ public class LockOnRockets : Weapon
     /// </summary>
     /// <returns>The targets as an array</returns>
     public Transform[] GetTargets() => targets.ToArray();
+    /// <summary>
+    /// Removes the reticles from the reticle system
+    /// </summary>
+    private void ClearReticles()
+    {
+        if (!_mainReticleSystem)
+            return;
+        //Remove the targets from the reticle view
+        for (int i = 0; i < targets.Count; i++)
+        {
+            _mainReticleSystem.StopTracking(targets[i]);
+            _defaultReticleSystem.TrackEnemy(targets[i]);
+        }
+    }
+    /// <summary>
+    /// Ensures only one EnemyReticleSystem is displaying a reticle for a enemy at a time
+    /// </summary>
+    private void CheckReticleDisplay()
+    {   
+        for (int i = 0; i < targets.Count; i++)
+            //Make sure the enemies being targeted are not being displayed by the other reticle system
+            _defaultReticleSystem.StopTracking(targets[i]);
+    }
 }
