@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 /// <summary>
 /// Tracks gameover stat and player death
@@ -8,12 +9,29 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(WaveManager))]
 public class GameManager : MonoBehaviour
 {
+    public static GameManager s_instance = null;
+    /// <summary>
+    /// Called when you win
+    /// </summary>
+    public UnityEvent OnWin;
+    /// <summary>
+    /// Called when you lose
+    /// </summary>
+    public UnityEvent OnLose;
     /// <summary>
     /// Reference to the WaveManager for loading scenes
     /// </summary>
     [Tooltip("The wave manager")]
     [SerializeField]
     protected WaveManager _waveManager = null;
+    /// <summary>
+    /// The waves
+    /// </summary>
+    private List<Wave> _waves = new List<Wave>();
+    /// <summary>
+    /// The enemies that are alive
+    /// </summary>
+    private List<Enemy> _enemiesAlive = new List<Enemy>();
     /// <summary>
     /// Is the gameover scene open
     /// </summary>
@@ -22,23 +40,6 @@ public class GameManager : MonoBehaviour
     /// Has the game finished
     /// </summary>
     private static bool _gameIsOver = false;
-    /// <summary>
-    /// Has the game started
-    /// </summary>
-    protected static bool _gameHasStarted = false;
-    /// <summary>
-    /// Returns true if the game has started. This is different from GameIsOver which tracks when the game ends.
-    /// </summary>
-    public bool GameHasStarted
-    {
-        get => _gameHasStarted;
-        set
-        {
-            _gameHasStarted = value;
-            //Pause or unpause the game depending on the vlaue
-            Pause(!value);
-        }
-    }
     /// <summary>
     /// Returns true if the game has finished. This is different from GameHasStarted which tracks when the game begins
     /// </summary>
@@ -70,6 +71,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {   //Pause the game while everything loads
         //Pause(true);
+        s_instance = this;
 #if !UNITY_EDITOR
         _waveManager.LoadLevel("MainMenu");
 #endif  
@@ -95,10 +97,35 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void Update()
     {   //Wait for the game to start
-        if (!_gameHasStarted || _gameIsOver)
+        if (_gameIsOver)
             return;
-        //Check if the game is over
-        _gameIsOver = PlayerShip.PlayerIsDead;
+        //If there are waves that have not completed, check if they completed
+        if (_waves.Count > 0)
+            for (int i = 0; i < _waves.Count; i++)
+            {
+                //If a wave has not spawned, skip
+                if (!_waves[i].spawned)
+                    break;
+                //Remove the wave from being tracked since its finsihed
+                _waves.RemoveAt(i);
+                //Decrement i so we don't skip a wave
+                i--;
+            }
+        //If all the waves have finished, check if all the enemies are dead.
+        else
+        {   //Loop over the enemies
+            for (int i = 0; i < _enemiesAlive.Count; i++)
+                //Check if the enemy is dead
+                if (!_enemiesAlive[i])
+                {   //Remove the dead enemies from the list
+                    _enemiesAlive.RemoveAt(i);
+                    //Don't skip an enemy
+                    i--;
+                }
+            //If there are no more alive enemies, you win
+            if (_enemiesAlive.Count == 0)
+                Win();
+        }
     }
     /// <summary>
     /// Called when the game ends
@@ -109,6 +136,21 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
         //Toggle it to be open
         _gameOverSceneIsOpen = true;
+        //The game is over
+        _gameIsOver = true;
+
+        OnLose.Invoke();
+    }
+    /// <summary>
+    /// Called when the player wins
+    /// </summary>
+    public void Win()
+    {   //Call the win unityevent
+        OnWin.Invoke();
+        //The game has ended
+        _gameIsOver = true;
+
+        Debug.LogError("Win code not done");
     }
     /// <summary>
     /// Called when the game starts
@@ -116,6 +158,8 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {   //Reset the player
         PlayerShip.s_instance.Reset();
+        _waves.Clear();
+        _enemiesAlive.Clear();
         //Enable the waves to spawn
         Pause(false);
         //Cloes the gameOver menu
@@ -143,5 +187,21 @@ public class GameManager : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+    /// <summary>
+    /// Stores a wave
+    /// </summary>
+    /// <param name="w">The wave</param>
+    public void AddWave(Wave w)
+    {
+        _waves.Add(w);
+    }
+    /// <summary>
+    /// Stores an enemy
+    /// </summary>
+    /// <param name="e">The enemy</param>
+    public void AddEnemy(Enemy e)
+    {
+        _enemiesAlive.Add(e);
     }
 }

@@ -120,6 +120,8 @@ public class Enemy : ArmouredHealth
         _shotTime = Random.Range(_minTimeBetweenShots, _maxTimeBetweenShots);
         t_burstTimer = _burstDuration + 1;
 
+        GameManager.s_instance.AddEnemy(this);
+
         base.Start();
     }
     /// <summary>

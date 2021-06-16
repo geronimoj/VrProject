@@ -17,7 +17,7 @@ public class Wave : MonoBehaviour
     [SerializeField]
     float spacing = 1;
 
-    bool spawned = false;
+    public bool spawned = false;
 
     float timer = 0;
 
@@ -44,6 +44,8 @@ public class Wave : MonoBehaviour
         if (!FormationManager)
             FormationManager = GameObject.Find("FormationManager");
         LookUpFormation();
+
+        GameManager.s_instance.AddWave(this);
     }
 
     public void Update()
