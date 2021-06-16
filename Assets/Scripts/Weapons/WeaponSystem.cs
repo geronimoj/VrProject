@@ -8,6 +8,8 @@ public class WeaponSystem : MonoBehaviour
     public Weapon weapon;
 
     public List<Weapon> weapons;
+
+    public Weapon triDisaster;
     /// <summary>
     /// This block is temporary, for the very first weapon for testing
     /// </summary>
@@ -18,6 +20,17 @@ public class WeaponSystem : MonoBehaviour
     /// Is the safetyMode on
     /// </summary>
     public static bool safetyMode = false;
+    /// <summary>
+    /// The cooldown of triDisaster
+    /// </summary>
+    public float triDistasterCooldown = 50;
+    /// <summary>
+    /// The duration of triDisaster
+    /// </summary>
+    public float triDisasterDuration = 5;
+
+    private float t_durationTimer = 0;
+    private float t_cooldownTimer = 0;
 
     /// <summary>
     /// Setups the primary gun and WeaponSelector
@@ -31,6 +44,9 @@ public class WeaponSystem : MonoBehaviour
             Debug.LogError("Could not assign current weapon to weapons[0]. Weapons is either null or has a length of 0");
         //Subscribe to the weapon change event
         WeaponSelector.OnChangeWeapon.AddListener(ChangeWeapon);
+
+        t_cooldownTimer = triDistasterCooldown;
+        t_durationTimer = triDisasterDuration;
 
         weapon.OnEquip();
     }
@@ -57,12 +73,28 @@ public class WeaponSystem : MonoBehaviour
         //If safetyMode is on, no shoot shoot
         if (safetyMode)
             return;
-        //Added a null pointer check for the current weapon.
-        if (weapon && OGInputGetter.Get(OGInputGetter.OculusInputs.BackTrigger) && weapon.CanFire)
-        {
-            Fire();
+        //Timers
+        if (t_durationTimer < triDisasterDuration)
+            t_durationTimer += Time.deltaTime;
+        //Only reduce the cooldown of tridisaster if its not being used
+        else
+        {   //If the duration timer just completed, equip the main weapon
+            if (t_cooldownTimer == 0)
+                weapon = weapons[0];
+            //Start the cooldown
+            t_cooldownTimer += Time.deltaTime;
         }
-        else if(weapon && OGInputGetter.Get(OGInputGetter.OculusInputs.BackTrigger) && weapon.uniqueWeapon)
+        //Check if they want to equip triDisaster
+        if (triDisaster && t_cooldownTimer >= triDistasterCooldown && OGInputGetter.GetDown(OGInputGetter.OculusInputs.FaceButton))
+        {   //Equip the weapon
+            ChangeWeapon(triDisaster);
+            //Reset the timers
+            t_cooldownTimer = 0;
+            t_durationTimer = 0;
+        }
+
+        //Added a null pointer check for the current weapon.                //No-longer need the else if
+        if (weapon && OGInputGetter.Get(OGInputGetter.OculusInputs.BackTrigger) && (weapon.CanFire || weapon.uniqueWeapon))
         {
             Fire();
         }
@@ -124,15 +156,15 @@ public class WeaponSystem : MonoBehaviour
     public void UpgradeWeapon(Weapon weapon)
     {
         // Check to see if the weapon we pass in is any of the upgraded weapons
-        if(weapon as SpreadMinigun)
+        if (weapon as SpreadMinigun)
         {
 
         }
-        else if(weapon as LockOnRockets)
+        else if (weapon as LockOnRockets)
         {
 
         }
-        else if(weapon as SplitBeam)
+        else if (weapon as SplitBeam)
         {
 
         }
