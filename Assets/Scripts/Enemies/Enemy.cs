@@ -70,9 +70,13 @@ public class Enemy : ArmouredHealth
     /// <summary>
     /// The targets the enemies can shoot at
     /// </summary>
-    private static readonly List<Transform> s_targets = new List<Transform>();
+    public static readonly List<Transform> s_targets = new List<Transform>();
 
     public static UnityEvent KillEnemies = new UnityEvent();
+    /// <summary>
+    /// The turrets on the ship
+    /// </summary>
+    public EnemyTurret[] turrets = new EnemyTurret[0];
 
     private EnemyReticleSystem _ert = null;
     /// <summary>
@@ -165,6 +169,9 @@ public class Enemy : ArmouredHealth
             {
                 //Get the target to shoot at
                 int target = Random.Range(0, s_targets.Count);
+                //Rotate the turrets to look at the target
+                foreach (EnemyTurret t in turrets)
+                    t.SetTarget(target);
 
                 Vector3 toTarget;
                 //Loop over our weapons
