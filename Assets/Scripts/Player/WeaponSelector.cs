@@ -98,7 +98,8 @@ public class WeaponSelector : MonoBehaviour
             Debug.Break();
         }
         _openScale = transform.localScale;
-        //The first update cycle will set the scale to 0
+        //Make sure the selector is closed
+        CloseSelector();
     }
     /// <summary>
     /// Check for inputs
