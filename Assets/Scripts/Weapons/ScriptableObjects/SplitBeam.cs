@@ -61,17 +61,17 @@ public class SplitBeam : Weapon
 
             if (hit.collider.gameObject.CompareTag("Enemy"))
             {
-                if (targets.Count < 1 || !targets[0] || hit.collider.gameObject != targets[0].gameObject)
+                Health h = hit.collider.gameObject.GetComponent<Health>();
+                if (targets.Count < 1 || !targets[0] || !targets.Contains(h))
                     targets.Add(hit.collider.gameObject.GetComponent<Health>());
                 
 
                 RaycastHit[] hits = Physics.SphereCastAll(targets[0].transform.position, splitRadius, Vector3.up, Mathf.Infinity, layerMask, QueryTriggerInteraction.Collide);
 
-                Debug.LogWarning("Hits from SphereCast: " + hits.Length);
 
                 for (int i = 0; i < hits.Length; i++)
                 {
-                    Health h = hits[i].collider.gameObject.GetComponent<Health>();
+                    h = hits[i].collider.gameObject.GetComponent<Health>();
                     if (h && !targets.Contains(h))
                     {
                         targets.Add(h);
@@ -81,7 +81,6 @@ public class SplitBeam : Weapon
                 if (targets.Count > splitLines.Count)
                 {
                     int diff = targets.Count - splitLines.Count;
-                    Debug.LogWarning("SplitLines currently available: " + splitLines.Count + " | Number of targets: " + targets.Count + " | SplitLines needed: " + diff);
 
                     for (int i = 0; i < diff; i++)
                     {
