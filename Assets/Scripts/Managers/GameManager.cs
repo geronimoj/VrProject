@@ -145,11 +145,10 @@ public class GameManager : MonoBehaviour
     /// Called when the player wins
     /// </summary>
     public void Win()
-    {   //Call the win unityevent
-        OnWin.Invoke();
-        //The game has ended
+    {   //The game has ended
         _gameIsOver = true;
-
+        //Call the win unityevent
+        OnWin.Invoke();
         Debug.LogError("Win code not done");
     }
     /// <summary>
