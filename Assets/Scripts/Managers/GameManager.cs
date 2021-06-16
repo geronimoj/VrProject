@@ -158,6 +158,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {   //Reset the player
         PlayerShip.s_instance.Reset();
+        //Reset a bunch of values
         _waves.Clear();
         _enemiesAlive.Clear();
         //Enable the waves to spawn
@@ -193,7 +194,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     /// <param name="w">The wave</param>
     public void AddWave(Wave w)
-    {
+    {   //We use the waves adding themself to determine when the next level starts
+        _gameIsOver = false;
         _waves.Add(w);
     }
     /// <summary>
