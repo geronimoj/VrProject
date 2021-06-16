@@ -14,6 +14,10 @@ public class WeaponSystem : MonoBehaviour
     public Transform anchor;
 
     public List<Transform> guns;
+    /// <summary>
+    /// Is the safetyMode on
+    /// </summary>
+    public static bool safetyMode = false;
 
     /// <summary>
     /// Setups the primary gun and WeaponSelector
@@ -50,6 +54,9 @@ public class WeaponSystem : MonoBehaviour
             //Besides, the only errors that could appear are weapons containing a null or weapons iteself being null
             //throw;
         }
+        //If safetyMode is on, no shoot shoot
+        if (safetyMode)
+            return;
         //Added a null pointer check for the current weapon.
         if (weapon && OGInputGetter.Get(OGInputGetter.OculusInputs.BackTrigger) && weapon.CanFire)
         {

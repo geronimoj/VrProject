@@ -98,13 +98,17 @@ public class WeaponSelector : MonoBehaviour
             Debug.Break();
         }
         _openScale = transform.localScale;
-        //The first update cycle will set the scale to 0
+        //Make sure the selector is closed
+        CloseSelector();
     }
     /// <summary>
     /// Check for inputs
     /// </summary>
     private void Update()
-    {   //If we get a touch, open the selector
+    {   //Check if the safety mode is on, if so. Don't open the weapon menu
+        if (WeaponSystem.safetyMode)
+            return;
+        //If we get a touch, open the selector
         if (OGInputGetter.Get(OGInputGetter.OculusInputs.FaceTouch))
             OpenSelector();
         //If the user is no longer touching the touchPad, close the selector

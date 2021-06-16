@@ -68,7 +68,6 @@ public class SplitBeam : Weapon
 
                 RaycastHit[] hits = Physics.SphereCastAll(targets[0].transform.position, splitRadius, Vector3.up, Mathf.Infinity, layerMask, QueryTriggerInteraction.Collide);
 
-                Debug.LogWarning("Hits from SphereCast: " + hits.Length);
 
                 for (int i = 0; i < hits.Length; i++)
                 {
@@ -82,7 +81,6 @@ public class SplitBeam : Weapon
                 if (targets.Count > splitLines.Count)
                 {
                     int diff = targets.Count - splitLines.Count;
-                    Debug.LogWarning("SplitLines currently available: " + splitLines.Count + " | Number of targets: " + targets.Count + " | SplitLines needed: " + diff);
 
                     for (int i = 0; i < diff; i++)
                     {
