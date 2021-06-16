@@ -32,7 +32,7 @@ public class Wave : MonoBehaviour
     [SerializeField]
     Vector3 position;
 
-        [SerializeField]
+    [SerializeField]
     public bool visible = true;
 
     public void Start()
@@ -45,7 +45,8 @@ public class Wave : MonoBehaviour
             FormationManager = GameObject.Find("FormationManager");
         LookUpFormation();
 
-        GameManager.s_instance.AddWave(this);
+        if (Application.isPlaying)
+            GameManager.s_instance.AddWave(this);
     }
 
     public void Update()
