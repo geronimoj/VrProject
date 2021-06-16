@@ -13,9 +13,10 @@ public class EnemyTurret : MonoBehaviour
     /// <summary>
     /// Updates the orientation of the turret
     /// </summary>
-    private void FixedUpdate()
+    private void LateUpdate()
     {   //Look at the target point
-        transform.LookAt(Enemy.s_targets[target], Vector3.up);
+        Vector3 toTarget = Enemy.s_targets[target].position - transform.position;
+        transform.rotation = Quaternion.LookRotation(-toTarget.normalized, Vector3.up);
     }
     /// <summary>
     /// Sets the target the ship is targeting
@@ -25,6 +26,6 @@ public class EnemyTurret : MonoBehaviour
     {
         target = t;
         //Call fixedUpdate, this contains the code for rotating the gun
-        FixedUpdate();
+        LateUpdate();
     }
 }
