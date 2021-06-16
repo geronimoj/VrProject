@@ -80,7 +80,7 @@ public class SplitBeam : Weapon
 
                 if (targets.Count > splitLines.Count)
                 {
-                    int diff = hits.Length - splitLines.Count;
+                    int diff = targets.Count - splitLines.Count;
 
                     for (int i = 0; i < diff; i++)
                     {
