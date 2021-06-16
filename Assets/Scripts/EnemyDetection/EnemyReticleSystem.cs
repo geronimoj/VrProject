@@ -19,6 +19,11 @@ public class EnemyReticleSystem : ReticleDisplayer
     [SerializeField]
     private bool _useAsDisplay = true;
     /// <summary>
+    /// Should the enemies be continued to be tracked after they have left the view
+    /// </summary>
+    [Tooltip("Should the ReticleSystem continue to track an enemy after it has been removed from view")]
+    public bool _trackRemovedEnemies = true;
+    /// <summary>
     /// The enemies without assigned reticles that we need to track
     /// </summary>
     private readonly List<Transform> _enemiesToTrack = new List<Transform>();
@@ -126,8 +131,10 @@ public class EnemyReticleSystem : ReticleDisplayer
             //Null catch
             if (display)
                 display.LeaveReticleView(enemy, true);
-        //Start tracking the enemy
-        _enemiesToTrack.Add(enemy);
+
+        if (_trackRemovedEnemies)
+            //Start tracking the enemy
+            _enemiesToTrack.Add(enemy);
     }
     /// <summary>
     /// Tells each of the reticle displayers to display a reticle and only display using this system is useAsDisplay is true
