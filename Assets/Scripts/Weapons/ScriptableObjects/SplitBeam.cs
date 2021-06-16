@@ -127,15 +127,18 @@ public class SplitBeam : Weapon
                     }
 
                 }
-                if(damageTickTimer > damageTick)
+
+                for (int i = 0; i < targets.Count; i++)
+                {
+                    if (targets[i] == null)
+                        targets.RemoveAt(i);
+                }
+
+                if (damageTickTimer > damageTick)
                     damageTickTimer = 0;
             }
 
-            for (int i = 0; i < targets.Count; i++)
-            {
-                if (targets[i] == null)
-                    targets.RemoveAt(i);
-            }
+            
         }
         
 
