@@ -88,9 +88,6 @@ public class SplitBeam : Weapon
                         splitLines.Add(o.GetComponent<LineRenderer>());
                     }
                 }
-
-                
-
                 
             }
             else
