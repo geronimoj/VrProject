@@ -104,7 +104,7 @@ public class SplitBeam : Weapon
                 targets.Clear();
             }
 
-            if (targets[0])
+            if (targets.Count > 0)
             {
 
                 for (int i = 0; i < targets.Count; i++)
