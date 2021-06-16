@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa5660f0a71892d4eb8ac076803854f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 350
   destroyOnDeath: 1
   OnDeath:
     m_PersistentCalls:
@@ -142,19 +142,19 @@ MonoBehaviour:
           m_StringArgument: TookDamage
           m_BoolArgument: 0
         m_CallState: 2
-  _armour: 0
-  _armourAndSheildValue: 0
+  _armour: 1
+  _armourAndSheildValue: 2
   OnBreakShield:
     m_PersistentCalls:
       m_Calls: []
-  _scoreGainOnDeath: 100
+  _scoreGainOnDeath: 500
   _weapon: {fileID: 11400000, guid: 1a8b5e7f2abb56145993a08fe14db46c, type: 2}
   _weaponFirePoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4478654121792997600}
+  - {fileID: 4478654121792997600}
+  - {fileID: 4478654121792997600}
+  - {fileID: 4478654121792997600}
+  - {fileID: 4478654121792997600}
   _maxTimeBetweenShots: 20
   _minTimeBetweenShots: 5
   _burstDuration: 0.5
@@ -181,6 +181,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6777656222595032711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6764bc234e4d75a47af0ad9e4b91cc4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: 0
+--- !u!114 &7563370176748202318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7508422097881090829}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6764bc234e4d75a47af0ad9e4b91cc4e, type: 3}
@@ -383,6 +396,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed708a533f094eb4884416af0aeabe15, type: 3}
+--- !u!1 &7508422097881090829 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3374135427203651339, guid: ed708a533f094eb4884416af0aeabe15,
+    type: 3}
+  m_PrefabInstance: {fileID: 5107099941498362886}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4478654121792997600 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -520323642305669914, guid: ed708a533f094eb4884416af0aeabe15,
+    type: 3}
+  m_PrefabInstance: {fileID: 5107099941498362886}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7791311795957390439
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -549,6 +574,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300004, guid: 45137ecb2b0f9ba45b80adefb16de509, type: 3}
+    - target: {fileID: 6339358890935936299, guid: c0c0c2ab5993eb3498d65db639739f74,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6894515158904592666, guid: c0c0c2ab5993eb3498d65db639739f74,
         type: 3}
       propertyPath: m_Convex

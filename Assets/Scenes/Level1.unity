@@ -392,15 +392,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590309786}
   m_LocalRotation: {x: 0.51100713, y: -0, z: -0, w: 0.85957646}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0009249449}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.117}
+  m_LocalScale: {x: 0.75119, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 613627747}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 61.462, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.417, y: -0.070887156}
+  m_AnchoredPosition: {x: 0.581, y: 0.058}
   m_SizeDelta: {x: 1, y: 0.1}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &590309788
@@ -429,7 +429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 404f1770457499c4f959d9959c0ec572, type: 2}
   m_Color: {r: 0.7075472, g: 0.066972144, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -476,6 +476,7 @@ MonoBehaviour:
   formation: TwinH
   sequential: 0
   spacing: 1
+  spawned: 0
   pathComp: {fileID: 1971824977}
   formComp: {fileID: 1825455260}
   position: {x: 0, y: 0, z: 40}
@@ -497,6 +498,7 @@ MonoBehaviour:
   formation: LightSwarm
   sequential: 1
   spacing: 1
+  spawned: 0
   pathComp: {fileID: 1971824979}
   formComp: {fileID: 1825455262}
   position: {x: -20, y: -15, z: 45}
@@ -518,6 +520,7 @@ MonoBehaviour:
   formation: TriL
   sequential: 0
   spacing: 1
+  spawned: 0
   pathComp: {fileID: 1971824978}
   formComp: {fileID: 1825455261}
   position: {x: 0, y: 10, z: 50}
@@ -539,6 +542,7 @@ MonoBehaviour:
   formation: HeavyWing
   sequential: 1
   spacing: 0.7
+  spawned: 0
   pathComp: {fileID: 1971824977}
   formComp: {fileID: 1825455263}
   position: {x: 0, y: -15, z: 40}
@@ -560,6 +564,7 @@ MonoBehaviour:
   formation: LightSwarm
   sequential: 1
   spacing: 0.3
+  spawned: 0
   pathComp: {fileID: 1971824977}
   formComp: {fileID: 1825455262}
   position: {x: 0, y: 0, z: 50}
@@ -581,6 +586,7 @@ MonoBehaviour:
   formation: EnergySquad
   sequential: 1
   spacing: 0.2
+  spawned: 0
   pathComp: {fileID: 1971824979}
   formComp: {fileID: 1825455265}
   position: {x: 0, y: 0, z: 55}
@@ -602,6 +608,7 @@ MonoBehaviour:
   formation: TriL
   sequential: 1
   spacing: 0.5
+  spawned: 0
   pathComp: {fileID: 1971824977}
   formComp: {fileID: 1825455261}
   position: {x: 0, y: -5, z: 50}
@@ -623,6 +630,7 @@ MonoBehaviour:
   formation: EnergySquad
   sequential: 0
   spacing: 1
+  spawned: 0
   pathComp: {fileID: 1971824978}
   formComp: {fileID: 1825455265}
   position: {x: 0, y: 5, z: 55}
@@ -644,6 +652,7 @@ MonoBehaviour:
   formation: LightSwarm
   sequential: 0
   spacing: 1
+  spawned: 0
   pathComp: {fileID: 1971824979}
   formComp: {fileID: 1825455262}
   position: {x: 0, y: 15, z: 50}
@@ -665,6 +674,7 @@ MonoBehaviour:
   formation: EnergySquad
   sequential: 0
   spacing: 1
+  spawned: 0
   pathComp: {fileID: 1971824979}
   formComp: {fileID: 1825455265}
   position: {x: 0, y: 5, z: 55}
@@ -686,6 +696,7 @@ MonoBehaviour:
   formation: HeavyWing
   sequential: 1
   spacing: 1
+  spawned: 0
   pathComp: {fileID: 1971824979}
   formComp: {fileID: 1825455263}
   position: {x: 0, y: -15, z: 40}
@@ -3032,15 +3043,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226187300}
   m_LocalRotation: {x: 0.51100713, y: -0, z: -0, w: 0.85957646}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0009249449}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.119}
+  m_LocalScale: {x: 0.75119, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 613627747}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 61.462, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.417, y: -0.070887156}
+  m_AnchoredPosition: {x: 0.581, y: 0.054}
   m_SizeDelta: {x: 1, y: 0.1}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1226187302

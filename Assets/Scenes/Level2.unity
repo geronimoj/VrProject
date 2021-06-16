@@ -392,15 +392,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590309786}
   m_LocalRotation: {x: 0.51100713, y: -0, z: -0, w: 0.85957646}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0009249449}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.127}
+  m_LocalScale: {x: 0.81701, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 613627747}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 61.462, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.417, y: -0.070887156}
+  m_AnchoredPosition: {x: 0.583, y: 0.083}
   m_SizeDelta: {x: 1, y: 0.1}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &590309788
@@ -603,7 +603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afbc138a33afedf4f8700055c5d3097b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTime: 67
+  spawnTime: 62
   path: Boss
   formation: Boss
   sequential: 0
@@ -611,7 +611,7 @@ MonoBehaviour:
   spawned: 0
   pathComp: {fileID: 1971824979}
   formComp: {fileID: 1825455262}
-  position: {x: 0, y: 0, z: 0}
+  position: {x: 0, y: 0, z: 60}
   visible: 0
 --- !u!114 &608133029
 MonoBehaviour:
@@ -722,6 +722,94 @@ MonoBehaviour:
   pathComp: {fileID: 1971824981}
   formComp: {fileID: 1825455264}
   position: {x: -20, y: -20, z: 40}
+  visible: 0
+--- !u!114 &608133034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608133021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afbc138a33afedf4f8700055c5d3097b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnTime: 91
+  path: HeavyFleet
+  formation: HeavyFleet
+  sequential: 0
+  spacing: 1
+  spawned: 0
+  pathComp: {fileID: 1971824980}
+  formComp: {fileID: 1825455263}
+  position: {x: -20, y: -10, z: 50}
+  visible: 0
+--- !u!114 &608133035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608133021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afbc138a33afedf4f8700055c5d3097b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnTime: 90
+  path: HeavyFleet
+  formation: HeavyFleet
+  sequential: 0
+  spacing: 1
+  spawned: 0
+  pathComp: {fileID: 1971824980}
+  formComp: {fileID: 1825455263}
+  position: {x: 20, y: 10, z: 50}
+  visible: 0
+--- !u!114 &608133036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608133021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afbc138a33afedf4f8700055c5d3097b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnTime: 100
+  path: DiagonalSweep
+  formation: LightCross
+  sequential: 0
+  spacing: 1
+  spawned: 0
+  pathComp: {fileID: 1971824977}
+  formComp: {fileID: 1825455260}
+  position: {x: 0, y: 20, z: 45}
+  visible: 0
+--- !u!114 &608133037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608133021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afbc138a33afedf4f8700055c5d3097b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnTime: 110
+  path: Boss
+  formation: FinalBoss
+  sequential: 0
+  spacing: 1
+  spawned: 0
+  pathComp: {fileID: 1971824979}
+  formComp: {fileID: 1825455265}
+  position: {x: 0, y: 0, z: 60}
   visible: 0
 --- !u!1 &613627743
 GameObject:
@@ -3065,15 +3153,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226187300}
   m_LocalRotation: {x: 0.51100713, y: -0, z: -0, w: 0.85957646}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0009249449}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.12699997}
+  m_LocalScale: {x: 0.81701, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 613627747}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 61.462, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.417, y: -0.070887156}
+  m_AnchoredPosition: {x: 0.583, y: 0.082999915}
   m_SizeDelta: {x: 1, y: 0.1}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1226187302
@@ -3449,7 +3537,7 @@ MonoBehaviour:
   - {x: 9.502367, y: 3.8185005, z: 0}
   spawnObject: {fileID: 6777656222595032711, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
     type: 3}
-  visible: 1
+  visible: 0
 --- !u!114 &1825455262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3463,10 +3551,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   formation: Boss
-  spawns: []
+  spawns:
+  - {x: 0, y: 0, z: 0}
   spawnObject: {fileID: 6777656222595032711, guid: 7baf0e22bcb33934f8cc1d660c885569,
     type: 3}
-  visible: 1
+  visible: 0
 --- !u!114 &1825455263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3511,6 +3600,25 @@ MonoBehaviour:
   spawnObject: {fileID: 3413251500363991473, guid: 2670ab8dc0cc32a49800b64116a0b2eb,
     type: 3}
   visible: 0
+--- !u!114 &1825455265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825455259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd38c4eb46d86804b8646570681b2437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  formation: FinalBoss
+  spawns:
+  - {x: 3.3035226, y: 0, z: 0}
+  - {x: -3.654657, y: 0, z: 0}
+  spawnObject: {fileID: 6777656222595032711, guid: 7baf0e22bcb33934f8cc1d660c885569,
+    type: 3}
+  visible: 1
 --- !u!1 &1971824976 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2259697529591606727, guid: 86eb154df16fdb1458c566f42b9aeee2,
