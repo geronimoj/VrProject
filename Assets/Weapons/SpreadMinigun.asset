@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf2a6c6a884b12e4a9f876c69aa46791, type: 3}
   m_Name: SpreadMinigun
   m_EditorClassIdentifier: 
-  gunParts: -1
+  gunParts: 4
   weaponIcon: {fileID: 21300000, guid: 1e4f1a99d95176d49aa02e59ae8899b5, type: 3}
   weaponType: 0
   spawnable: {fileID: 5521668472997189268, guid: 76f6c4cf71dcc9440b42f15954516d4c,
@@ -22,12 +22,12 @@ MonoBehaviour:
   damage: 2
   refireSpeed: 0.08
   seeking: 1
-  turnAngle: 5
+  turnAngle: 0.1
   uniqueWeapon: 0
-  currentRefire: -0.89116174
+  currentRefire: -2.0981836
   explosionRadius: 0
   deviation: {x: 0.06, y: 0.06}
   converge: 1
   convergenceRange: {x: 0.2, y: 0.01}
   convergeTime: 3
-  extraBullets: 4
+  extraBullets: 10
