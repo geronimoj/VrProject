@@ -92,7 +92,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _weapon
       value: 
-      objectReference: {fileID: 11400000, guid: 1a8b5e7f2abb56145993a08fe14db46c,
+      objectReference: {fileID: 11400000, guid: dca9339fc0dc05d449329aecf95e9bde,
         type: 2}
     - target: {fileID: 4661970142565582864, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
         type: 3}
@@ -107,7 +107,7 @@ PrefabInstance:
     - target: {fileID: 4661970142565582864, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
         type: 3}
       propertyPath: _burstDuration
-      value: 0.2
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4661970142565582864, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
         type: 3}
