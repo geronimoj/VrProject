@@ -194,7 +194,7 @@ public class SplitBeam : Weapon
             int l = splitLines.Count;
             for (int i = 0; i < l; i++)
             {
-                Destroy(splitLines[i]);
+                Destroy(splitLines[i].gameObject);
             }
             splitLines.Clear();
         }

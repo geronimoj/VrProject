@@ -121,4 +121,25 @@ public class WeaponSystem : MonoBehaviour
         weapon.OnEquip();
     }
 
+    public void UpgradeWeapon(Weapon weapon)
+    {
+        // Check to see if the weapon we pass in is any of the upgraded weapons
+        if(weapon as SpreadMinigun)
+        {
+
+        }
+        else if(weapon as LockOnRockets)
+        {
+
+        }
+        else if(weapon as SplitBeam)
+        {
+
+        }
+        else
+        {
+            Debug.LogError("No suitable upgrade for " + weapon.name);
+        }
+    }
+
 }
