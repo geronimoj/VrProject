@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Manager
   - PlayerShipTarget
+  - EnemyReticle
+  - TargetReticle
   layers:
   - Default
   - TransparentFX
