@@ -18,7 +18,7 @@ public class ConsoleEvents : MonoBehaviour
     /// <summary>
     /// The current inputs
     /// </summary>
-    private List<int> currentNumbers;
+    private List<int> currentNumbers = new List<int>();
     public float maxTimer;
     private float currentTimer;
     /// <summary>
