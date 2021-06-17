@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
 #if !UNITY_EDITOR
         _waveManager.LoadLevel("MainMenu");
 #endif  
+        _gameIsOver = true;
     }
     /// <summary>
     /// Prepares the GameManager
