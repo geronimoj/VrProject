@@ -406,7 +406,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5258daee8a1938b4bb8b9cc1bb696a67, type: 2}
+      objectReference: {fileID: 2100000, guid: 8133ff6beb39e3147938db2069393f2a, type: 2}
     - target: {fileID: -4216859302048453862, guid: 727ebd21c0ee2d149bfabd7812db4917,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -875,7 +875,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 5
+  m_Intensity: 1
   m_Range: 100
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2105,7 +2105,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 34560e50593fb8e41ad97fe222d5a5db, type: 2}
+      objectReference: {fileID: 2100000, guid: 2e1c1854c3529a143a02f977f0dfd30e, type: 2}
     - target: {fileID: -927199367670048503, guid: 61d46359746df844aa20c81625498536,
         type: 3}
       propertyPath: m_Name
@@ -2120,7 +2120,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 719a7bd039f18df44813a04e28ae57c5, type: 2}
+      objectReference: {fileID: 2100000, guid: 10701f161726e0147b731622add2712d, type: 2}
     - target: {fileID: 739372861062838119, guid: 61d46359746df844aa20c81625498536,
         type: 3}
       propertyPath: m_ReceiveGI
@@ -2140,7 +2140,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 780eb7f7f2e1e4f49b29da47f8a7415c, type: 2}
+      objectReference: {fileID: 2100000, guid: fb66f9df6659c8e4ea0e5f2d02baf767, type: 2}
     - target: {fileID: 3264989218806530606, guid: 61d46359746df844aa20c81625498536,
         type: 3}
       propertyPath: m_ReceiveGI
@@ -3349,7 +3349,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ws: {fileID: 777627447}
-  weapon: {fileID: 0}
   weapons:
   - {fileID: 11400000, guid: 8b654b57a70a2b94b92242b18d3c23c3, type: 2}
   - {fileID: 11400000, guid: fa88622e2eeba5d4bbf24b6c7bf2fa2c, type: 2}
