@@ -3426,6 +3426,7 @@ GameObject:
   - component: {fileID: 2023548772}
   - component: {fileID: 2023548771}
   - component: {fileID: 2023548773}
+  - component: {fileID: 2023548774}
   m_Layer: 0
   m_Name: Skyboxsetter
   m_TagString: Untagged
@@ -3476,3 +3477,17 @@ MonoBehaviour:
   displayTop: 0
   _setInstantly: 0
   _transitionDuration: 5
+--- !u!114 &2023548774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023548770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 836d18d83d20e8f4bb4c1cee3c5bc1bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_nextLevel: YouWin
+  m_loadTime: 0.2
