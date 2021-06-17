@@ -132,8 +132,7 @@ public class Enemy : ArmouredHealth
         if (_mainWeapon)
             Destroy(_mainWeapon);
         //Remove the enemy from the radar or reticle view
-        if (_ert)
-            _ert.LeaveReticleView(transform);
+        EnemyReticleSystem.OnKillEnemy.Invoke(transform);
 
         if (RadarSystem.s_instance)
             RadarSystem.s_instance.LeaveRadar(transform);
@@ -143,8 +142,7 @@ public class Enemy : ArmouredHealth
 
     private void OnDisable()
     {   //Remove the enemy from the radar or reticle view
-        if (_ert)
-            _ert.LeaveReticleView(transform);
+        EnemyReticleSystem.OnKillEnemy.Invoke(transform);
 
         if (RadarSystem.s_instance)
             RadarSystem.s_instance.LeaveRadar(transform);
