@@ -99,12 +99,17 @@ PrefabInstance:
     - target: {fileID: 7798543975568730622, guid: ec89dbfd7d51ff848b8d50b195fd790a,
         type: 3}
       propertyPath: _armourAndSheildValue
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7798543975568730622, guid: ec89dbfd7d51ff848b8d50b195fd790a,
         type: 3}
       propertyPath: _scoreGainOnDeath
       value: 255
+      objectReference: {fileID: 0}
+    - target: {fileID: 7798543975568730622, guid: ec89dbfd7d51ff848b8d50b195fd790a,
+        type: 3}
+      propertyPath: health
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2705285824112062368, guid: ec89dbfd7d51ff848b8d50b195fd790a, type: 3}
