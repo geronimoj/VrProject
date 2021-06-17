@@ -103,7 +103,7 @@ PrefabInstance:
     - target: {fileID: 4661970142565582864, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
         type: 3}
       propertyPath: _armourAndSheildValue
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4661970142565582864, guid: 15bc7b2396fb1b84a97f523aee1d5f56,
         type: 3}
