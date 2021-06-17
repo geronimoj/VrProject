@@ -94,6 +94,8 @@ public class WeaponSystem : MonoBehaviour
                 weapon = weapons[0];
             //Start the cooldown
             t_cooldownTimer += Time.deltaTime;
+            // And unlock the weapon selector again
+            ws._lockSelector = false;
         }
         //Check if they want to equip triDisaster
         if (triDisaster && t_cooldownTimer >= triDistasterCooldown && OGInputGetter.GetDown(OGInputGetter.OculusInputs.FaceButton))
@@ -102,6 +104,8 @@ public class WeaponSystem : MonoBehaviour
             //Reset the timers
             t_cooldownTimer = 0;
             t_durationTimer = 0;
+            // Lock the weapon selector so we can't switch off of tri
+            ws._lockSelector = true;
         }
 
         //Added a null pointer check for the current weapon.                //No-longer need the else if

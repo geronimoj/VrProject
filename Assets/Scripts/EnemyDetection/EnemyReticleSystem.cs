@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 /// <summary>
 /// The system that controls how the reticles that surround enemies appear
 /// </summary>
 public class EnemyReticleSystem : ReticleDisplayer
 {
+    public class ReticleEvent : UnityEvent<Transform> { }
+
+    public static ReticleEvent OnKillEnemy = new ReticleEvent();
     /// <summary>
     /// The additional displays to display enemies from
     /// </summary>
@@ -31,6 +35,11 @@ public class EnemyReticleSystem : ReticleDisplayer
     /// The enemies that need to be removed from _assignedReticles
     /// </summary>
     private readonly List<Transform> _enemiesToRemove = new List<Transform>();
+
+    private void Start()
+    {
+        OnKillEnemy.AddListener(StopTracking);
+    }
     /// <summary>
     /// Updates the reticles and debugging information
     /// </summary>

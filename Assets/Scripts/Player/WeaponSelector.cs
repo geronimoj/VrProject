@@ -42,6 +42,8 @@ public class WeaponSelector : MonoBehaviour
     /// <summary>
     /// The index of the selected weapon
     /// </summary>
+    // Used by WeaponSystem to disable weapon switching for Tri-Disaster
+    public bool _lockSelector = false;
     private int _selectedWeaponIndex = 0;
     /// <summary>
     /// The weapons that can be chosen from using the choose wheel
@@ -106,7 +108,7 @@ public class WeaponSelector : MonoBehaviour
     /// </summary>
     private void Update()
     {   //Check if the safety mode is on, if so. Don't open the weapon menu
-        if (WeaponSystem.safetyMode)
+        if (WeaponSystem.safetyMode || _lockSelector)
             return;
         //If we get a touch, open the selector
         if (OGInputGetter.Get(OGInputGetter.OculusInputs.FaceTouch))
