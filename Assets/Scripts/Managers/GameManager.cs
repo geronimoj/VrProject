@@ -177,6 +177,11 @@ public class GameManager : MonoBehaviour
             _gameIsOver = false;
         }
     }
+
+    public void LoadScene(string scene)
+    {
+        _waveManager.LoadLevel(scene);
+    }
     /// <summary>
     /// Quits the app
     /// </summary>
