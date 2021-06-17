@@ -9,9 +9,9 @@ public class SplitBeam : Weapon
     public GameObject lineSpawner;
     public int maxLines;
 
-    private List<Health> targets;
-    private List<LineRenderer> primaryLines;
-    private List<LineRenderer> splitLines;
+    private List<Health> targets = new List<Health>();
+    private List<LineRenderer> primaryLines = new List<LineRenderer>();
+    private List<LineRenderer> splitLines = new List<LineRenderer>();
 
     private int layerMask = 0;
     private int numGuns = 0;
