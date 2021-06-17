@@ -71,7 +71,10 @@ public class CheeseButton : MonoBehaviour
     /// Removes the cheese mode from the skybox
     /// </summary>
     private void OnApplicationQuit()
-    {   //When the application is exited, remove the cheese material
+    {   //Make sure the cheese button has been pressed
+        if (!_default)
+            return;
+        //When the application is exited, remove the cheese material
         if (topChanged)
             _skyboxMat.SetTexture("_CubeTop", _default);
         else
