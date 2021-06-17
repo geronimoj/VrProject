@@ -19,10 +19,10 @@ MonoBehaviour:
     type: 3}
   projectileSpeed: 500
   projectileLifetime: 1
-  damage: 5
+  damage: 7
   refireSpeed: 0.07
   seeking: 1
   turnAngle: 0.5
   uniqueWeapon: 0
-  currentRefire: -2.6226585
+  currentRefire: -128.77753
   explosionRadius: 0
