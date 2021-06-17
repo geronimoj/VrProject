@@ -65,7 +65,9 @@ public class SplitBeam : Weapon
                 Health h = hit.collider.gameObject.GetComponent<Health>();
                 if (targets.Count < 1 || !targets[0] || !targets.Contains(h))
                     targets.Add(hit.collider.gameObject.GetComponent<Health>());
-                
+                //Make sure the main target is alive
+                if (!targets[0])
+                    return;
 
                 RaycastHit[] hits = Physics.SphereCastAll(targets[0].transform.position, splitRadius, Vector3.up, Mathf.Infinity, layerMask, QueryTriggerInteraction.Collide);
 
@@ -110,7 +112,10 @@ public class SplitBeam : Weapon
             {
 
                 for (int i = 0; i < targets.Count; i++)
-                {
+                {   //Make sure target is not null
+                    if (!targets[i])
+                        continue;
+
                     if(i > 0)
                     {
                         splitLines[i].SetPosition(0, primaryLines[0].GetPosition(1));
