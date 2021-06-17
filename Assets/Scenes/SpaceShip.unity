@@ -2816,7 +2816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18e5896c3f8bb246b937e2e37eb4a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentLevel: MainMenu
+  _currentLevel: 
   OnLevelChange:
     m_PersistentCalls:
       m_Calls: []
