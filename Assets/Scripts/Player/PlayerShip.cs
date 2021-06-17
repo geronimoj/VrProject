@@ -73,6 +73,7 @@ public class PlayerShip : Health
     /// The score lost per 1 damage the player takes
     /// </summary>
     [Tooltip("The score that is lost per 1 damage the player takes")]
+    [SerializeField]
     protected float _scoreLossPerHealth = 0;
     /// <summary>
     /// Used by the player to determine if the game has finished

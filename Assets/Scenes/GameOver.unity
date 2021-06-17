@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 537097590}
   - component: {fileID: 537097589}
   - component: {fileID: 537097588}
+  - component: {fileID: 537097591}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -280,18 +281,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 537097589}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1364947871}
-        m_MethodName: LoadLevel
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: MainMenu
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &537097589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,6 +318,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537097586}
   m_CullTransparentMesh: 0
+--- !u!114 &537097591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537097586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dbcecbec2373ab41bf59bffb011dcbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1038495400
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,7 +562,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1364947870}
   - component: {fileID: 1364947869}
-  - component: {fileID: 1364947871}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -595,22 +596,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1364947871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1364947868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18e5896c3f8bb246b937e2e37eb4a13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _currentLevel: 
-  OnLevelChange:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1401571602
 GameObject:
   m_ObjectHideFlags: 0
