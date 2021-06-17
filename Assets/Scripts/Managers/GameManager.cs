@@ -150,7 +150,6 @@ public class GameManager : MonoBehaviour
         _gameIsOver = true;
         //Call the win unityevent
         OnWin.Invoke();
-        Debug.LogError("Win code not done");
     }
     /// <summary>
     /// Called when the game starts
