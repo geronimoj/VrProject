@@ -201,7 +201,8 @@ public class SplitBeam : Weapon
             {
                 Destroy(splitLines[i].gameObject);
             }
-            splitLines.Clear();
+
+            ClearLines();
         }
 
 
@@ -222,10 +223,22 @@ public class SplitBeam : Weapon
         numGuns = 0;
         targets.Clear();
         primaryLines.Clear();
-        splitLines.Clear();
+        ClearLines();
     }
-
-
+    /// <summary>
+    /// Removes any splitLines that are null
+    /// </summary>
+    private void ClearLines()
+    {   //Loop over the splitLines
+        for (int i = 0; i < splitLines.Count; i++)
+            //If the value is null, remove its entry in the list
+            if (!splitLines[i])
+            {   //Remove it
+                splitLines.RemoveAt(i);
+                //Keep the indexer valid
+                i--;
+            }
+    }
 
 
 }
