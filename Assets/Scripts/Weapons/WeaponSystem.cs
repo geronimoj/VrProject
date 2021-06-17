@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class WeaponSystem : MonoBehaviour
 {
-    //public WeaponManager wm;
+    // Reference to the WeaponSelector to directly access it's weapon array
+    public WeaponSelector ws;
+    
     public Weapon weapon;
 
     public List<Weapon> weapons;
@@ -44,6 +46,11 @@ public class WeaponSystem : MonoBehaviour
             Debug.LogError("Could not assign current weapon to weapons[0]. Weapons is either null or has a length of 0");
         //Subscribe to the weapon change event
         WeaponSelector.OnChangeWeapon.AddListener(ChangeWeapon);
+
+        GameManager.s_instance.OnWin.AddListener(UpgradeWeapon);
+
+        // Initialize the WeaponSelector array from here using the first three weapons in our list
+        InitializeSelector();
 
         t_cooldownTimer = triDistasterCooldown;
         t_durationTimer = triDisasterDuration;
@@ -153,24 +160,44 @@ public class WeaponSystem : MonoBehaviour
         weapon.OnEquip();
     }
 
-    public void UpgradeWeapon(Weapon weapon)
+    public void UpgradeWeapon()
     {
+        int randomUpgrade = Random.Range(3, 6);
+        Weapon w = weapons[randomUpgrade];
         // Check to see if the weapon we pass in is any of the upgraded weapons
-        if (weapon as SpreadMinigun)
+        if (w as SplitBeam)
         {
-
+            ws.m_weapons[0] = weapon;
         }
-        else if (weapon as LockOnRockets)
+        else if (w as LockOnRockets)
         {
-
+            ws.m_weapons[1] = weapon;
         }
-        else if (weapon as SplitBeam)
+        else if (w as SpreadMinigun)
         {
-
+            ws.m_weapons[2] = weapon;
         }
         else
         {
             Debug.LogError("No suitable upgrade for " + weapon.name);
+        }
+        Debug.Log("Weapon upgrade received: " + weapons[randomUpgrade].name);
+
+        ChangeWeapon(w);
+    }
+
+    private bool InitializeSelector()
+    {
+        try
+        {
+            Weapon[] w = new Weapon[] { weapons[0], weapons[1], weapons[2] };
+            ws.m_weapons = w;
+            return true;
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Failed to initialize WeaponSelector from WeaponSystem with exception " + e);
+            return false;
         }
     }
 
