@@ -13,6 +13,10 @@ public class CheeseButton : MonoBehaviour
     [SerializeField]
     private Cubemap m_cheese = null;
 
+    private Cubemap _default = null;
+    private bool topChanged = false;
+    private static bool s_inCheeseMode = false;
+
     private TransitionSkybox _skybox = null;
 
     private Material _skyboxMat = null;
@@ -39,14 +43,45 @@ public class CheeseButton : MonoBehaviour
             return;
         //If true, change top image
         bool changeTop = offset >= 0.99;
+        //If we are in cheese mode, swap to it, otherwise revert it to the previous value
+        Cubemap c = s_inCheeseMode ? _default : m_cheese;
+        //If we are in cheese mode, we need to invert changeTop so we replace the correct value
+        if (s_inCheeseMode)
+            changeTop = !changeTop;
 
         if (changeTop)
-            _skyboxMat.SetTexture("_CubeTop", m_cheese);
+        {
+            _default = (Cubemap)_skyboxMat.GetTexture("_CubeTop");
+            _skyboxMat.SetTexture("_CubeTop", c);
+        }
         else
-            _skyboxMat.SetTexture("_CubeBot", m_cheese);
+        {
+            _default = (Cubemap)_skyboxMat.GetTexture("_CubeBot");
+            _skyboxMat.SetTexture("_CubeBot", c);
+        }
+
+        s_inCheeseMode = !s_inCheeseMode;
+        topChanged = changeTop;
         //Swap the skybox
         _skybox.Toggle();
         //Remove us from the button so you can't remove it
         button.onClick.RemoveListener(OnPressButton);
+    }
+    /// <summary>
+    /// Removes the cheese mode from the skybox
+    /// </summary>
+    private void OnApplicationQuit()
+    {   //When the application is exited, remove the cheese material
+        if (topChanged)
+            _skyboxMat.SetTexture("_CubeTop", _default);
+        else
+            _skyboxMat.SetTexture("_CubeBot", _default);
+    }
+    /// <summary>
+    /// Removes pizza time
+    /// </summary>
+    private void OnDestroy()
+    {   //If this is destroyed. Fix the skybox.
+        OnApplicationQuit();
     }
 }
