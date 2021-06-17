@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afbc138a33afedf4f8700055c5d3097b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTime: 10
+  spawnTime: 7
   path: HeavyLoop
   formation: TwinH
   sequential: 0
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afbc138a33afedf4f8700055c5d3097b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTime: 20
+  spawnTime: 14
   path: SwarmAttack
   formation: LightSwarm
   sequential: 1
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afbc138a33afedf4f8700055c5d3097b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTime: 14
+  spawnTime: 23
   path: HeavyLoop
   formation: TriL
   sequential: 1
