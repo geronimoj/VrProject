@@ -7,8 +7,9 @@ public class WeaponSystem : MonoBehaviour
     // Reference to the WeaponSelector to directly access it's weapon array
     public WeaponSelector ws;
     
-    public Weapon weapon;
+    private Weapon weapon;
 
+    [Tooltip("Order for these weapons is VERY IMPORTANT,\n First three must be Beam Cannon, Rocket Launcher and Dual Minigun in order")]
     public List<Weapon> weapons;
 
     public Weapon triDisaster;
@@ -49,8 +50,8 @@ public class WeaponSystem : MonoBehaviour
 
         GameManager.s_instance.OnWin.AddListener(UpgradeWeapon);
 
-        // Initialize the WeaponSelector array from here using the first three weapons in our list
-        InitializeSelector();
+        // Initialize the WeaponSelector array and reset upgrades from here using the first three weapons in our list
+        ResetUpgrades();
 
         t_cooldownTimer = triDistasterCooldown;
         t_durationTimer = triDisasterDuration;
@@ -186,17 +187,19 @@ public class WeaponSystem : MonoBehaviour
         ChangeWeapon(w);
     }
 
-    private bool InitializeSelector()
+    public bool ResetUpgrades()
     {
         try
         {
             Weapon[] w = new Weapon[] { weapons[0], weapons[1], weapons[2] };
             ws.m_weapons = w;
+            // Change the weapon to Dual Miniguns
+            ChangeWeapon(weapons[2]);
             return true;
         }
         catch (System.Exception e)
         {
-            Debug.LogError("Failed to initialize WeaponSelector from WeaponSystem with exception " + e);
+            Debug.LogError("Failed to reset upgrades from WeaponSystem with exception " + e);
             return false;
         }
     }
