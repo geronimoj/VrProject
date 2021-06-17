@@ -9,6 +9,8 @@ public class WeaponSystem : MonoBehaviour
     
     private Weapon weapon;
 
+    public Weapon EquippedWeapon => weapon;
+
     [Tooltip("Order for these weapons is VERY IMPORTANT,\n First three must be Beam Cannon, Rocket Launcher and Dual Minigun in order")]
     public List<Weapon> weapons;
 
