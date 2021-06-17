@@ -35,7 +35,7 @@ public class WeaponSystem : MonoBehaviour
     private float t_durationTimer = 0;
     private float t_cooldownTimer = 0;
 
-    private List<int> upgrades;
+    private List<int> upgrades = new List<int>();
     /// <summary>
     /// Setups the primary gun and WeaponSelector
     /// </summary>
@@ -109,6 +109,11 @@ public class WeaponSystem : MonoBehaviour
         {
             Fire();
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            UpgradeWeapon();
+        }
     }
 
     public void Fire()
@@ -166,35 +171,38 @@ public class WeaponSystem : MonoBehaviour
 
     public void UpgradeWeapon()
     {
-        if(upgrades.Count <= 0)
+        int randomUpgrade;
+        if (upgrades.Count <= 0)
         {
             Debug.LogWarning("Unable to upgrade weapons further.");
             return;
         }
-        int randomUpgrade;
-        randomUpgrade = Random.Range(0, upgrades.Count + 1);
-        
 
+        if (upgrades.Count == 1)
+            randomUpgrade = 0;
+        else
+            randomUpgrade = Random.Range(0, upgrades.Count + 1);
+        Debug.LogWarning(randomUpgrade);
         Weapon w = weapons[upgrades[randomUpgrade]];
         // Check to see if the weapon we pass in is any of the upgraded weapons
         if (w as SplitBeam)
         {
-            
-            ws.m_weapons[0] = weapon;
+            ws.m_weapons[0] = w;
         }
         else if (w as LockOnRockets)
         {
-            ws.m_weapons[1] = weapon;
+            ws.m_weapons[1] = w;
         }
         else if (w as SpreadMinigun)
         {
-            ws.m_weapons[2] = weapon;
+            ws.m_weapons[2] = w;
         }
         else
         {
             Debug.LogError("No suitable upgrade for " + weapon.name);
         }
         Debug.Log("Weapon upgrade received: " + weapons[upgrades[randomUpgrade]].name);
+        Debug.Log("Weapon upgrade actually received: " + w.name);
         upgrades.RemoveAt(randomUpgrade);
         ChangeWeapon(w);
     }
