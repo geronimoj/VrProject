@@ -7,7 +7,11 @@ public class ConsoleEvents : MonoBehaviour
     public List<int> currentNumbers;
     public float maxTimer;
     private float currentTimer;
-    public int[] sans;
+
+    public List<string> combos;
+    public List<string> events;
+
+
     public GameObject sansPrefab;
 
 
@@ -23,12 +27,43 @@ public class ConsoleEvents : MonoBehaviour
         if (currentTimer > 0)
             currentTimer -= Time.deltaTime;
         else if (currentTimer < 0)
+        {
+            currentNumbers.Clear();
             currentTimer = 0;
+        }
+
+        if(currentNumbers.Count == 4)
+        {
+            CheckNumbers();
+        }
     }
 
     public void AddNumber(int n)
     {
         currentTimer = maxTimer;
         currentNumbers.Add(n);
+    }
+
+    private void CheckNumbers()
+    {
+        string input = "";
+
+        for (int i = 0; i < currentNumbers.Count; i++)
+        {
+            input += currentNumbers[i].ToString();
+        }
+
+        currentNumbers.Clear();
+
+        for (int i = 0; i < combos.Count; i++)
+        {
+            if(combos[i] == input)
+            {
+                Debug.Log("Found combo " + input);
+                break;
+            }
+        }
+
+        
     }
 }
