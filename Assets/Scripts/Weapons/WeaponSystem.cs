@@ -181,7 +181,7 @@ public class WeaponSystem : MonoBehaviour
         if (upgrades.Count == 1)
             randomUpgrade = 0;
         else
-            randomUpgrade = Random.Range(0, upgrades.Count + 1);
+            randomUpgrade = Random.Range(0, upgrades.Count);
         Debug.LogWarning(randomUpgrade);
         Weapon w = weapons[upgrades[randomUpgrade]];
         // Check to see if the weapon we pass in is any of the upgraded weapons
