@@ -35,6 +35,7 @@ public class WeaponSystem : MonoBehaviour
     private float t_durationTimer = 0;
     private float t_cooldownTimer = 0;
 
+    private List<int> upgrades;
     /// <summary>
     /// Setups the primary gun and WeaponSelector
     /// </summary>
@@ -52,6 +53,8 @@ public class WeaponSystem : MonoBehaviour
 
         // Initialize the WeaponSelector array and reset upgrades from here using the first three weapons in our list
         ResetUpgrades();
+
+        upgrades.Add(3); upgrades.Add(4); upgrades.Add(5);
 
         t_cooldownTimer = triDistasterCooldown;
         t_durationTimer = triDisasterDuration;
@@ -163,11 +166,20 @@ public class WeaponSystem : MonoBehaviour
 
     public void UpgradeWeapon()
     {
-        int randomUpgrade = Random.Range(3, 6);
-        Weapon w = weapons[randomUpgrade];
+        if(upgrades.Count <= 0)
+        {
+            Debug.LogWarning("Unable to upgrade weapons further.");
+            return;
+        }
+        int randomUpgrade;
+        randomUpgrade = Random.Range(0, upgrades.Count + 1);
+        
+
+        Weapon w = weapons[upgrades[randomUpgrade]];
         // Check to see if the weapon we pass in is any of the upgraded weapons
         if (w as SplitBeam)
         {
+            
             ws.m_weapons[0] = weapon;
         }
         else if (w as LockOnRockets)
@@ -182,8 +194,8 @@ public class WeaponSystem : MonoBehaviour
         {
             Debug.LogError("No suitable upgrade for " + weapon.name);
         }
-        Debug.Log("Weapon upgrade received: " + weapons[randomUpgrade].name);
-
+        Debug.Log("Weapon upgrade received: " + weapons[upgrades[randomUpgrade]].name);
+        upgrades.RemoveAt(randomUpgrade);
         ChangeWeapon(w);
     }
 
