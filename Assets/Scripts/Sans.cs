@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Sans : MonoBehaviour
 {
-    public AudioSource ringtone;
-    public AudioSource voice;
-    public float maxTimer;
-    private float currentTimer;
+    public float ringTimer;
+    private float currentRingTimer;
+    public float callTimer;
+    private float currentCallTimer;
+    private bool calling = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -17,26 +19,26 @@ public class Sans : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTimer -= Time.deltaTime;
+        if (calling)
+            currentCallTimer -= Time.deltaTime;
+        else
+            currentRingTimer -= Time.deltaTime;
 
-        if (currentTimer <= 0)
+        if (currentRingTimer <= 0 || currentCallTimer <= 0)
+        {
+            ResetObject();
             gameObject.SetActive(false);
+        }
     }
 
     private void ResetObject()
     {
-        currentTimer = maxTimer;
-    }
-
-    public void Decline()
-    {
-        ringtone.Stop();
-        gameObject.SetActive(false);
+        currentRingTimer = ringTimer;
+        currentCallTimer = callTimer;
     }
 
     public void Accept()
     {
-        ringtone.Stop();
-        voice.Play();
+        calling = true;
     }
 }
