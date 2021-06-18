@@ -215,7 +215,7 @@ RectTransform:
   m_GameObject: {fileID: 12018996}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.11077238, y: 0.14101268, z: 0.096829}
+  m_LocalScale: {x: 0.096829, y: 0.096829, z: 0.096829}
   m_Children:
   - {fileID: 238124886}
   m_Father: {fileID: 276148678}
@@ -907,7 +907,7 @@ RectTransform:
   m_GameObject: {fileID: 209738802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.11077238, y: 0.14101268, z: 0.096829}
+  m_LocalScale: {x: 0.096829, y: 0.096829, z: 0.096829}
   m_Children:
   - {fileID: 486327309}
   m_Father: {fileID: 276148678}
@@ -1242,10 +1242,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
+    m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 9
+    m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1458,7 +1458,7 @@ RectTransform:
   m_GameObject: {fileID: 323550944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.11077238, y: 0.14101268, z: 0.096829}
+  m_LocalScale: {x: 0.096829, y: 0.096829, z: 0.096829}
   m_Children:
   - {fileID: 1824747396}
   m_Father: {fileID: 276148678}
@@ -1858,10 +1858,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
+    m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 9
+    m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1935,10 +1935,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
+    m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 9
+    m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -2383,10 +2383,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
+    m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 9
+    m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -3585,7 +3585,7 @@ RectTransform:
   m_GameObject: {fileID: 1070637543}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.11077238, y: 0.14101268, z: 0.096829}
+  m_LocalScale: {x: 0.096829, y: 0.096829, z: 0.096829}
   m_Children:
   - {fileID: 683576144}
   m_Father: {fileID: 276148678}
@@ -4999,7 +4999,7 @@ RectTransform:
   m_GameObject: {fileID: 1386618007}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.11077238, y: 0.16302477, z: 0.096829}
+  m_LocalScale: {x: 0.096829, y: 0.096829, z: 0.096829}
   m_Children:
   - {fileID: 565395979}
   m_Father: {fileID: 276148678}
@@ -6629,7 +6629,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2734375a3bb61ed4c971488056916b25, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -6960,7 +6960,7 @@ RectTransform:
   m_GameObject: {fileID: 1746565715}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.11077238, y: 0.14101268, z: 0.096829}
+  m_LocalScale: {x: 0.096829, y: 0.096829, z: 0.096829}
   m_Children:
   - {fileID: 2034680278}
   m_Father: {fileID: 276148678}
@@ -7353,6 +7353,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2041228980}
+        m_MethodName: Decline
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1809991834
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7622,10 +7633,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
+    m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 9
+    m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -8107,10 +8118,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
+    m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 9
+    m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
