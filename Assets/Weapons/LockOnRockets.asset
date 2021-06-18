@@ -19,13 +19,13 @@ MonoBehaviour:
     type: 3}
   projectileSpeed: 75
   projectileLifetime: 30
-  damage: 10
+  damage: 12
   refireSpeed: 0
   seeking: 1
   turnAngle: 10
   uniqueWeapon: 0
-  currentRefire: -5226.2993
+  currentRefire: -5344.3945
   explosionRadius: 5
   lockOnTime: 0.5
   maxTargets: 8
-  rocketsPerTarget: 3
+  rocketsPerTarget: 2
