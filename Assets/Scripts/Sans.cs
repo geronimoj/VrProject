@@ -35,14 +35,19 @@ public class Sans : MonoBehaviour
 
     private void ResetObject()
     {
+        calling = false;
         canvas.SetActive(false);
         currentRingTimer = ringTimer;
         currentCallTimer = callTimer;
     }
 
+    public void Decline()
+    {
+        ResetObject();
+    }
+
     public void Accept()
     {   
         calling = true;
-        canvas.SetActive(false);
     }
 }
