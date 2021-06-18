@@ -1149,6 +1149,7 @@ GameObject:
   - component: {fileID: 276148676}
   - component: {fileID: 276148675}
   - component: {fileID: 276148679}
+  - component: {fileID: 276148680}
   m_Layer: 5
   m_Name: ConsoleButtonCanvas
   m_TagString: Untagged
@@ -1260,6 +1261,19 @@ MonoBehaviour:
     m_Bits: 4294967295
   pointer: {fileID: 0}
   sortOrder: 0
+--- !u!114 &276148680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276148674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b94371cf060db884293168693e429d97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
 --- !u!1 &323550944
 GameObject:
   m_ObjectHideFlags: 0
