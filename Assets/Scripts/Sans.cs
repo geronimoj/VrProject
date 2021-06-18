@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Sans : MonoBehaviour
 {
+    public GameObject canvas;
     public float ringTimer;
     private float currentRingTimer;
     public float callTimer;
@@ -13,7 +14,8 @@ public class Sans : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ResetObject();
+        currentRingTimer = ringTimer;
+        currentCallTimer = callTimer;
     }
 
     // Update is called once per frame
@@ -33,12 +35,14 @@ public class Sans : MonoBehaviour
 
     private void ResetObject()
     {
+        canvas.SetActive(false);
         currentRingTimer = ringTimer;
         currentCallTimer = callTimer;
     }
 
     public void Accept()
-    {
+    {   
         calling = true;
+        canvas.SetActive(false);
     }
 }
