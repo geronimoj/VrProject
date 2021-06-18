@@ -403,7 +403,7 @@ MonoBehaviour:
   spawned: 0
   pathComp: {fileID: 1971824979}
   formComp: {fileID: 1825455263}
-  position: {x: 0, y: 0, z: 0}
+  position: {x: 0, y: 0, z: 50}
   visible: 1
 --- !u!114 &608133032
 MonoBehaviour:

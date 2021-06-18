@@ -1148,6 +1148,8 @@ GameObject:
   - component: {fileID: 276148677}
   - component: {fileID: 276148676}
   - component: {fileID: 276148675}
+  - component: {fileID: 276148679}
+  - component: {fileID: 276148680}
   m_Layer: 5
   m_Name: ConsoleButtonCanvas
   m_TagString: Untagged
@@ -1240,6 +1242,38 @@ RectTransform:
   m_AnchoredPosition: {x: 0.001, y: 0.802}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &276148679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276148674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aaf960227867044282d921171d2d7ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  pointer: {fileID: 0}
+  sortOrder: 0
+--- !u!114 &276148680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276148674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b94371cf060db884293168693e429d97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
 --- !u!1 &323550944
 GameObject:
   m_ObjectHideFlags: 0
@@ -2155,7 +2189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6829c0ade9396c94cbfd5af484bd3445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI: []
+  UI:
+  - {fileID: 276148674}
   eventSystem: {fileID: 728161159}
 --- !u!114 &728161164
 MonoBehaviour:
@@ -3535,7 +3570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18e5896c3f8bb246b937e2e37eb4a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentLevel: MainMenu
+  _currentLevel: 
   OnLevelChange:
     m_PersistentCalls:
       m_Calls: []
@@ -3615,6 +3650,21 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1479987704}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - combo: 2214
+    OnGetCombo:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2041228976}
           m_MethodName: SetActive
           m_Mode: 6
           m_Arguments:
@@ -4585,13 +4635,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0bf3ad6b244e7554a9cc6cbc59213163, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 120
+  Priority: 130
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -7076,7 +7126,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &2041228977
 SpriteRenderer:
   m_ObjectHideFlags: 0
